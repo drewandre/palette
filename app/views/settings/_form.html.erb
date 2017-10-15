@@ -1,0 +1,48 @@
+<%= form_for(@setting) do |f| %>
+
+  <% if @setting.errors.any? %>
+    <div class="alert">
+      <strong><%= pluralize(@setting.errors.count, "error") %>:</strong>
+
+      <ul>
+        <% @setting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hue %><br />
+    <%= f.text_field :hue %>
+  </div>
+
+  <div class="field">
+    <%= f.label :saturation %><br />
+    <%= f.text_field :saturation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brightness %><br />
+    <%= f.text_field :brightness %>
+  </div>
+
+  <div class="field">
+    <%= f.label :master_brightness %><br />
+    <%= f.text_field :master_brightness %>
+  </div>
+
+  <div class="field">
+    <%= f.label :color_palette %><br />
+    <%= f.text_field :color_palette %>
+  </div>
+
+  <div class="field">
+    <%= f.label :effect %><br />
+    <%= f.text_field :effect %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update Settings" %>
+  </div>
+<% end %>
