@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :settings, only: [:index, :show, :edit, :update]
 
-  root 'settings#index'
+  root 'static_pages#index'
+  # root 'settings#index'
 
 end
