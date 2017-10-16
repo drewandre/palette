@@ -1,8 +1,21 @@
 import React from 'react';
+import RevealMenu from '../containers/RevealMenu';
+import Dashboard from '../containers/Dashboard';
 
 const App = props => {
   return(
-    <h1>Rendered</h1>
+    <div id='outer-container'>
+      <div>
+        <RevealMenu
+          img={'../../../../assets/images/playstation-circle-dark-icon.png'}
+          pageWrapId={ "page-wrap" }
+          outerContainerId={ "outer-container" }
+        />
+      </div>
+      <div id="page-wrap">
+        <Dashboard />
+      </div>
+    </div>
   )
 }
 
