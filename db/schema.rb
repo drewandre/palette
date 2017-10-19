@@ -10,20 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015135556) do
+ActiveRecord::Schema.define(version: 20171018230233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "settings", force: :cascade do |t|
-    t.integer "hue", default: 0, null: false
-    t.integer "saturation", default: 255, null: false
-    t.integer "brightness", default: 255, null: false
-    t.integer "master_brightness", default: 255, null: false
-    t.integer "color_palette", default: 1, null: false
-    t.integer "effect", default: 1, null: false
+  create_table "products", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.boolean "admin", default: false
+    t.string "confirmation_digest"
+    t.datetime "confirmed_at"
+    t.string "email", null: false
+    t.string "first_name", null: false
+    t.string "handle", null: false
+    t.string "last_name", null: false
+    t.string "password_digest"
+    t.string "password_reset_digest"
+    t.datetime "password_reset_sent_at"
+    t.string "remember_digest"
+    t.string "universally_unique_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["handle"], name: "index_users_on_handle", unique: true
+    t.index ["universally_unique_id"], name: "index_users_on_universally_unique_id", unique: true
   end
 
 end

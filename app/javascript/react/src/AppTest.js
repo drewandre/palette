@@ -1,4 +1,4 @@
-import App from '../../src/constants/App';
+import App from '../../src/components/App';
 import React from 'react'
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';

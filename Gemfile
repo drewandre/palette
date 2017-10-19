@@ -1,6 +1,7 @@
 source 'https://rubygems.org/'
 
 gem 'active_model_serializers'
+gem "bcrypt"
 gem 'foundation-rails'
 gem 'pg', '~> 0.18'
 gem 'postgresql'
