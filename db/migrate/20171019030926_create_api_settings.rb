@@ -1,7 +1,7 @@
 class CreateApiSettings < ActiveRecord::Migration[5.1]
   def change
     create_table :api_settings do |t|
-      t.belongs_to :saved_setting
+      t.belongs_to :product
 
       t.string :api_1_url
       t.string :api_endpoint_1

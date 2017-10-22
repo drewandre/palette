@@ -1,5 +1,5 @@
 class EffectSetting < ApplicationRecord
-  belongs_to :saved_setting
+  belongs_to :product
 
   validates_presence_of :active_effect
 end

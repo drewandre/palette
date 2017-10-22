@@ -4,6 +4,9 @@ class User < ApplicationRecord
 
   has_many :products
   has_many :color_palettes
+  has_many :api_settings, through: :products
+  has_many :effect_settings, through: :products
+
 
   attr_accessor :confirmation_token, :password_reset_token, :remember_token
 

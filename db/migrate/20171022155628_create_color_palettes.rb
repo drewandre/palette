@@ -2,7 +2,7 @@ class CreateColorPalettes < ActiveRecord::Migration[5.1]
   def change
     create_table :color_palettes do |t|
       t.belongs_to :user
-      
+
       t.string :hex_1, null: false
       t.string :hex_2
       t.string :hex_3
