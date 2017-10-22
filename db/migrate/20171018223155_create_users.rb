@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :remember_digest
       t.string :universally_unique_id, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
     add_index :users, :email, unique: true
     add_index :users, :handle, unique: true

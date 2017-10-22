@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardTile from './DashboardTile'
 import FormContainer from './FormContainer'
+import ColorPicker from '../components/ColorPicker'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Dashboard extends React.Component {
       <div className='dashboard-grid'>
         <div className='row fullwidth'>
           <div className='small-12 medium-12 large-8 columns'>
-            <DashboardTile className="box led-color-picker-tile" />
+            <ColorPicker className="box led-color-picker-tile" />
           </div>
           <div className='small-12 medium-12 large-4 columns'>
             <DashboardTile className="box led-movement-tile" />

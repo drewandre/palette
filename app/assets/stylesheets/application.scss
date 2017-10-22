@@ -113,12 +113,13 @@ main {
   background: rgba(0,0,0, 0.2);
   border-radius: 5px;
   margin-bottom: 20px;
-  padding: 50px;
+  // padding: 50px;
   border: 3px solid rgba(0,0,0, 0.1);
 }
 
 .led-color-picker-tile {
-  background-color: rgba(0, 0, 0, 0.3)
+  // background-color: rgba(0, 0, 0, 0.3);
+  border: none;
 }
 .accessory-tile {
   background-color: rgba(100, 0, 0, 0.3)
@@ -128,4 +129,11 @@ main {
 }
 .led-data-tile {
   background-color: rgba(0, 0, 100, 0.3)
+}
+
+
+
+.chrome-picker {
+  background-color: red;
+  width: 100%;
 }

@@ -2,6 +2,9 @@ class User < ApplicationRecord
   EMAIL_REGEXP = /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   HANDLE_REGEXP = /\A[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*\z/
 
+  has_many :products
+  has_many :color_palettes
+
   attr_accessor :confirmation_token, :password_reset_token, :remember_token
 
   before_create :generate_confirmation_digest, :generate_identifier
