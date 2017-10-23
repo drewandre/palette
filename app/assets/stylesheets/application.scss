@@ -13,11 +13,50 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
+ *= require 'react-reflex/styles.css'
  */
 
 // html {
 //   height: 100%;
 // }
+
+input[type="text"]:focus, textarea:focus {
+
+  position: absolute;
+  right: 35px;
+  top: 15px;
+
+  width: 65%;
+
+  max-width: 500px;
+
+  border-radius: 10px;
+
+  height: 40px;
+  font-size: 1em;
+  background-color: #2F2F2F;
+  color: white;
+  border: 1px solid darken(white, 40%);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+input[type="text"], textarea {
+
+  position: absolute;
+  right: 35px;
+  top: 15px;
+
+  width: 65%;
+  max-width: 500px;
+
+  border-radius: 10px;
+
+  height: 40px;
+  font-size: 1em;
+  border: 1px solid #4F4F4F;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+}
 
 #app {
   margin: 70px auto 0;
@@ -180,6 +219,7 @@ main {
 }
 
 .box {
+  position: relative;
   background: #2F2F2F;
   border-radius: 3px;
   margin-bottom: 20px;
@@ -188,51 +228,57 @@ main {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
 }
 
-.led-color-picker-tile {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 400px;
-  font-size: 2.3em;
-  font-family: 'Menlo';
-  color: #4F4F4F;
-}
-
-.accessory-tile {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 400px;
-  font-size: 2.3em;
-  font-family: 'Menlo';
-  color: #4F4F4F;
-}
-
-.led-movement-tile {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 400px;
-  font-size: 2.3em;
-  font-family: 'Menlo';
-  color: #4F4F4F;
-}
-
-.led-data-tile {
-  text-align: center;
-  vertical-align: middle;
-  line-height: 400px;
-  font-size: 2.3em;
-  font-family: 'Menlo';
-  color: #4F4F4F;
-}
-
 .palette-adjust {
   position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  width: 97%;
+
+  width: 100%;
   // display: block;
   height: 35px;
-  bottom: 0;
+  // bottom: 0;
   background: green;
+}
+
+#led-color-picker-tile {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 400px;
+  font-size: 2.3em;
+  font-family: 'Menlo';
+  color: #4F4F4F;
+}
+
+#accessory-tile {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 400px;
+  font-size: 2.3em;
+  font-family: 'Menlo';
+  color: #4F4F4F;
+}
+
+#led-movement-tile {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 400px;
+  font-size: 2.3em;
+  font-family: 'Menlo';
+  color: #4F4F4F;
+}
+
+#led-data-tile {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 400px;
+  font-size: 2.3em;
+  font-family: 'Menlo';
+  color: #4F4F4F;
 }
 
 
@@ -240,4 +286,13 @@ main {
   font-family: 'Menlo';
   padding-top: 15px;
   padding-bottom: 20px;
+}
+
+// HT Sonus / Sonus extra light / Sonus light
+
+#box-icon {
+  color: #4F4F4F;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 }

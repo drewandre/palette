@@ -11,7 +11,7 @@ class ApiContainer extends React.Component {
 
     return (
       <div className={this.props.className} >
-        API mapping
+        <i className="fa fa-database fa-2x" id="box-icon" aria-hidden="true"></i>
       </div>
     )
   }

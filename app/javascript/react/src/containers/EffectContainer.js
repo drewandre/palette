@@ -9,7 +9,7 @@ class EffectContainer extends React.Component {
   render () {
     return (
       <div className={this.props.className} >
-        Effect settings
+        <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
       </div>
     )
   }

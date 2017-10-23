@@ -1,5 +1,7 @@
 import React from 'react';
-import PaletteAdjust from '../components/PaletteAdjust';
+import PaletteFixed from '../components/PaletteFixed';
+import SearchField from '../components/SearchField';
+import PaletteFlex from './PaletteFlex';
 
 class PaletteContainer extends React.Component {
 
@@ -7,11 +9,14 @@ class PaletteContainer extends React.Component {
     return(
       <div>
         <div className={this.props.className} >
-          <div>Palette settings</div>
+          <i className="fa fa-paint-brush fa-2x" id="box-icon" aria-hidden="true"></i>
+          <SearchField
+            handlerFunction={this.handleSearch}
+            placeholder="search color palettes"
+          />
+          {/* <PaletteFixed className='palette-adjust' /> */}
         </div>
-        <div>
-          {/* <PaletteAdjust className='box palette-adjust' /> */}
-        </div>
+        {/* <PaletteFlex /> */}
       </div>
     )
   }

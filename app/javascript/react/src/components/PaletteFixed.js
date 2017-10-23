@@ -1,12 +1,12 @@
 import React from 'react';
 
-const PaletteAdjust = props => {
+const PaletteFixed = props => {
 
   return (
     <div className={props.className}>
-      PaletteAdjust
+      PaletteFixed
     </div>
   );
 }
 
-export default PaletteAdjust;
+export default PaletteFixed;
