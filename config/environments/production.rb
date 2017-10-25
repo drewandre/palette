@@ -57,6 +57,17 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.action_mailer.default_url_options = { host: "#{Rails.application.class.parent_name.downcase}.#{ENV[
+  'EMAIL_DOMAIN']}" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              "smtp.mailgun.org",
+  port:                 587,
+  domain:               ENV["MAILGUN_SMTP_LOGIN"],
+  user_name:            ENV["MAILGUN_SMTP_LOGIN"],
+  password:             ENV["MAILGUN_SMTP_PASSWORD"],
+  authentication:       "plain" }
+
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "aura-dashboard-v1_#{Rails.env}"

@@ -2,9 +2,9 @@ import React from 'react';
 
 const SearchField = props => {
   return (
-    <form className="palette-search">
+    <form>
       <input
-        className='text-center'
+        className="palette-search"
         autoComplete='off'
         onChange={props.handlerFunction}
         type='text'

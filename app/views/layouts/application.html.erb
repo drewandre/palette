@@ -4,17 +4,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Palette Dashboard" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Palette" %></title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./aura-dashboard-v1/node_modules/react-reflex/style.css">
-    <script src="./aura-dashboard-v1/node_modules/react-reflex/dist/umd/react-reflex.min.js"></script>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
+    <div class='fixed-nav-bar'>
+      <div id='nav-menu-button'>
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+      </div>
+      <div id='nav-alert'>
+        <i class="fa fa-bell-o fa-lg" aria-hidden="true"></i>
+      </div>
+      <div id='account-dropdown'>
+        <div class='user-name'>
+          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+          <div class="user-name">
+            <% if user_signed_in? %>
+            <li>Signed in as:</li>
+            <li>
+              <%= link_to current_user.handle, edit_user_path(current_user) %>
+              <%= link_to "Sign Out", sign_out_path, method: :delete %>
+            </li>
+            <% elsif controller_name != "sessions" %>
+              <%= link_to "Sign In", sign_in_path %>
+            <% end %>
+          </div>
+        </div>
+        <i class="fa fa-caret-down fa-2x" aria-hidden="true"></i>
+      </div>
+    </div>
+
     <div id="app">
       <%= yield %>
     </div>

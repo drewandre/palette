@@ -16,22 +16,43 @@
  *= require 'react-reflex/styles.css'
  */
 
-// html {
-//   height: 100%;
-// }
+@import 'react-reflex/styles.css';
 
-input[type="text"]:focus, textarea:focus {
+#session_login[type="text"], textarea {
+  position: relative;
+  margin: auto;
+  width: 75%;
+  max-width: 400px;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1em;
+  background-color: #2F2F2F;
+  color: white;
+  border: 1px solid #454545;
+  // box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
 
+#session_password[type="password"], textarea {
+  position: relative;
+  margin: auto;
+  width: 75%;
+  max-width: 400px;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1em;
+  background-color: #2F2F2F;
+  color: white;
+  border: 1px solid #454545;
+  // box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.palette-search[type="text"]:focus, textarea:focus {
   position: absolute;
   right: 35px;
   top: 15px;
-
   width: 65%;
-
   max-width: 500px;
-
   border-radius: 10px;
-
   height: 40px;
   font-size: 1em;
   background-color: #2F2F2F;
@@ -40,7 +61,7 @@ input[type="text"]:focus, textarea:focus {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-input[type="text"], textarea {
+.palette-search[type="text"], textarea {
 
   position: absolute;
   right: 35px;
@@ -56,6 +77,10 @@ input[type="text"], textarea {
   border: 1px solid #4F4F4F;
   background-color: #2F2F2F;
   color: darken(white, 20%);
+}
+
+.form-inputs[type="text"], textarea {
+  border-radius: 10px;
 }
 
 #app {
@@ -175,7 +200,14 @@ main {
   line-height: 1.1em;
   color: #4F4F4F;
   display: inline-block;
+  padding-top: 15px;
+  padding-bottom: 20px;
 }
+
+// .test {
+//   font-family: 'Menlo';
+// }
+
 
 .user-email {
   fontFamily: 'Menlo';
@@ -280,14 +312,6 @@ main {
   font-family: 'Menlo';
   color: #4F4F4F;
 }
-
-
-.test {
-  font-family: 'Menlo';
-  padding-top: 15px;
-  padding-bottom: 20px;
-}
-
 // HT Sonus / Sonus extra light / Sonus light
 
 #box-icon {

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'static_pages#index'
+
+  get "sign-in", to: "sessions#new", as: :sign_in
+  get "sign-in", to: "sessions#new"
+  post "sign-in", to: "sessions#create"
+  delete "sign-out", to: "sessions#destroy"
+  # get "sign-out", to: "sessions#destroy"
+  get "sign-up", to: "users#new", as: :sign_up
 
   namespace :api do
     namespace :v1 do
@@ -9,7 +17,11 @@ Rails.application.routes.draw do
 
   resources :settings, only: [:index, :show, :edit, :update]
 
-  root 'static_pages#index'
-  # root 'settings#index'
+  resources :account_confirmations, only: [:edit]
+  resources :password_resets, only: [:create, :edit, :new, :update]
+  resources :users, only: [:create, :edit, :update]
+  # resources :sessions, only: [:destroy]
+
+  # use_doorkeeper
 
 end

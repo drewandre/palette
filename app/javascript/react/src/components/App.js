@@ -6,9 +6,9 @@ import NavBar from './NavBar'
 const App = props => {
   return(
     <div id='outer-container'>
-      <nav className="fixed-nav-bar">
+      {/* <nav className="fixed-nav-bar">
         <NavBar />
-      </nav>
+      </nav> */}
       <div>
         {/* <RevealMenu
           img={'../../../../assets/images/playstation-circle-dark-icon.png'}
