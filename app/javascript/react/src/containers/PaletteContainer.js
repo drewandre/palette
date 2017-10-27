@@ -10,6 +10,7 @@ class PaletteContainer extends React.Component {
       <div>
         <div className={this.props.className} >
           <i className="fa fa-paint-brush fa-2x" id="box-icon" aria-hidden="true"></i>
+          <div className='container-title'>Color Palettes</div>
           <SearchField
             handlerFunction={this.handleSearch}
             placeholder="search color palettes"

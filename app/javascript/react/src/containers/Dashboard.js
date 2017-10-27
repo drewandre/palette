@@ -24,10 +24,10 @@ class Dashboard extends React.Component {
   render () {
     return (
       <div className='row fullwidth'>
-        <div className='small-12 medium-12 large-8 columns'>
+        <div className='small-12 medium-12 large-6 columns'>
           <PaletteContainer className="box" />
         </div>
-        <div className='small-12 medium-12 large-4 columns'>
+        <div className='small-12 medium-12 large-6 columns'>
           <EffectContainer className="box" />
         </div>
       <div className='small-12 medium-12 large-4 columns'>

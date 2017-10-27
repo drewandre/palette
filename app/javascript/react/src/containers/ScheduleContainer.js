@@ -10,6 +10,7 @@ class ScheduleContainer extends React.Component {
     return (
       <div className={this.props.className} >
         <i className="fa fa-calendar fa-2x" id="box-icon" aria-hidden="true"></i>
+        <div className='container-title'>Schedule Settings</div>
       </div>
     )
   }

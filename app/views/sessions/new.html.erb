@@ -1,0 +1,26 @@
+<%= form_for :session, url: sign_in_path do |f| %>
+  <div class="form-inputs">
+    <div>
+      <%= f.label :email_or_username %>
+      <%= f.text_field :login %>
+    </div>
+    <div>
+      <div>
+        <%= f.label :password %>
+      </div>
+      <div>
+        <label>
+          <%= link_to "Forgot your password?", new_password_reset_path %>
+        </label>
+      </div>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Sign In", class: "button" %>
+    &nbsp;
+    <%= link_to "Sign Up", sign_up_path, class: "button" %>
+  </div>
+<% end %>

@@ -16,41 +16,45 @@
  *= require 'react-reflex/styles.css'
  */
 
-// html {
-//   height: 100%;
-// }
+ #app {
+  //  margin: 70px auto 0;
+ }
 
-input[type="text"]:focus, textarea:focus {
+ #outer-container, #page-wrap {
+  //  margin: 70px auto 0;
+ }
 
-  position: absolute;
-  right: 35px;
-  top: 15px;
-
-  width: 65%;
-
-  max-width: 500px;
-
-  border-radius: 10px;
-
-  height: 40px;
-  font-size: 1em;
-  background-color: #2F2F2F;
-  color: white;
-  border: 1px solid darken(white, 40%);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+body {
+  //  margin: 70px auto 0;
+  height: 80%;
+  background: #292929;
+  color: #fffce1;
+  font-family: Arial, Verdana, Verdana, sans-serif;
 }
 
-input[type="text"], textarea {
+ a {
+   text-align: center;
+   color: white;
+   text-decoration: none;
+ }
+ a:hover,
+ a:focus {
+   color: #D04E59;
+ }
 
+ main {
+   height: 100%;
+   background: #b4bad2;
+ }
+
+.palette-search[type="text"], textarea {
+  text-align: center;
   position: absolute;
   right: 35px;
   top: 15px;
-
   width: 65%;
-  max-width: 500px;
-
+  max-width: 200px;
   border-radius: 10px;
-
   height: 40px;
   font-size: 1em;
   border: 1px solid #4F4F4F;
@@ -58,29 +62,46 @@ input[type="text"], textarea {
   color: darken(white, 20%);
 }
 
-#app {
-  margin: 70px auto 0;
+.palette-search[type="text"]:focus, textarea:focus {
+  background-color: #2F2F2F;
+  box-shadow: none;
 }
 
-#outer-container, #page-wrap {
-  margin: 70px auto 0;
-}
-
-body {
-  margin: 70px auto 0;
-  background: #292929;
-  color: #fffce1;
-  font-family: 'Raleway', Arial, sans-serif;
-}
-
-a {
+.select-field select {
   text-align: center;
-  color: white;
-  text-decoration: none;
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  width: 65%;
+  max-width: 200px;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1em;
+  border: 1px solid #4F4F4F;
+  background-color: #2F2F2F;
+  color: #4F4F4F;
 }
-a:hover,
-a:focus {
-  color: #D04E59;
+
+.select-field input:focus {
+  text-align: center;
+  border: none;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.select-field select:active {
+  text-align: center;
+  outline: none;
+  border: none;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+  border: none;
+  // box-shadow: none;
+  // background: transparent;
 }
 
 #nav-icon {
@@ -89,11 +110,6 @@ a:focus {
   width: 50%;
   max-width: 100%;
   height: auto;
-}
-
-main {
-  height: 100%;
-  background: #b4bad2;
 }
 
 .bm-burger-button {
@@ -219,11 +235,12 @@ main {
 }
 
 .box {
+
   position: relative;
   background: #2F2F2F;
   border-radius: 3px;
   margin-bottom: 20px;
-  height: 400px;
+  height: 370px;
   // padding: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
 }
@@ -250,7 +267,7 @@ main {
   vertical-align: middle;
   line-height: 400px;
   font-size: 2.3em;
-  font-family: 'Menlo';
+  font-family: Verdana, Arial, Helvetica, sans-serif;
   color: #4F4F4F;
 }
 
@@ -259,7 +276,7 @@ main {
   vertical-align: middle;
   line-height: 400px;
   font-size: 2.3em;
-  font-family: 'Menlo';
+  font-family: Verdana, Arial, Helvetica, sans-serif;
   color: #4F4F4F;
 }
 
@@ -268,7 +285,7 @@ main {
   vertical-align: middle;
   line-height: 400px;
   font-size: 2.3em;
-  font-family: 'Menlo';
+  font-family: Verdana, Arial, Helvetica, sans-serif;
   color: #4F4F4F;
 }
 
@@ -277,13 +294,13 @@ main {
   vertical-align: middle;
   line-height: 400px;
   font-size: 2.3em;
-  font-family: 'Menlo';
+  font-family: Verdana, Arial, Helvetica, sans-serif;
   color: #4F4F4F;
 }
 
 
 .test {
-  font-family: 'Menlo';
+  font-family: Verdana, Arial, Helvetica, sans-serif;
   padding-top: 15px;
   padding-bottom: 20px;
 }
@@ -295,4 +312,57 @@ main {
   position: absolute;
   left: 20px;
   top: 20px;
+}
+
+.container-title {
+}
+
+.Components {
+  flex: 1;
+  display: flex;
+}
+
+.Component {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 30rem;
+  // background: #263238;
+}
+.Component-slider {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+}
+.Component-properties {
+  flex: 0 0 50%;
+  padding: 2rem;
+  background: color(#263238 l(+5%));
+  line-height: 1.6;
+  font-family: "Fira Mono", monospace;
+  font-size: .8rem;
+  color: #fff;
+}
+
+.Slider {
+  display: block;
+  width: 1em;
+  height: 1em;
+  cursor: ns-resize;
+  fill: transparent;
+}
+.Slider-circle {
+  // fill: color(#263238 l(-3%));
+  fill: rgb(31, 41, 46);
+}
+.Slider-bar {
+  // stroke: color(#263238 l(+10%));
+  color: #31A84B;
+
+}
+.Slider-progress {
+  // stroke: #448AFF;
+  stroke: #1269D3;
 }

@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h1 class="text-center top-padded">Sign Up</h1>
+    <%= form_for @user do |f| %>
+      <div class="form-errors">
+        <% if @user.errors.present? %>
+          <div class="callout alert">
+            <ul>
+              <% @user.errors.messages.each do |attribute, messages| %>
+                <li>
+                  <strong>
+                    <%= attribute.to_s.humanize %>
+                  </strong>
+                  <%= "#{messages.to_sentence}." %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <div class="form-inputs">
+        <fieldset>
+          <%= f.label :handle, "Username" %>
+          <%= f.text_field :handle %>
+        </fieldset>
+        <fieldset>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </fieldset>
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <fieldset>
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, label: "First Name" %>
+            </fieldset>
+          </div>
+          <div class="small-12 medium-6 columns">
+            <fieldset>
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, label: "Last Name" %>
+            </fieldset>
+          </div>
+        </div>
+        <fieldset>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </fieldset>
+        <fieldset>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </fieldset>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Register", class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
