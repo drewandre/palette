@@ -348,8 +348,10 @@ body {
 
 .Slider {
   display: block;
-  width: 1em;
-  height: 1em;
+  
+  padding: 10px;
+  width: 40%;
+  height: 40%;
   cursor: ns-resize;
   fill: transparent;
 }
