@@ -28,14 +28,15 @@ ActiveRecord::Schema.define(version: 20171022155628) do
 
   create_table "color_palettes", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "name", null: false
     t.string "hex_1", null: false
     t.string "hex_2"
     t.string "hex_3"
     t.string "hex_4"
-    t.integer "percentage_hex_1", default: 100, null: false
-    t.integer "percentage_hex_2", default: 100
-    t.integer "percentage_hex_3", default: 100
-    t.integer "percentage_hex_4", default: 100
+    t.integer "percentage_hex_1", limit: 2, default: 100, null: false
+    t.integer "percentage_hex_2", limit: 2, default: 100
+    t.integer "percentage_hex_3", limit: 2, default: 100
+    t.integer "percentage_hex_4", limit: 2, default: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_color_palettes_on_user_id"
@@ -44,9 +45,11 @@ ActiveRecord::Schema.define(version: 20171022155628) do
   create_table "effect_settings", force: :cascade do |t|
     t.bigint "product_id"
     t.integer "active_effect", default: 0, null: false
-    t.integer "speed", default: 50, null: false
-    t.integer "scale", default: 50, null: false
-    t.integer "density", default: 50, null: false
+    t.integer "parameter_1", limit: 2, default: 0, null: false
+    t.integer "parameter_2", limit: 2, default: 0, null: false
+    t.integer "parameter_3", limit: 2, default: 0, null: false
+    t.integer "parameter_4", limit: 2, default: 0, null: false
+    t.integer "parameter_5", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_effect_settings_on_product_id"
@@ -54,7 +57,8 @@ ActiveRecord::Schema.define(version: 20171022155628) do
 
   create_table "products", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "master_brightness", default: 255, null: false
+    t.string "product_name", default: "palette", null: false
+    t.integer "master_brightness", limit: 2, default: 255, null: false
     t.boolean "energy_saver", default: false, null: false
     t.string "active_effect", default: "1", null: false
     t.string "active_color_palette", default: "0", null: false

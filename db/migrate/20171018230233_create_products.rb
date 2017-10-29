@@ -3,7 +3,9 @@ class CreateProducts < ActiveRecord::Migration[5.1]
     create_table :products do |t|
       t.belongs_to :user
 
-      t.integer :master_brightness, null: false, default: 255
+      t.string :product_name, null: false, default: 'palette'
+
+      t.integer :master_brightness, null: false, default: 255, limit: 1
       t.boolean :energy_saver, null: false, default: false
 
       t.string :active_effect, null: false, default: 1

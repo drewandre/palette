@@ -330,7 +330,7 @@ body {
   // background: #263238;
 }
 .Component-slider {
-  flex: 0 0 50%;
+  flex: 0 0 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -338,7 +338,7 @@ body {
 }
 .Component-properties {
   flex: 0 0 50%;
-  padding: 2rem;
+  // padding: 2rem;
   background: color(#263238 l(+5%));
   line-height: 1.6;
   font-family: "Fira Mono", monospace;
@@ -348,10 +348,9 @@ body {
 
 .Slider {
   display: block;
-  
   padding: 10px;
-  width: 40%;
-  height: 40%;
+  width: 50%;
+  height: 50%;
   cursor: ns-resize;
   fill: transparent;
 }

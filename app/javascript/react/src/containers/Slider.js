@@ -6,7 +6,7 @@ const styles = {
   slider: "Slider",
   sliderCircle: "Slider-circle",
   sliderBar: "Slider-bar",
-  sliderProgress: "Slider-progress",
+  sliderProgress: "Slider-progress"
 }
 
 const clamp = (min, max, value) => Math.max(min, Math.min(max, value))
@@ -14,7 +14,6 @@ const clamp = (min, max, value) => Math.max(min, Math.min(max, value))
 class Slider extends Component {
 
   // static propTypes = {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -48,7 +47,6 @@ class Slider extends Component {
       }
     }
   }
-
   // };
 
   static defaultProps = {
@@ -59,8 +57,6 @@ class Slider extends Component {
     angle: Math.PI / 2,
     value: 0,
   };
-
-  // state = { isPinching: false };
 
   componentDidMount() {
     document.addEventListener("mousemove", this.handleMouseMove)
@@ -112,6 +108,7 @@ class Slider extends Component {
   };
 
   render() {
+    // console.log(this.state.clamp);
     const {
       radius,
       border,
@@ -157,7 +154,11 @@ class Slider extends Component {
           className={ styles.sliderCircle }
           r={ radius - halfBorder }
           cx={ radius }
-          cy={ radius } />
+          cy={ radius }
+        />
+        {/* <div className='Slider-value'>
+          {this.state.value}
+        </div> */}
         <path
           className={ styles.sliderBar }
           style={{ strokeWidth }}

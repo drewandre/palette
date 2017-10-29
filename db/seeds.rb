@@ -16,6 +16,8 @@ USERS_WITH_EXTRA_PALETTES = (NUM_PALETTES * 0.75).round
 USERS_WITH_EXTRA_PRODUCTS = (NUM_USERS * 0.25).round
 TOTAL_PRODUCT_COUNT = NUM_USERS + USERS_WITH_EXTRA_PRODUCTS
 
+locations = ['Family Room', 'Lobby', 'Foyer', 'Work', 'Palette'];
+
 NUM_USERS.times do
   User.create(
     email: Faker::Internet.unique.email,
@@ -29,8 +31,10 @@ end
 # every user will have a product, every product has a user
 a = User.pluck(:id).to_a.shuffle
 NUM_USERS.times do
+  index = rand(0..4)
   Product.create(
     user_id: a.pop,
+    product_name: locations[index].parameterize,
     active_color_palette: rand(NUM_PALETTES)
   )
 end
@@ -48,6 +52,7 @@ a = User.pluck(:id).to_a.shuffle
 NUM_PALETTES.times do
   ColorPalette.create(
     user_id: a.pop,
+    name: "#{Faker::LordOfTheRings.location.parameterize}",
     hex_1: "#{Faker::Color.hex_color}",
     hex_2: "#{Faker::Color.hex_color}",
     hex_3: "#{Faker::Color.hex_color}"
@@ -58,6 +63,7 @@ end
 USERS_WITH_EXTRA_PALETTES.times do
   ColorPalette.create(
     user_id: rand((User.pluck(:id).first)..(User.pluck(:id).last)),
+    name: "#{Faker::LordOfTheRings.location.parameterize}",
     hex_1: "#{Faker::Color.hex_color}",
     hex_2: "#{Faker::Color.hex_color}",
     hex_3: "#{Faker::Color.hex_color}"
@@ -76,7 +82,12 @@ end
 a = Product.pluck(:id).to_a.shuffle
 TOTAL_PRODUCT_COUNT.times do
   EffectSetting.create(
-    product_id: a.pop
+    product_id: a.pop,
+    parameter_1: rand(-50..50),
+    parameter_2: rand(-50..50),
+    parameter_3: rand(-50..50),
+    parameter_4: rand(-50..50),
+    parameter_5: rand(-50..50)
   )
 end
 
