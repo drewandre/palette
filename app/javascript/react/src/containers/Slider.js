@@ -6,7 +6,9 @@ const styles = {
   slider: "Slider",
   sliderCircle: "Slider-circle",
   sliderBar: "Slider-bar",
-  sliderProgress: "Slider-progress"
+  sliderProgress: "Slider-progress",
+  sliderValue: "Slider-value",
+  sliderLabel: "Slider-label"
 }
 
 const clamp = (min, max, value) => Math.max(min, Math.min(max, value))
@@ -155,6 +157,14 @@ class Slider extends Component {
           cx={ radius }
           cy={ radius }
         />
+        <text
+          className={styles.sliderValue}
+          x='42%'
+          y='49%'
+          textAnchor='middle'
+        >
+          {this.props.fixedSliderValue}
+        </text>
         <path
           className={ styles.sliderBar }
           style={{ strokeWidth }}
@@ -167,6 +177,14 @@ class Slider extends Component {
             strokeDasharray,
           }}
           d={ d } />
+        <text
+          className={styles.sliderLabel}
+          x='42%'
+          y='93%'
+          textAnchor='middle'
+        >
+        {this.props.label}
+        </text>
       </svg>
     )
   }

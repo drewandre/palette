@@ -4,6 +4,7 @@ import Slider from './Slider'
 
 let user_handle = 'es6vank6ll';
 let product_room = 'family-room';
+let active_effect = 1
 
 class EffectContainer extends React.Component {
   showSettings(event) {
@@ -18,7 +19,14 @@ class EffectContainer extends React.Component {
       sliderValue_3: 0,
       sliderValue_4: 0,
       sliderValue_5: 0,
-      lastKeyPressedTime: 0
+      lastKeyPressedTime: 0,
+      active_effect: 0,
+      effect_name: '',
+      effect_parameter_1_name: '',
+      effect_parameter_2_name: '',
+      effect_parameter_3_name: '',
+      effect_parameter_4_name: '',
+      effect_parameter_5_name: ''
     }
     this.handleSlider_1 = this.handleSlider_1.bind(this);
     this.handleSlider_2 = this.handleSlider_2.bind(this);
@@ -38,12 +46,24 @@ class EffectContainer extends React.Component {
         sliderValue_3: body.parameter_3,
         sliderValue_4: body.parameter_4,
         sliderValue_5: body.parameter_5,
+        active_effect: body.active_effect
+      })
+    })
+    fetch(`/api/v1/effects/${active_effect}`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        effect_parameter_1_name: body.parameter_1_name,
+        effect_parameter_2_name: body.parameter_2_name,
+        effect_parameter_3_name: body.parameter_3_name,
+        effect_parameter_4_name: body.parameter_4_name,
+        effect_parameter_5_name: body.parameter_5_name
       })
     })
   }
 
   postValuesToFetch() {
-    if (Date.now() - this.state.lastKeyPressedTime > 500) {
+    if (Date.now() - this.state.lastKeyPressedTime > 200) {
       let formPayload = {
         parameter_1: this.state.sliderValue_1,
         parameter_2: this.state.sliderValue_2,
@@ -118,7 +138,7 @@ class EffectContainer extends React.Component {
             <div className="Component-slider">
               <Slider
                 onChange={ this.handleSlider_1 }
-                value={ this.state.sliderValue_1 }
+                value={this.state.sliderValue_1}
                 radius={ 70 }
                 border={ 30 }
                 min={ -50 }
@@ -126,6 +146,8 @@ class EffectContainer extends React.Component {
                 angle={ Math.PI / 4 }
                 origin={ 0.5 }
                 start={ 0 }
+                fixedSliderValue={+this.state.sliderValue_1.toFixed(2)}
+                label={this.state.effect_parameter_1_name}
               />
               <Slider
                 onChange={ this.handleSlider_2 }
@@ -137,6 +159,8 @@ class EffectContainer extends React.Component {
                 angle={ Math.PI / 4 }
                 origin={ 0.5 }
                 start={ 0 }
+                fixedSliderValue={+this.state.sliderValue_2.toFixed(2)}
+                label={this.state.effect_parameter_2_name}
               />
               <Slider
                 onChange={ this.handleSlider_3 }
@@ -148,6 +172,8 @@ class EffectContainer extends React.Component {
                 angle={ Math.PI / 4 }
                 origin={ 0.5 }
                 start={ 0 }
+                fixedSliderValue={+this.state.sliderValue_3.toFixed(2)}
+                label={this.state.effect_parameter_3_name}
               />
               <Slider
                 onChange={ this.handleSlider_4 }
@@ -159,6 +185,8 @@ class EffectContainer extends React.Component {
                 angle={ Math.PI / 4 }
                 origin={ 0.5 }
                 start={ 0 }
+                fixedSliderValue={+this.state.sliderValue_4.toFixed(2)}
+                label={this.state.effect_parameter_4_name}
               />
               <Slider
                 onChange={ this.handleSlider_5 }
@@ -170,6 +198,8 @@ class EffectContainer extends React.Component {
                 angle={ Math.PI / 4 }
                 origin={ 0.5 }
                 start={ 0 }
+                fixedSliderValue={+this.state.sliderValue_5.toFixed(2)}
+                label={this.state.effect_parameter_5_name}
               />
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import 'react-reflex/styles.css'
+// import 'react-reflex/styles.css'
 import {
   ReflexContainer,
   ReflexSplitter,

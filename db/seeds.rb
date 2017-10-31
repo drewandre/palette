@@ -3,12 +3,15 @@ p "Deleting #{ColorPalette.count} color palettes"
 p "Deleting #{Product.count} products"
 p "Deleting #{ApiSetting.count} api settings"
 p "Deleting #{EffectSetting.count} effect settings"
+p "Deleting #{Effect.count} effects"
+
 
 User.destroy_all
 ColorPalette.destroy_all
 Product.destroy_all
 ApiSetting.destroy_all
 EffectSetting.destroy_all
+Effect.destroy_all
 
 NUM_USERS = rand(50..75)
 NUM_PALETTES = rand(30..60)
@@ -17,6 +20,12 @@ USERS_WITH_EXTRA_PRODUCTS = (NUM_USERS * 0.25).round
 TOTAL_PRODUCT_COUNT = NUM_USERS + USERS_WITH_EXTRA_PRODUCTS
 
 locations = ['Family Room', 'Lobby', 'Foyer', 'Work', 'Palette'];
+effect_names = ['Radiate', "Rainbow", "Splatter", "Flex", "Ambient", "Twinkle"]
+effect_parameters = [
+  ['Density', "Scale", "Speed", "x", "y"],
+  ['Width', "Height", "Scale", "x", "y"],
+  ['Magnitude', "Direction", "Speed", "Position", 'Entropy']
+]
 
 NUM_USERS.times do
   User.create(
@@ -26,6 +35,20 @@ NUM_USERS.times do
     handle: Faker::Lorem.unique.characters(10),
     password: Faker::Lorem.unique.characters(10)
   )
+end
+
+index = 0
+effect_names.length.times do
+  name_set = rand(0..2)
+  Effect.create(
+    effect_name: effect_names[index],
+    parameter_1_name: effect_parameters[name_set][0],
+    parameter_2_name: effect_parameters[name_set][1],
+    parameter_3_name: effect_parameters[name_set][2],
+    parameter_4_name: effect_parameters[name_set][3],
+    parameter_5_name: effect_parameters[name_set][4]
+  )
+  index = index + 1
 end
 
 # every user will have a product, every product has a user
@@ -96,5 +119,6 @@ p "-------------------"
 p "Created #{User.count} total users"
 p "Created #{TOTAL_PRODUCT_COUNT} products, #{USERS_WITH_EXTRA_PRODUCTS} users with more than one product"
 p "Created #{ApiSetting.count} api settings"
+p "Created #{Effect.count} effects"
 p "Created #{EffectSetting.count} effect settings"
 p "Created #{ColorPalette.count} color palettes, #{USERS_WITH_EXTRA_PALETTES} users with more than one palette"

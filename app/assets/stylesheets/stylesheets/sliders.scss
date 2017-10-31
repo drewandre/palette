@@ -12,22 +12,12 @@
 }
 
 .Component-slider {
-  // flex: 0 0 50%;
   display: flex;
   position: absolute;
   bottom: 0;
   // align-items: center;
   // justify-content: center;
   font-size: 5rem;
-}
-
-.Component-properties {
-  flex: 0 0 50%;
-  // padding: 2rem;
-  background: color(#263238 l(+5%));
-  line-height: 1.6;
-  font-size: .8rem;
-  color: #fff;
 }
 
 .Slider {
@@ -50,5 +40,17 @@
 
 .Slider-progress {
   // stroke: #448AFF;
-  stroke: #1269D3;
+  stroke: #97C9B3;
+}
+
+.Slider-value {
+  fill: #494949;
+  font-size: 0.5em;
+  font-weight: 200;
+}
+
+.Slider-label {
+  fill: #494949;
+  font-weight: 200;
+  font-size: 0.4em;
 }

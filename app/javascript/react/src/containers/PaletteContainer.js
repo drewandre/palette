@@ -49,9 +49,9 @@ class PaletteContainer extends React.Component {
           {/* <PaletteFixed className='palette-adjust' /> */}
 
           <div id='palette-list'>
-            <PaletteTiles
+            {/* <PaletteTiles
               palettes={this.state.color_palettes}
-            />
+            /> */}
           </div>
 
           <div className='container-settings'>

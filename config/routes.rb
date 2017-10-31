@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       get "/palettes", to: "palettes#index"
       get "/palettes/:palette_name", to: "palettes#show"
 
+      get "/effects", to: "effects#index"
+      get "/effects/:id", to: "effects#show"
+
     end
   end
   root 'static_pages#index'
