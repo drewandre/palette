@@ -1,59 +1,22 @@
 import React from 'react';
-// import 'react-reflex/styles.css'
-import {
-  ReflexContainer,
-  ReflexSplitter,
-  ReflexElement
-} from 'react-reflex'
+import { Rows, Columns, Cell, Splitter } from 'react-resizable-grid';
 
-class PaletteFlex extends React.Component {
+class EffectContainer extends React.Component {
 
-  render () {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
 
+  render() {
     return (
-      <ReflexContainer orientation="vertical">
-
-        <ReflexElement className="left-pane">
-          <div className="pane-content">
-            <label>
-            Left Pane (resizable)
-            </label>
-          </div>
-        </ReflexElement>
-
-        <ReflexSplitter propagate={true}/>
-
-        <ReflexElement className="middle-pane">
-          <div className="pane-content">
-            <label>
-            Middle Pane 1 (resizable)
-            </label>
-          </div>
-        </ReflexElement>
-
-        <ReflexSplitter propagate={true}/>
-
-        <ReflexElement className="middle-pane">
-          <div className="pane-content">
-            <label>
-            Middle Pane 2 (resizable)
-            </label>
-          </div>
-        </ReflexElement>
-
-        <ReflexSplitter propagate={true}/>
-
-        <ReflexElement className="right-pane">
-          <div className="pane-content">
-            <label>
-            Right Pane (resizable)
-            </label>
-          </div>
-        </ReflexElement>
-
-      </ReflexContainer>
-    )
+      <Rows>
+        <Cell width="50%">left</Cell>
+        <Splitter />
+        <Cell>right</Cell>
+      </Rows>
+    );
   }
 }
 
-export default PaletteFlex;
+export default EffectContainer;

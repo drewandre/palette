@@ -1,18 +1,19 @@
-#palette-list {
+.palette-list {
   position: relative;
+  text-align: center;
   display: block;
   top: 20%;
   height: 60%;
+  // margin: 10px;;
   /* top | right | bottom | left */
-  padding: 3% 6% 3% 6%;
+  // padding: 3% 6% 3% 6%;
 }
 
-#palette-container {
-  // border: 1px solid rgba(255, 255, 255, 0.15);
+.palette-container {
   margin: 15px;
   display: inline-block;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   width: 20%;
   height: 15%;

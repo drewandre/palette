@@ -2,9 +2,9 @@ import React from 'react';
 import SliderMath from '../helpers/SliderMath'
 import Slider from './Slider'
 
-let user_handle = 'es6vank6ll';
-let product_room = 'family-room';
-let active_effect = 1
+let user_handle = '5zu61942l4';
+let product_room = 'work';
+let active_effect = 26
 
 class EffectContainer extends React.Component {
   showSettings(event) {
@@ -26,7 +26,8 @@ class EffectContainer extends React.Component {
       effect_parameter_2_name: '',
       effect_parameter_3_name: '',
       effect_parameter_4_name: '',
-      effect_parameter_5_name: ''
+      effect_parameter_5_name: '',
+      loading: false
     }
     this.handleSlider_1 = this.handleSlider_1.bind(this);
     this.handleSlider_2 = this.handleSlider_2.bind(this);
@@ -64,6 +65,7 @@ class EffectContainer extends React.Component {
 
   postValuesToFetch() {
     if (Date.now() - this.state.lastKeyPressedTime > 200) {
+      this.setState({ loading: true })
       let formPayload = {
         parameter_1: this.state.sliderValue_1,
         parameter_2: this.state.sliderValue_2,
@@ -77,7 +79,7 @@ class EffectContainer extends React.Component {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ formPayload })
       })
-    }
+    } else this.setState({ loading: false })
   }
 
   handleSlider_1(sliderValue_1) {
@@ -126,10 +128,17 @@ class EffectContainer extends React.Component {
   }
 
   render () {
+
+    // let loading = null;
+    // if (this.state.loading) {
+    //   loading = <div className='loading'>Loading...</div>
+    // } else  { loading = null }
+
     return (
       <div className={this.props.className} >
         <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
         <h2 className='container-title'>Effects | </h2>
+        {/* <h4>{loading}</h4> */}
         {/* <h3 className='container-dropdown'>Search</h3> */}
         {/* <i className="fa fa-caret-down fa-2x" id='container-dropdown' aria-hidden="true"></i> */}
 

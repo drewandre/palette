@@ -5,13 +5,13 @@ class Api::V1::PalettesController < ApplicationController
   end
 
   def show
-    @palette = ColorPalette.find_by(name: params[:palette_name])
+    @palette = ColorPalette.find_by(id: params[:palette_id])
     render json: @palette
   end
 
   def user_show
-    user_id = User.find_by(handle: params[:handle])
-    @user_palettes = ColorPalette.where(user_id: user_id)
+    user = User.find_by(handle: params[:handle])
+    @user_palettes = ColorPalette.where(user_id: user.id)
     render json: @user_palettes
   end
 

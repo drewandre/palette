@@ -2,37 +2,32 @@ import React from 'react';
 import PaletteTiles from '../components/PaletteTiles';
 import PaletteFixed from '../components/PaletteFixed';
 import SearchField from '../components/SearchField';
-import PaletteFlex from './PaletteFlex';
+import PaletteFlex from './PaletteFlex'
 
-let user_handle = 'es6vank6ll';
-let product_room = 'family-room';
+let user_handle = '5zu61942l4';
+let product_room = 'work';
 
 class PaletteContainer extends React.Component {
-
   showSettings(event) {
     event.preventDefault();
   }
-
   constructor(props) {
     super(props)
     this.state = {
-      color_palettes: []
+      color_palettes: [null, null, null, null, null, null, null, null]
     }
   }
 
   componentDidMount() {
     fetch(`/api/v1/users/${user_handle}/palettes`)
     .then(response => response.json())
-    .then(body => { this.setState({ color_palettes: body }) })
-
-    window.onload = function() {
-      var palette_list = document.getElementById("palette-list");
-      for (var index = 0; index < 8; index++) {
-        var palette_container_div = document.createElement("div");
-        palette_container_div.id = "palette-container";
-        palette_list.appendChild(palette_container_div);
+    .then(body => {
+      const palettes = this.state.color_palettes;
+      for(var i = 0; i < this.state.color_palettes.length; i++) {
+        palettes[i] = body[i]
       }
-    }
+      this.setState({ color_palettes: palettes })
+    })
   }
 
   render() {
@@ -46,19 +41,16 @@ class PaletteContainer extends React.Component {
             handlerFunction={this.handleSearch}
             placeholder="search color palettes"
           /> */}
-          {/* <PaletteFixed className='palette-adjust' /> */}
 
-          <div id='palette-list'>
-            {/* <PaletteTiles
-              palettes={this.state.color_palettes}
-            /> */}
-          </div>
+          <PaletteTiles
+            palettes={this.state.color_palettes}
+          />
 
           <div className='container-settings'>
             <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
           </div>
+          <PaletteFixed className='palette-adjust' />
         </div>
-        {/* <PaletteFlex /> */}
       </div>
     )
   }

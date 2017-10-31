@@ -15,7 +15,7 @@ Effect.destroy_all
 
 NUM_USERS = rand(50..75)
 NUM_PALETTES = rand(30..60)
-USERS_WITH_EXTRA_PALETTES = (NUM_PALETTES * 0.75).round
+USERS_WITH_EXTRA_PALETTES = (NUM_PALETTES * 0.90).round
 USERS_WITH_EXTRA_PRODUCTS = (NUM_USERS * 0.25).round
 TOTAL_PRODUCT_COUNT = NUM_USERS + USERS_WITH_EXTRA_PRODUCTS
 
@@ -83,10 +83,18 @@ NUM_PALETTES.times do
   )
 end
 
-# 75% of users will create more than one color palette
+# 90% of users will create more than two color palette
 USERS_WITH_EXTRA_PALETTES.times do
+  user = rand((User.pluck(:id).first)..(User.pluck(:id).last))
   ColorPalette.create(
-    user_id: rand((User.pluck(:id).first)..(User.pluck(:id).last)),
+    user_id: user,
+    name: "#{Faker::LordOfTheRings.location.parameterize}",
+    hex_1: "#{Faker::Color.hex_color}",
+    hex_2: "#{Faker::Color.hex_color}",
+    hex_3: "#{Faker::Color.hex_color}"
+  )
+  ColorPalette.create(
+    user_id: user,
     name: "#{Faker::LordOfTheRings.location.parameterize}",
     hex_1: "#{Faker::Color.hex_color}",
     hex_2: "#{Faker::Color.hex_color}",
@@ -121,4 +129,4 @@ p "Created #{TOTAL_PRODUCT_COUNT} products, #{USERS_WITH_EXTRA_PRODUCTS} users w
 p "Created #{ApiSetting.count} api settings"
 p "Created #{Effect.count} effects"
 p "Created #{EffectSetting.count} effect settings"
-p "Created #{ColorPalette.count} color palettes, #{USERS_WITH_EXTRA_PALETTES} users with more than one palette"
+p "Created #{ColorPalette.count} color palettes, #{USERS_WITH_EXTRA_PALETTES*2} users with more than one palette"

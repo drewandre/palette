@@ -1,17 +1,21 @@
 .Components {
+  user-select: none;
+  cursor: none;
   flex: 1;
   display: flex;
 }
 
 .Component {
+  user-select: none;
+  cursor: none;
   flex: 1;
   display: flex;
   flex-direction: column;
-  // height: 40rem;
-  // background: #263238;
 }
 
 .Component-slider {
+  user-select: none;
+  cursor: none;
   display: flex;
   position: absolute;
   bottom: 0;
@@ -21,35 +25,39 @@
 }
 
 .Slider {
+  user-select: none;
+  cursor: none;
   display: block;
   padding: 10px;
   width: 50%;
-  // height: 50%;
   cursor: ns-resize;
   fill: transparent;
 }
 
 .Slider-circle {
-  // fill: color(#263238 l(-3%));
+  user-select: none;
   fill: rgb(31, 41, 46);
 }
 
 .Slider-bar {
+  user-select: none;
   stroke: lighten(#2F2F2F, 10%);
 }
 
 .Slider-progress {
-  // stroke: #448AFF;
+  user-select: none;
   stroke: #97C9B3;
 }
 
 .Slider-value {
+  user-select: none;
   fill: #494949;
   font-size: 0.5em;
   font-weight: 200;
 }
 
 .Slider-label {
+  user-select: none;
   fill: #494949;
   font-weight: 200;
   font-size: 0.4em;
