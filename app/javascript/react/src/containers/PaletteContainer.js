@@ -54,10 +54,6 @@ class PaletteContainer extends React.Component {
             />
           </div>
 
-          {/* <PaletteTiles
-            palettes={this.state.color_palettes}
-          /> */}
-
           <div className='container-settings'>
             <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
           </div>

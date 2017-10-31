@@ -45,8 +45,7 @@
 }
 
 .Slider-bar {
-  // stroke: color(#263238 l(+10%));
-  color: #31A84B;
+  stroke: lighten(#2F2F2F, 10%);
 }
 
 .Slider-progress {

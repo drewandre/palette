@@ -24,12 +24,20 @@ class NavBar extends React.Component {
   }
 
   handlePower(buttonPress) {
-    this.setState({ powerStatus: !this.state.powerStatus })
+    // this.setState({ powerStatus: !this.state.powerStatus })
     fetch(`/api/v1/users/${user_handle}/products/${product_room}`, {
       credentials: "same-origin",
       method: "POST",
       headers: {"Content-Type": "application/json"}
     })
+    fetch(`/api/v1/users/${user_handle}/products/${product_room}`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        powerStatus: body.on
+      });
+    })
+
   }
 
   render() {
