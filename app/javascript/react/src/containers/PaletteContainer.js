@@ -43,24 +43,24 @@ class PaletteContainer extends React.Component {
 
   render() {
     return(
-      <div>
-        <div className={this.props.className} >
+      <div className={this.props.className} >
+        <div>
           <i className="fa fa-paint-brush fa-2x" id="box-icon" aria-hidden="true"></i>
-          <h2 className='container-title'>Palettes | </h2>
+          <div className='container-title'>Palettes</div>
+        </div>
 
-          <PaletteTiles
-            className='palette-list'
-            data={this.state.color_palettes}
-          />
+        <PaletteTiles
+          className='palette-list'
+          data={this.state.color_palettes}
+        />
 
-          {/* <PaletteTiles
-            className='current-palette'
-            data={this.state.current_palette}
-          /> */}
+        {/* <PaletteTiles
+          className='current-palette'
+          data={this.state.current_palette}
+        /> */}
 
-          <div className='container-settings'>
-            <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
-          </div>
+        <div className='container-settings'>
+          <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
         </div>
       </div>
     )

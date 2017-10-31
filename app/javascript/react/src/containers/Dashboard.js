@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
 
   render () {
     return (
-      <div className='row fullwidth'>
+      <div className='row collapse fullwidth'>
         <div className='small-12 medium-12 large-6 columns'>
           <PaletteContainer className="box" />
         </div>

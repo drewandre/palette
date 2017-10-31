@@ -4,15 +4,10 @@ h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', Fallback, sans-serif;
 }
 
-#app {
-}
-
-#outer-container, #page-wrap {
-}
-
-body {
-  height: 80%;
+body, html {
+  height: 100%;
   background: #292929;
+  overflow: hidden;
 }
 
 a {
@@ -31,11 +26,11 @@ main {
 }
 
 #page-wrap {
-  margin-top: 100px;
+  margin-top: 115px;
 }
 
 .fullwidth {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   max-width: initial;
 }

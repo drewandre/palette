@@ -9,9 +9,10 @@ class ScheduleContainer extends React.Component {
   render () {
     return (
       <div className={this.props.className} >
-        <i className="fa fa-calendar fa-2x" id="box-icon" aria-hidden="true"></i>
-        <h2 className='container-title'>Schedule</h2>
-
+        <div>
+          <i className="fa fa-calendar fa-2x" id="box-icon" aria-hidden="true"></i>
+          <div className='container-title'>Schedule</div>
+        </div>
         {/* <input className="time-picker" type="time" name="on-time" value="09:00"></input>
         <input className="time-picker" type="time" name="off-time" value="17:00"></input> */}
 

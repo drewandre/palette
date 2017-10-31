@@ -136,8 +136,10 @@ class EffectContainer extends React.Component {
 
     return (
       <div className={this.props.className} >
-        <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
-        <h2 className='container-title'>Effects | </h2>
+        <div>
+          <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
+          <div className='container-title'>Effects</div>
+        </div>
         {/* <h4>{loading}</h4> */}
         {/* <h3 className='container-dropdown'>Search</h3> */}
         {/* <i className="fa fa-caret-down fa-2x" id='container-dropdown' aria-hidden="true"></i> */}

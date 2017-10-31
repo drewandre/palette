@@ -48,8 +48,10 @@ class ApiContainer extends React.Component {
     return (
       <div className={this.props.className}>
         <div className='container-info'>
-          <i className="fa fa-database fa-2x" id="box-icon" aria-hidden="true"></i>
-          <h2 className='container-title'>Data | </h2>
+          <div>
+            <i className="fa fa-database fa-2x" id="box-icon" aria-hidden="true"></i>
+            <div className='container-title'>Data</div>
+          </div>
           {/* <div className='container-dropdown'>Dropdown</div> */}
         </div>
         {/* <SelectField
