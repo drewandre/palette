@@ -180,7 +180,7 @@ class Slider extends Component {
         <text
           className={styles.sliderLabel}
           x='42%'
-          y='93%'
+          y='95%'
           textAnchor='middle'
         >
         {this.props.label}

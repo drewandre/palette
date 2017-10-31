@@ -3,8 +3,7 @@ import PaletteSwatches from './PaletteSwatches'
 
 const PaletteTiles = props => {
 
-  let userPalettes = props.palettes.map(palette => {
-    
+  let userPalettes = props.data.map(palette => {
     if(palette != null) {
       return (
         <PaletteSwatches
@@ -21,7 +20,6 @@ const PaletteTiles = props => {
       );
     }
     else {
-      console.log('NULL');
       return(
         <PaletteSwatches
           // key={null}
@@ -37,9 +35,10 @@ const PaletteTiles = props => {
       )
     }
   });
-  debugger;
+
+
   return(
-    <div className='palette-list'>
+    <div className={props.className}>
       {userPalettes}
     </div>
   )

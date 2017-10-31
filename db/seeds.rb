@@ -51,26 +51,6 @@ effect_names.length.times do
   index = index + 1
 end
 
-# every user will have a product, every product has a user
-a = User.pluck(:id).to_a.shuffle
-NUM_USERS.times do
-  index = rand(0..4)
-  Product.create(
-    user_id: a.pop,
-    product_name: locations[index].parameterize,
-    active_color_palette: rand(NUM_PALETTES),
-    on: [true, false][rand(0..1)]
-  )
-end
-
-# 25% of users will own more than one product
-USERS_WITH_EXTRA_PRODUCTS.times do
-  Product.create(
-    user_id: rand((User.pluck(:id).first)..(User.pluck(:id).last)),
-    active_color_palette: rand(NUM_PALETTES)
-  )
-end
-
 # every user will have a color palette to start
 a = User.pluck(:id).to_a.shuffle
 NUM_PALETTES.times do
@@ -99,6 +79,26 @@ USERS_WITH_EXTRA_PALETTES.times do
     hex_1: "#{Faker::Color.hex_color}",
     hex_2: "#{Faker::Color.hex_color}",
     hex_3: "#{Faker::Color.hex_color}"
+  )
+end
+
+# every user will have a product, every product has a user
+a = User.pluck(:id).to_a.shuffle
+NUM_USERS.times do
+  index = rand(0..4)
+  Product.create(
+    user_id: a.pop,
+    product_name: locations[index].parameterize,
+    active_color_palette: rand((ColorPalette.pluck(:id).first)..(ColorPalette.pluck(:id).last)),
+    on: [true, false][rand(0..1)]
+  )
+end
+
+# 25% of users will own more than one product
+USERS_WITH_EXTRA_PRODUCTS.times do
+  Product.create(
+    user_id: rand((User.pluck(:id).first)..(User.pluck(:id).last)),
+    active_color_palette: rand(NUM_PALETTES)
   )
 end
 

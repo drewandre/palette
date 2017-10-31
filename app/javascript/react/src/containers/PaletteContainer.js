@@ -1,11 +1,10 @@
 import React from 'react';
 import PaletteTiles from '../components/PaletteTiles';
-import PaletteFixed from '../components/PaletteFixed';
-import SearchField from '../components/SearchField';
-import PaletteFlex from './PaletteFlex'
+import CurrentPaletteDisplay from '../components/CurrentPaletteDisplay';
 
-let user_handle = '5zu61942l4';
-let product_room = 'work';
+let user_handle = 'qbyxndniwg';
+let product_room = 'palette';
+let current_palette_number = 658;
 
 class PaletteContainer extends React.Component {
   showSettings(event) {
@@ -14,7 +13,9 @@ class PaletteContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      color_palettes: [null, null, null, null, null, null, null, null]
+      color_palettes: [null, null, null, null, null, null, null, null],
+      current_palette_number: null,
+      current_palette: [null]
     }
   }
 
@@ -28,6 +29,16 @@ class PaletteContainer extends React.Component {
       }
       this.setState({ color_palettes: palettes })
     })
+    fetch(`/api/v1/users/${user_handle}/products/${product_room}`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ current_palette_number: body.active_color_palette })
+    })
+    fetch(`/api/v1/palettes/658`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ current_palette: body })
+    })
   }
 
   render() {
@@ -36,20 +47,20 @@ class PaletteContainer extends React.Component {
         <div className={this.props.className} >
           <i className="fa fa-paint-brush fa-2x" id="box-icon" aria-hidden="true"></i>
           <h2 className='container-title'>Palettes | </h2>
-          {/* <h4 className='container-dropdown'>Search</h4> */}
-          {/* <SearchField
-            handlerFunction={this.handleSearch}
-            placeholder="search color palettes"
-          /> */}
 
           <PaletteTiles
-            palettes={this.state.color_palettes}
+            className='palette-list'
+            data={this.state.color_palettes}
           />
+
+          {/* <PaletteTiles
+            className='current-palette'
+            data={this.state.current_palette}
+          /> */}
 
           <div className='container-settings'>
             <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
           </div>
-          <PaletteFixed className='palette-adjust' />
         </div>
       </div>
     )

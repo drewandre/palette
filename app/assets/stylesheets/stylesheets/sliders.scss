@@ -42,11 +42,14 @@
 .Slider-bar {
   user-select: none;
   stroke: lighten(#2F2F2F, 10%);
+  // box-shadow: 15px 15px 15px black;
+
 }
 
 .Slider-progress {
   user-select: none;
   stroke: #97C9B3;
+  // box-shadow: 10px 5px 5px black;
 }
 
 .Slider-value {

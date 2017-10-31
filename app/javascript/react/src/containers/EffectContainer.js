@@ -2,9 +2,9 @@ import React from 'react';
 import SliderMath from '../helpers/SliderMath'
 import Slider from './Slider'
 
-let user_handle = '5zu61942l4';
-let product_room = 'work';
-let active_effect = 26
+let user_handle = 'qbyxndniwg';
+let product_room = 'palette';
+let active_effect = 45
 
 class EffectContainer extends React.Component {
   showSettings(event) {
