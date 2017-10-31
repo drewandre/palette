@@ -1,0 +1,55 @@
+.Components {
+  flex: 1;
+  display: flex;
+}
+
+.Component {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  // height: 40rem;
+  // background: #263238;
+}
+
+.Component-slider {
+  // flex: 0 0 50%;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  // align-items: center;
+  // justify-content: center;
+  font-size: 5rem;
+}
+
+.Component-properties {
+  flex: 0 0 50%;
+  // padding: 2rem;
+  background: color(#263238 l(+5%));
+  line-height: 1.6;
+  font-size: .8rem;
+  color: #fff;
+}
+
+.Slider {
+  display: block;
+  padding: 10px;
+  width: 50%;
+  // height: 50%;
+  cursor: ns-resize;
+  fill: transparent;
+}
+
+.Slider-circle {
+  // fill: color(#263238 l(-3%));
+  fill: rgb(31, 41, 46);
+}
+
+.Slider-bar {
+  // stroke: color(#263238 l(+10%));
+  color: #31A84B;
+}
+
+.Slider-progress {
+  // stroke: #448AFF;
+  stroke: #1269D3;
+}

@@ -108,7 +108,6 @@ class Slider extends Component {
   };
 
   render() {
-    // console.log(this.state.clamp);
     const {
       radius,
       border,
@@ -156,9 +155,6 @@ class Slider extends Component {
           cx={ radius }
           cy={ radius }
         />
-        {/* <div className='Slider-value'>
-          {this.state.value}
-        </div> */}
         <path
           className={ styles.sliderBar }
           style={{ strokeWidth }}

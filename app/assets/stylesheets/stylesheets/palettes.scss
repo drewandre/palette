@@ -1,0 +1,30 @@
+#palette-list {
+  position: relative;
+  display: block;
+  top: 20%;
+  height: 60%;
+  /* top | right | bottom | left */
+  padding: 3% 6% 3% 6%;
+}
+
+#palette-container {
+  // border: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 15px;
+  display: inline-block;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  width: 20%;
+  height: 15%;
+}
+
+.palette-color {
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+}
+
+#test-id {
+  background-color: red;
+  border: 5px solid red;
+}

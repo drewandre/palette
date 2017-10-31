@@ -35,7 +35,8 @@ NUM_USERS.times do
   Product.create(
     user_id: a.pop,
     product_name: locations[index].parameterize,
-    active_color_palette: rand(NUM_PALETTES)
+    active_color_palette: rand(NUM_PALETTES),
+    on: [true, false][rand(0..1)]
   )
 end
 

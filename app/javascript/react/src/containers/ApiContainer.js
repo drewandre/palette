@@ -47,14 +47,18 @@ class ApiContainer extends React.Component {
   render() {
     return (
       <div className={this.props.className}>
-        <div>
+        <div className='container-info'>
           <i className="fa fa-database fa-2x" id="box-icon" aria-hidden="true"></i>
-          <div className='container-title'>Api Mapping</div>
+          <h2 className='container-title'>Data | </h2>
+          {/* <div className='container-dropdown'>Dropdown</div> */}
         </div>
-        <SelectField
+        {/* <SelectField
           value={this.state.selectedApiUrl}
           handleSelect={this.handleSelect}
-        />
+        /> */}
+        <div className='container-settings'>
+          <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
+        </div>
       </div>
     )
   }
