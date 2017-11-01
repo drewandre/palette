@@ -12,4 +12,13 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
  */
+
+@import 'stylesheets/app';
+@import 'stylesheets/sliders';
+@import 'stylesheets/sidemenu';
+@import 'stylesheets/navbar';
+@import 'stylesheets/dashboard';
+@import 'stylesheets/inputs';
+@import 'stylesheets/schedule';

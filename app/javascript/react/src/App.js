@@ -1,9 +1,15 @@
 import React from 'react';
+import RevealMenu from './containers/RevealMenu';
+import Dashboard from './containers/Dashboard';
+import NavBar from './containers/NavBar'
 
 const App = props => {
   return(
-    <h1>Hello World</h1>
+    <div>
+      <NavBar />
+      <Dashboard />
+    </div>
   )
 }
 
-export default App
+export default App;

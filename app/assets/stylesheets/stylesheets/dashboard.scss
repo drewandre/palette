@@ -1,0 +1,71 @@
+.box {
+  position: relative;
+  background: #2F2F2F;
+  border-radius: 4px;
+  margin: 10px;
+  height: 385px;
+  // padding-bottom: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+  color: #6F6F6F;
+}
+
+#box-icon {
+  user-select: none;
+  cursor: default;
+  color: #6F6F6F;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.container-title {
+  user-select: none;
+  cursor: default;
+  display: block;
+  letter-spacing: 0.08em;
+  color: #6F6F6F;
+  font-size: 2.5em;
+  font-weight: 100;
+  position: relative;
+  left: 66px;
+  top: 7px;
+}
+
+.container-settings {
+  cursor: pointer;
+  color: #6F6F6F;
+  position: absolute;
+  right: 25px;
+  top: 18px;
+}
+
+.container-dropdown {
+  position: absolute;
+  left: 198px;
+  top: 16px;
+  font-weight: bold;
+  color: #6F6F6F;
+}
+
+#container-dropdown {
+  position: absolute;
+  left: 298px;
+  top: 29px;
+  color: #6F6F6F;
+}
+
+.container-info {
+  user-select: none;
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+
+#dashboard-title {
+  color: #6F6F6F;
+  margin-left: 20px;
+  font-size: 2em;
+  font-weight: 200;
+  // letter-spacing: 0.1em;
+}
