@@ -59,7 +59,7 @@ class ApiContainer extends React.Component {
           handleSelect={this.handleSelect}
         /> */}
         <div className='container-settings'>
-          <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
+          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
       </div>
     )

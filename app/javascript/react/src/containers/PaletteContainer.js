@@ -7,9 +7,11 @@ let product_room = 'palette';
 let current_palette_number = 658;
 
 class PaletteContainer extends React.Component {
+
   showSettings(event) {
     event.preventDefault();
   }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -60,7 +62,7 @@ class PaletteContainer extends React.Component {
         /> */}
 
         <div className='container-settings'>
-          <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
+          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
       </div>
     )

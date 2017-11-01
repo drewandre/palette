@@ -1,15 +1,13 @@
-.Components {
-  user-select: none;
-  cursor: none;
-  flex: 1;
-  display: flex;
+#components {
+  // flex: 1;
+  // display: flex;
 }
 
 .Component {
   user-select: none;
   cursor: none;
-  flex: 1;
-  display: flex;
+  // flex: 1;
+  // display: flex;
   flex-direction: column;
 }
 
@@ -19,15 +17,13 @@
   display: flex;
   position: absolute;
   bottom: 0;
-  // align-items: center;
-  // justify-content: center;
   font-size: 5rem;
 }
 
 .Slider {
   user-select: none;
   cursor: none;
-  display: block;
+  // display: inline-block;
   padding: 10px;
   width: 50%;
   cursor: ns-resize;

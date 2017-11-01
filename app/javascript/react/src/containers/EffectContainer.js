@@ -129,22 +129,20 @@ class EffectContainer extends React.Component {
 
   render () {
 
-    // let loading = null;
-    // if (this.state.loading) {
-    //   loading = <div className='loading'>Loading...</div>
-    // } else  { loading = null }
+    let loading = null;
+    if (this.state.loading) {
+      loading = <div className='loading-icon'>Loading...</div>
+    } else  { loading = null }
 
     return (
-      <div className={this.props.className} >
+      <div className={this.props.className}>
+        {/* {loading} */}
         <div>
           <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
           <div className='container-title'>Effects</div>
         </div>
-        {/* <h4>{loading}</h4> */}
-        {/* <h3 className='container-dropdown'>Search</h3> */}
-        {/* <i className="fa fa-caret-down fa-2x" id='container-dropdown' aria-hidden="true"></i> */}
 
-        <div className="Components">
+        <div id="components">
           <div className="Component">
             <div className="Component-slider">
               <Slider
@@ -216,7 +214,7 @@ class EffectContainer extends React.Component {
           </div>
         </div>
         <div className='container-settings'>
-          <i className="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
+          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
       </div>
     )

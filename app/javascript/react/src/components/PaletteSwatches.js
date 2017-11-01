@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PaletteSwatches = props => {
-
   let hex_1 = props.hex_1
   let hex_2 = props.hex_2
   let hex_3 = props.hex_3
@@ -13,10 +12,10 @@ const PaletteSwatches = props => {
 
   return(
     <div className='palette-container'>
-      <div className='palette-color' style={{ backgroundColor: hex_1 }}/>
-      <div className='palette-color' style={{ backgroundColor: hex_2 }}/>
-      <div className='palette-color' style={{ backgroundColor: hex_3 }}/>
-      <div className='palette-color' style={{ backgroundColor: hex_4 }}/>
+      <div className='color-swatch' style={{ backgroundColor: hex_1 }}/>
+      <div className='color-swatch' style={{ backgroundColor: hex_2 }}/>
+      <div className='color-swatch' style={{ backgroundColor: hex_3 }}/>
+      <div className='color-swatch' style={{ backgroundColor: hex_4 }}/>
     </div>
   )
 }
