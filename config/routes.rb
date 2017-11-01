@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   # get "sign-out", to: "sessions#destroy"
   get "sign-up", to: "users#new", as: :sign_up
 
+  resources :account_confirmations, only: [:edit]
+  resources :password_resets, only: [:create, :edit, :new, :update]
+  resources :users, only: [:create, :edit, :update]
+  # use_doorkeeper
+
   namespace :api do
     namespace :v1 do
       resources :users, param: :handle, only: [:index, :show]
-      resources :account_confirmations, only: [:edit]
-      resources :password_resets, only: [:create, :edit, :new, :update]
-      # resources :sessions, only: [:destroy]
-
-      # use_doorkeeper
 
       get "users/:handle", to: "user#show"
       get "users/:handle/products", to: "products#index"

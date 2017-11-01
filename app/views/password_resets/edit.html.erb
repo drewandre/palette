@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h1 class="text-center top-padded">Reset Password</h1>
+    <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+      <div class="form-errors">
+        <% if @user.errors.present? %>
+          <div class="callout alert">
+            <ul>
+              <% @user.errors.messages.each do |attribute, messages| %>
+                <li>
+                  <strong>
+                    <%= attribute.to_s.humanize %>
+                  </strong>
+                  <%= "#{messages.to_sentence}." %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+      <div class="form-inputs">
+        <%= hidden_field_tag :email, @user.email %>
+        <fieldset>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </fieldset>
+        <fieldset>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </fieldset>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Update Password", class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
