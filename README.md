@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[ ![Codeship Status for drewandre/reporev](https://app.codeship.com/projects/87ce2be0-a061-0135-21d0-72267cb9a81b/status?branch=master)](https://app.codeship.com/projects/253920)    [![Coverage Status](https://coveralls.io/repos/github/drewandre/palette-dashboard/badge.svg?branch=master)](https://coveralls.io/github/drewandre/palette-dashboard?branch=master)    <a href="https://codeclimate.com/github/drewandre/palette-dashboard/maintainability"><img src="https://api.codeclimate.com/v1/badges/2922eba3b2b8516af001/maintainability" /></a>   <a href="https://codeclimate.com/github/drewandre/palette-dashboard/test_coverage"><img src="https://api.codeclimate.com/v1/badges/2922eba3b2b8516af001/test_coverage" /></a>
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Description: http://bit.ly/2gYrWDK</br>
+User stories: http://bit.ly/2yIIwRL</br>
+ER diagram: http://bit.ly/2zHAhDx</br>
+Project Trello: http://bit.ly/2zFYUQV</br>

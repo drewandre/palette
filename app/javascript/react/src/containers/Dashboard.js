@@ -23,21 +23,26 @@ class Dashboard extends React.Component {
 
   render () {
     return (
-      <div className='row fullwidth'>
-        <div className='small-12 medium-12 large-8 columns'>
-          <PaletteContainer className="box" />
+      <div>
+        <div id='dashboard-title'>
+          Dashboard
         </div>
+        <div className='row collapse fullwidth'>
+          <div className='small-12 medium-12 large-6 columns'>
+            <PaletteContainer className="box" />
+          </div>
+          <div className='small-12 medium-12 large-6 columns'>
+            <EffectContainer className="box" />
+          </div>
         <div className='small-12 medium-12 large-4 columns'>
-          <EffectContainer className="box" />
+          <ScheduleContainer className="box" />
         </div>
-      <div className='small-12 medium-12 large-4 columns'>
-        <ScheduleContainer className="box" />
-      </div>
-      <div className="small-12 medium-12 large-8 columns">
-        <ApiContainer
-          className='box'
-          addSubmissions={this.addSubmissions}
-        />
+        <div className="small-12 medium-12 large-8 columns">
+          <ApiContainer
+            className='box'
+            addSubmissions={this.addSubmissions}
+          />
+        </div>
       </div>
     </div>
     )

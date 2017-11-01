@@ -1,6 +1,9 @@
 {
   "name": "aura-dashboard-v1",
   "private": true,
+  "scripts": {
+    "start": "./bin/webpack-dev-server"
+  },
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
     "babel-preset-react": "^6.24.1",
@@ -10,7 +13,8 @@
     "react-burger-menu": "^2.1.9",
     "react-color": "^2.13.8",
     "react-dom": "^16.0.0",
-    "react-reflex": "^2.0.10"
+    "react-reflex": "^2.0.10",
+    "react-resizable-grid": "^1.0.1"
   },
   "devDependencies": {
     "enzyme": "^3.1.0",

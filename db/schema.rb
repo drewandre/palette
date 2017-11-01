@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022155628) do
+ActiveRecord::Schema.define(version: 20171031151125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,15 @@ ActiveRecord::Schema.define(version: 20171022155628) do
 
   create_table "color_palettes", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "name", null: false
     t.string "hex_1", null: false
     t.string "hex_2"
     t.string "hex_3"
     t.string "hex_4"
-    t.integer "percentage_hex_1", default: 100, null: false
-    t.integer "percentage_hex_2", default: 100
-    t.integer "percentage_hex_3", default: 100
-    t.integer "percentage_hex_4", default: 100
+    t.integer "percentage_hex_1", limit: 2, default: 100, null: false
+    t.integer "percentage_hex_2", limit: 2, default: 100
+    t.integer "percentage_hex_3", limit: 2, default: 100
+    t.integer "percentage_hex_4", limit: 2, default: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_color_palettes_on_user_id"
@@ -44,17 +45,31 @@ ActiveRecord::Schema.define(version: 20171022155628) do
   create_table "effect_settings", force: :cascade do |t|
     t.bigint "product_id"
     t.integer "active_effect", default: 0, null: false
-    t.integer "speed", default: 50, null: false
-    t.integer "scale", default: 50, null: false
-    t.integer "density", default: 50, null: false
+    t.integer "parameter_1", limit: 2, default: 0, null: false
+    t.integer "parameter_2", limit: 2, default: 0, null: false
+    t.integer "parameter_3", limit: 2, default: 0, null: false
+    t.integer "parameter_4", limit: 2, default: 0, null: false
+    t.integer "parameter_5", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_effect_settings_on_product_id"
   end
 
+  create_table "effects", force: :cascade do |t|
+    t.string "effect_name", null: false
+    t.string "parameter_1_name", null: false
+    t.string "parameter_2_name", null: false
+    t.string "parameter_3_name", null: false
+    t.string "parameter_4_name", null: false
+    t.string "parameter_5_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "master_brightness", default: 255, null: false
+    t.string "product_name", default: "palette", null: false
+    t.integer "master_brightness", limit: 2, default: 255, null: false
     t.boolean "energy_saver", default: false, null: false
     t.string "active_effect", default: "1", null: false
     t.string "active_color_palette", default: "0", null: false
@@ -64,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171022155628) do
     t.boolean "disable_on_weekend", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "on", default: true, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

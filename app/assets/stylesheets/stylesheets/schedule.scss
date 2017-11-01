@@ -1,0 +1,31 @@
+.time-picker[type='time'], textarea {
+  text-align: center;
+  position: relative;
+  top: 30%;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 40%;
+  max-width: 200px;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1em;
+  border: 1px solid #4F4F4F;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+}
+
+.time-picker[type='time']:focus, textarea:focus {
+  text-align: center;
+  position: relative;
+  top: 30%;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 40%;
+  max-width: 200px;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1em;
+  border: 1px solid #4F4F4F;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+}

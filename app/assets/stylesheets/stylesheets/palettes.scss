@@ -1,0 +1,27 @@
+.palette-list {
+  position: relative;
+  text-align: center;
+  display: block;
+  top: 20%;
+  height: 50%;
+  // margin: 10px;;
+  /* top | right | bottom | left */
+  // padding: 3% 6% 3% 6%;
+}
+
+.palette-container {
+  background-color: #373737;
+  margin: 15px;
+  display: inline-block;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  width: 20%;
+  height: 20%;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+}
