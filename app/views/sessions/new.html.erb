@@ -1,26 +1,24 @@
 <%= form_for :session, url: sign_in_path do |f| %>
   <div class="form-inputs">
-    <div>
-      <%= f.label :email_or_username %>
-      <%= f.text_field :login %>
+    <i class="fa fa-lock fa-4x" id='lock-icon' aria-hidden="true"></i>
+    <div class='sign-in-error'>
+      <%= flash[:alert] %>
     </div>
     <div>
-      <div>
-        <%= f.label :password %>
-      </div>
-      <div>
+      <%= f.text_field :login, placeholder: "email or username", autoComplete: "off" %>
+    </div>
+    <div>
+      <!-- <div>
         <label>
           <%= link_to "Forgot your password?", new_password_reset_path %>
         </label>
-      </div>
-      <%= f.password_field :password %>
+      </div> -->
+      <%= f.password_field :password, placeholder: "password", autoComplete: "off"  %>
     </div>
-    <div>
+    <div class="form-actions">
+      <%= f.submit "Sign In", class: "hollow button secondary" %>
+      &nbsp;
+      <%= link_to "Sign Up", sign_up_path, class: "hollow button secondary" %>
     </div>
-  </div>
-  <div class="form-actions">
-    <%= f.submit "Sign In", class: "button" %>
-    &nbsp;
-    <%= link_to "Sign Up", sign_up_path, class: "button" %>
   </div>
 <% end %>

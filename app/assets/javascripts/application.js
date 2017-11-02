@@ -11,6 +11,31 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+// $(function() {
+//     $("form input").keypress(function (e) {
+//         if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+//             $('button[type=submit] .default').click();
+//             return false;
+//         } else {
+//             return true;
+//         }
+//     });
+// });
+
+$(document).ready(function() {
+  $('#nav-dropdown').hide();
+});
+
+
+$(document).ready(function() {
+  $('#user-icon').click( function(event){
+    event.stopPropagation();
+    console.log("clicked!");
+    $('#nav-dropdown').slideToggle("fast");
+  });
+});

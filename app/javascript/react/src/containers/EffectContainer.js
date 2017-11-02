@@ -142,7 +142,7 @@ class EffectContainer extends React.Component {
           <div className='container-title'>Effects</div>
         </div>
 
-        <div id="components">
+        <div id="Components">
           <div className="Component">
             <div className="Component-slider">
               <Slider

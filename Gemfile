@@ -3,6 +3,8 @@ source 'https://rubygems.org/'
 gem 'active_model_serializers'
 gem 'faker'
 gem "bcrypt"
+gem "jquery-rails"
+gem "jbuilder", "~> 2.5"
 gem 'foundation-rails'
 gem 'pg', '~> 0.18'
 gem 'postgresql'

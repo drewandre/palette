@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :user_signed_in?, :authenticate_user!
   protect_from_forgery with: :exception
 
   def authenticate_user!

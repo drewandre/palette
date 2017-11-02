@@ -1,24 +1,25 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#index'
+  root 'dashboard#index'
 
   get "sign-in", to: "sessions#new", as: :sign_in
   get "sign-in", to: "sessions#new"
   post "sign-in", to: "sessions#create"
   delete "sign-out", to: "sessions#destroy"
-  # get "sign-out", to: "sessions#destroy"
+  get "sign-out", to: "sessions#destroy"
   get "sign-up", to: "users#new", as: :sign_up
 
   resources :account_confirmations, only: [:edit]
   resources :password_resets, only: [:create, :edit, :new, :update]
   resources :users, only: [:create, :edit, :update]
-  # use_doorkeeper
+
 
   namespace :api do
     namespace :v1 do
-      resources :users, param: :handle, only: [:index, :show]
+      resources :users, param: :handle, only: [:index, :show, :show_current_user]
 
       get "users/:handle", to: "user#show"
+
       get "users/:handle/products", to: "products#index"
       get "users/:handle/products/:product_name", to: "products#show"
       post "users/:handle/products/:product_name", to: "products#update"
@@ -36,5 +37,5 @@ Rails.application.routes.draw do
 
     end
   end
-  root 'static_pages#index'
+
 end
