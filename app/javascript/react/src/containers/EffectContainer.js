@@ -145,11 +145,14 @@ class EffectContainer extends React.Component {
         <div id="Components">
           <div className="Component">
             <div className="Component-slider">
+            {/* <div className='row'> */}
+              {/* <div class="small-6 medium-6 columns"> */}
+                {/* <div className='row'> */}
               <Slider
                 onChange={ this.handleSlider_1 }
                 value={this.state.sliderValue_1}
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -161,8 +164,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_2 }
                 value={ this.state.sliderValue_2 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -171,11 +174,13 @@ class EffectContainer extends React.Component {
                 fixedSliderValue={+this.state.sliderValue_2.toFixed(2)}
                 label={this.state.effect_parameter_2_name}
               />
+            </div>
+            <div className="Component-slider">
               <Slider
                 onChange={ this.handleSlider_3 }
                 value={ this.state.sliderValue_3 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -187,8 +192,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_4 }
                 value={ this.state.sliderValue_4 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -200,8 +205,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_5 }
                 value={ this.state.sliderValue_5 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }

@@ -16,9 +16,18 @@
       <%= f.password_field :password, placeholder: "password", autoComplete: "off"  %>
     </div>
     <div class="form-actions">
-      <%= f.submit "Sign In", class: "hollow button secondary" %>
-      &nbsp;
-      <%= link_to "Sign Up", sign_up_path, class: "hollow button secondary" %>
+
+      <!-- <%= button_tag( :class => "button_green") do %> -->
+      <div class='button_green'>
+        <a href='/sign-up'><i class="fa fa-arrow-circle-left fa-2x" id='continue-icon' aria-hidden="true"></i></a>
+      </div>
+      <!-- <% end %> -->
+
+      <!-- <%= link_to "Sign Up", sign_up_path, class: "hollow button secondary" %> -->
+
+      <%= button_tag( :class => "button_green") do %>
+        <i class="fa fa-arrow-circle-right fa-2x" id='continue-icon' aria-hidden="true"></i>
+      <% end %>
     </div>
   </div>
 <% end %>

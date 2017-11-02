@@ -1,0 +1,125 @@
+.sign-up-form {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  // max-width: 300px;
+  transform: translate(-50%, -50%);
+}
+
+.sign-up-info {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.callout-alert {
+  // width: 75%;
+}
+
+#register {
+  user-select: none;
+  color: #757575;
+  font-weight: 100;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+#continue-text {
+  user-select: none;
+  color: #757575;
+  font-weight: 100;
+  font-size: 2em;
+  // margin-bottom: 15px;
+}
+
+#continue-icon {
+  color: #757575;
+}
+
+#continue-icon:hover {
+  color: white;
+}
+
+#user_handle[type="text"], textarea,
+#user_email, #user_password,
+#user_password_confirmation {
+  font-weight: 200;
+  text-align: center;
+  width: 400px;
+  border-radius: 10px;
+  height: 50px;
+  font-size: 1.5em;
+  background-color: #2F2F2F;
+  color: white;
+  border: 1px solid #454545;
+}
+
+#user_first_name[type="text"], textarea {
+  font-weight: 200;
+  text-align: center;
+  width: 96%;
+  border-radius: 10px;
+  height: 50px;
+  font-size: 1.5em;
+  background-color: #2F2F2F;
+  color: white;
+  border: 1px solid #454545;
+}
+
+#user_last_name[type="text"], textarea {
+  position: absolute;
+  right: 0;
+  font-weight: 200;
+  text-align: center;
+  width: 96%;
+  border-radius: 10px;
+  height: 50px;
+  font-size: 1.5em;
+  background-color: #2F2F2F;
+  color: white;
+  border: 1px solid #454545;
+}
+
+#sign-up-icon {
+  border: 1px solid #454545;
+  border-radius: 200px;
+  margin: auto;
+  margin-bottom: 5px;
+  padding: 15px 22px;
+  color: #454545;
+}
+
+#sign-in-button {
+  visibility: hidden;
+}
+
+.form-errors {
+  color: #757575;
+  margin: 20px;
+}
+
+.form-actions {
+  height: 0;
+}
+
+.button_green {
+  display: hidden;
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0,0)
+}
+
+.button_green:hover {
+  display: hidden;
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0,0)
+}
+
+.button_green:active {
+  display: hidden;
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0,0);
+  border: none;
+}

@@ -14,7 +14,7 @@
 //= require jquery
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });
 
 // $(function() {
 //     $("form input").keypress(function (e) {

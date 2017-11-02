@@ -1,14 +1,14 @@
 #Components {
-  // flex: 1;
-  // display: flex;
+  flex: 1;
+  display: flex;
   // margin: 100px;
 }
 
 .Component {
   user-select: none;
   cursor: none;
-  // flex: 1;
-  // display: flex;
+  flex: 1;
+  display: flex;
   flex-direction: column;
 }
 
@@ -16,8 +16,6 @@
   user-select: none;
   cursor: none;
   display: flex;
-  position: absolute;
-  bottom: 0;
   font-size: 5rem;
 }
 
@@ -25,7 +23,7 @@
   user-select: none;
   cursor: none;
   // display: inline-block;
-  padding: 10px;
+  // padding: 10px;
   width: 50%;
   cursor: ns-resize;
   fill: transparent;
@@ -41,7 +39,6 @@
   stroke: #373737;
   // border: 2px solid rgba(0, 0, 0, 0.2);
   // box-shadow: 15px 15px 15px black;
-
 }
 
 .Slider-progress {
