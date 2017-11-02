@@ -45,7 +45,8 @@
 
 #user_handle[type="text"], textarea,
 #user_email, #user_password,
-#user_password_confirmation {
+#user_password_confirmation,
+#product_product_name {
   font-weight: 200;
   text-align: center;
   width: 400px;
@@ -123,3 +124,7 @@
   background-color: rgba(0,0,0,0);
   border: none;
 }
+
+// #product_product_name {
+//
+// }

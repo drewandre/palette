@@ -98,7 +98,9 @@ end
 USERS_WITH_EXTRA_PRODUCTS.times do
   Product.create(
     user_id: rand((User.pluck(:id).first)..(User.pluck(:id).last)),
-    active_color_palette: rand(NUM_PALETTES)
+    product_name: locations[index].parameterize,
+    active_color_palette: rand(NUM_PALETTES),
+    on: [true, false][rand(0..1)]
   )
 end
 
@@ -115,11 +117,11 @@ a = Product.pluck(:id).to_a.shuffle
 TOTAL_PRODUCT_COUNT.times do
   EffectSetting.create(
     product_id: a.pop,
-    parameter_1: rand(-50..50),
-    parameter_2: rand(-50..50),
-    parameter_3: rand(-50..50),
-    parameter_4: rand(-50..50),
-    parameter_5: rand(-50..50)
+    parameter_1: 0,
+    parameter_2: 0,
+    parameter_3: 0,
+    parameter_4: 0,
+    parameter_5: 0
   )
 end
 

@@ -1,0 +1,28 @@
+<%= form_for @product do |f| %>
+  <div class='sign-up-info'>
+    <% if @product.errors.present? %>
+      <div class="form-errors">
+        <div>
+          <% @product.errors.messages.each do |attribute, messages| %>
+            <div>
+              <strong>
+                <%= attribute.to_s.humanize %>
+              </strong>
+              <%= "#{messages.to_sentence}." %>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+  <div class="sign-up-form">
+    <i class="fa fa-user fa-4x" id='sign-up-icon' aria-hidden="true"></i>
+    <div id='register'>Register Product</div>
+      <div>
+        <%= f.text_field :product_name, placeholder: "product name", autoComplete: "off" %>
+      </div>
+    <div id='continue-text'>Continue</div>
+    <%= button_tag( :class => "button_green") do %>
+      <i class="fa fa-arrow-circle-right fa-2x" id='continue-icon' aria-hidden="true"></i>
+    <% end %>
+  </div>
+<% end %>

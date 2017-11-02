@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
     create_table :products do |t|
       t.belongs_to :user
 
-      t.string :product_name, null: false, default: 'palette'
+      t.string :product_name, null: false
 
       t.integer :master_brightness, null: false, default: 255, limit: 1
       t.boolean :energy_saver, null: false, default: false
@@ -15,6 +15,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.datetime :turn_on
       t.datetime :turn_off
       t.boolean :disable_on_weekend, null: false, default: false
+      t.boolean :on, null: false, default: true
 
       t.timestamps null: false
     end

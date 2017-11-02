@@ -8,8 +8,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # @user.send_confirmation_email
-      flash[:success] = "Registration successful. Please confirm your email to activate your account."
-      redirect_to root_path
+      flash[:success] = "Registration successful."
+      # redirect_to root_path
+      sign_in(@user)
+      redirect_to sign_up_products_url
     else
       flash.now[:alert] = "There was a problem with your registration."
       render :new
