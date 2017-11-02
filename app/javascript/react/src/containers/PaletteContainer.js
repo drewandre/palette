@@ -2,10 +2,6 @@ import React from 'react';
 import PaletteTiles from '../components/PaletteTiles';
 import CurrentPaletteDisplay from '../components/CurrentPaletteDisplay';
 
-let user_handle = 'qbyxndniwg';
-let product_room = 'palette';
-let current_palette_number = 658;
-
 class PaletteContainer extends React.Component {
 
   showSettings(event) {
@@ -17,12 +13,34 @@ class PaletteContainer extends React.Component {
     this.state = {
       color_palettes: [null, null, null, null, null, null, null, null],
       current_palette_number: null,
-      current_palette: [null]
+      current_palette: [null],
+      currentUser: []
     }
+    this.loadUserData = this.loadUserData.bind(this);
+    this.loadUserPalettes = this.loadUserPalettes.bind(this);
   }
 
-  componentDidMount() {
-    fetch(`/api/v1/users/${user_handle}/palettes`)
+  loadUserData() {
+    fetch('/api/v1/users.json', {
+      credentials: 'same-origin',
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        currentUser: body.current_user
+      })
+    })
+  }
+
+  loadUserPalettes() {
+    fetch(`/api/v1/users/${this.state.currentUser.handle}/palettes`)
     .then(response => response.json())
     .then(body => {
       const palettes = this.state.color_palettes;
@@ -31,16 +49,24 @@ class PaletteContainer extends React.Component {
       }
       this.setState({ color_palettes: palettes })
     })
-    fetch(`/api/v1/users/${user_handle}/products/${product_room}`)
-    .then(response => response.json())
-    .then(body => {
-      this.setState({ current_palette_number: body.active_color_palette })
-    })
-    fetch(`/api/v1/palettes/658`)
-    .then(response => response.json())
-    .then(body => {
-      this.setState({ current_palette: body })
-    })
+    // fetch(`/api/v1/users/${this.state.currentUser.handle}/products`)
+    // .then(response => response.json())
+    // .then(body => {
+    //   this.setState({ current_palette_number: body.active_color_palette })
+    // })
+
+    // fetch(`/api/v1/palettes/${this.state.current_palette_number}`)
+    // fetch(`/api/v1/palettes/120`)
+    // .then(response => response.json())
+    // .then(body => {
+    //   this.setState({ current_palette: body })
+    // })
+  }
+
+
+  componentDidMount() {
+    this.loadUserData();
+    this.loadUserPalettes();
   }
 
   render() {

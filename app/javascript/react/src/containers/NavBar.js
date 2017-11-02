@@ -4,7 +4,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      powerStatus: 'off',
+      powerStatus: false,
       currentUser: []
     }
     this.handlePower = this.handlePower.bind(this);
