@@ -37,8 +37,8 @@ class EffectContainer extends React.Component {
     this.postValuesToFetch = this.postValuesToFetch.bind(this);
   }
 
-  componentDidMount() {
-    fetch(`/api/v1/users/${user_handle}/products/${product_room}/effect_settings`)
+  componentWillMount() {
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings`)
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -50,7 +50,7 @@ class EffectContainer extends React.Component {
         active_effect: body.active_effect
       })
     })
-    fetch(`/api/v1/effects/${active_effect}`)
+    fetch(`/api/v1/effects/${this.state.active_effect}`)
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -73,7 +73,7 @@ class EffectContainer extends React.Component {
         parameter_4: this.state.sliderValue_4,
         parameter_5: this.state.sliderValue_5
       };
-      fetch(`/api/v1/users/${user_handle}/products/${product_room}/effect_settings`, {
+      fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings`, {
         credentials: "same-origin",
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -129,10 +129,10 @@ class EffectContainer extends React.Component {
 
   render () {
 
-    let loading = null;
-    if (this.state.loading) {
-      loading = <div className='loading-icon'>Loading...</div>
-    } else  { loading = null }
+    // let loading = null;
+    // if (this.state.loading) {
+    //   loading = <div className='loading-icon'>Loading...</div>
+    // } else  { loading = null }
 
     return (
       <div className={this.props.className}>

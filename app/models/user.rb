@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :api_settings, through: :products
   has_many :effect_settings, through: :products
 
-
   attr_accessor :confirmation_token, :password_reset_token, :remember_token
 
   before_create :generate_confirmation_digest, :generate_identifier

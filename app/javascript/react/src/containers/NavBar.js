@@ -4,43 +4,18 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      powerStatus: false,
-      currentUser: []
+      powerStatus: false
     }
     this.handlePower = this.handlePower.bind(this);
-    this.loadUserData = this.loadUserData.bind(this);
-  }
-
-  loadUserData() {
-    fetch('/api/v1/users.json', {
-      credentials: 'same-origin',
-      method: 'GET',
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        currentUser: body.current_user
-      })
-    })
-  }
-
-  componentWillMount() {
-    this.loadUserData();
   }
 
   handlePower(buttonPress) {
-    fetch(`/api/v1/users/${this.state.currentUser.handle}/products/${this.state.currentUser.handle}`, {
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`, {
       credentials: "same-origin",
       method: "POST",
       headers: { "Content-Type": "application/json" }
     })
-    fetch(`/api/v1/users/${this.state.currentUser.handle}/products/${this.state.currentUser.handle}`)
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`)
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -62,8 +37,8 @@ class NavBar extends React.Component {
           <div className='account-dropdown'>
             <div>
               <i className="fa fa-user fa-2x" id='user-icon' aria-hidden="true"></i>
-              <div id='nav-user-name'>{this.state.currentUser.first_name}</div>
-              <div id='nav-user-email'>{this.state.currentUser.email}</div>
+              <div id='nav-user-name'>{this.props.currentUser.first_name}</div>
+              <div id='nav-user-email'>{this.props.currentUser.email}</div>
             </div>
             <div id='nav-dropdown'>
               <div><a href='/sign-out'>Sign Out</a></div>

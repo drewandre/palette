@@ -3,7 +3,6 @@ import PaletteTiles from '../components/PaletteTiles';
 import CurrentPaletteDisplay from '../components/CurrentPaletteDisplay';
 
 class PaletteContainer extends React.Component {
-
   showSettings(event) {
     event.preventDefault();
   }
@@ -13,34 +12,13 @@ class PaletteContainer extends React.Component {
     this.state = {
       color_palettes: [null, null, null, null, null, null, null, null],
       current_palette_number: null,
-      current_palette: [null],
-      currentUser: []
+      current_palette: [null]
     }
-    this.loadUserData = this.loadUserData.bind(this);
     this.loadUserPalettes = this.loadUserPalettes.bind(this);
   }
 
-  loadUserData() {
-    fetch('/api/v1/users.json', {
-      credentials: 'same-origin',
-      method: 'GET',
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        currentUser: body.current_user
-      })
-    })
-  }
-
   loadUserPalettes() {
-    fetch(`/api/v1/users/${this.state.currentUser.handle}/palettes`)
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes`)
     .then(response => response.json())
     .then(body => {
       const palettes = this.state.color_palettes;
@@ -64,8 +42,7 @@ class PaletteContainer extends React.Component {
   }
 
 
-  componentDidMount() {
-    this.loadUserData();
+  componentWillMount() {
     this.loadUserPalettes();
   }
 

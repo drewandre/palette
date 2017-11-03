@@ -14,6 +14,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :remember_digest
       t.string :universally_unique_id, null: false
 
+      t.string :current_product_name
+
       t.timestamps null: false
     end
     add_index :users, :email, unique: true

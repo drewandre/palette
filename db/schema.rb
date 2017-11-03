@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20171031151125) do
     t.datetime "password_reset_sent_at"
     t.string "remember_digest"
     t.string "universally_unique_id", null: false
+    t.string "current_product_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

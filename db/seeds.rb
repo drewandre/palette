@@ -28,12 +28,14 @@ effect_parameters = [
 ]
 
 NUM_USERS.times do
+  index = rand(0..4)
   User.create(
     email: Faker::Internet.unique.email,
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
     handle: Faker::Lorem.unique.characters(10),
-    password: Faker::Lorem.unique.characters(10)
+    password: Faker::Lorem.unique.characters(10),
+    current_product_name: locations[index].parameterize
   )
 end
 
@@ -85,10 +87,10 @@ end
 # every user will have a product, every product has a user
 a = User.pluck(:id).to_a.shuffle
 NUM_USERS.times do
-  index = rand(0..4)
+  current_user_id = a.pop
   Product.create(
-    user_id: a.pop,
-    product_name: locations[index].parameterize,
+    user_id: current_user_id,
+    product_name: User.find_by(id: current_user_id).current_product_name,
     active_color_palette: rand((ColorPalette.pluck(:id).first)..(ColorPalette.pluck(:id).last)),
     on: [true, false][rand(0..1)]
   )
@@ -96,6 +98,7 @@ end
 
 # 25% of users will own more than one product
 USERS_WITH_EXTRA_PRODUCTS.times do
+  index = rand(0..4)
   Product.create(
     user_id: rand((User.pluck(:id).first)..(User.pluck(:id).last)),
     product_name: locations[index].parameterize,

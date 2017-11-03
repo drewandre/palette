@@ -7,7 +7,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
+    @product.product_name = @product.product_name.parameterize
     if @product.save
+      current_user.current_product_name = @product.product_name
+      current_user.save
       p "Registration successful."
       flash[:success] = "Registration successful."
       redirect_to root_path
