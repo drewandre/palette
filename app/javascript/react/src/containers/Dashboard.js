@@ -8,18 +8,18 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      // data: []
     }
-    this.addSubmissions = this.addSubmissions.bind(this)
+    // this.addSubmissions = this.addSubmissions.bind(this)
   }
 
-  showSettings (event) {
-    event.preventDefault();
-  }
+  // showSettings (event) {
+  //   event.preventDefault();
+  // }
 
-  addSubmissions(submission) {
-    this.setState({ data: this.state.data.concat(submission) })
-  }
+  // addSubmissions(submission) {
+  //   this.setState({ data: this.state.data.concat(submission) })
+  // }
 
   render () {
     return (

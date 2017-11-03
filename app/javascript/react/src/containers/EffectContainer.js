@@ -218,7 +218,7 @@ class EffectContainer extends React.Component {
             </div>
           </div>
         </div>
-        <div className='container-settings'>
+        <div className='container-search'>
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
       </div>

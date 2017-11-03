@@ -1,10 +1,11 @@
 import React from 'react';
 import PaletteTiles from '../components/PaletteTiles';
 import CurrentPaletteDisplay from '../components/CurrentPaletteDisplay';
+import SearchField from '../containers/SearchField';
 
 class PaletteContainer extends React.Component {
   showSettings(event) {
-    event.preventDefault();
+    // event.preventDefault();
   }
 
   constructor(props) {
@@ -12,9 +13,21 @@ class PaletteContainer extends React.Component {
     this.state = {
       color_palettes: [null, null, null, null, null, null, null, null],
       current_palette_number: null,
-      current_palette: [null]
+      current_palette: [null],
+      searched_color_palettes: ''
     }
     this.loadUserPalettes = this.loadUserPalettes.bind(this);
+    this.handleSelectedPalette = this.handleSelectedPalette.bind(this);
+  }
+
+  handleSelectedPalette(event) {
+    console.log(event.target.value);
+    // fetch(`/api/v1/palettes/${event.target.value}`)
+    // .then(response => response.json())
+    // .then(body => {
+    //   console.log(body);
+    //   // this.setState({ searched_color_palettes: body })
+    // })
   }
 
   loadUserPalettes() {
@@ -41,7 +54,6 @@ class PaletteContainer extends React.Component {
     // })
   }
 
-
   componentWillMount() {
     this.loadUserPalettes();
   }
@@ -59,12 +71,13 @@ class PaletteContainer extends React.Component {
           data={this.state.color_palettes}
         />
 
-        {/* <PaletteTiles
-          className='current-palette'
-          data={this.state.current_palette}
-        /> */}
+        <SearchField
+          className='palette-search'
+          placeholder='search palettes'
+          handleSelectedPalette={this.handleSelectedPalette}
+        />
 
-        <div className='container-settings'>
+        <div className='container-search'>
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
       </div>

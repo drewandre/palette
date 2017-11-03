@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
       get "users/:handle/palettes", to: "palettes#user_show"
       get "/palettes", to: "palettes#index"
-      get "/palettes/:palette_id", to: "palettes#show"
+      get "/palettes/:palette_name", to: "palettes#search"
 
       get "/effects", to: "effects#index"
       get "/effects/:id", to: "effects#show"
