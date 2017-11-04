@@ -11,7 +11,7 @@ const PaletteSwatches = props => {
   let percentage_hex_4 = props.percentage_hex_4
 
   return(
-    <div className='palette-container'>
+    <div className={props.className}>
       <div className='color-swatch' style={{ backgroundColor: hex_1 }}/>
       <div className='color-swatch' style={{ backgroundColor: hex_2 }}/>
       <div className='color-swatch' style={{ backgroundColor: hex_3 }}/>

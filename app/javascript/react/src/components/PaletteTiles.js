@@ -8,6 +8,7 @@ const PaletteTiles = props => {
       return (
         <div>
           <PaletteSwatches
+            className={props.swatchesClassName}
             key={palette.id}
             hex_1={palette.hex_1}
             hex_2={palette.hex_2}
@@ -24,6 +25,7 @@ const PaletteTiles = props => {
     else {
       return(
         <PaletteSwatches
+          className={props.swatchesClassName}
           // key={null}
           hex_1={null}
           hex_2={null}

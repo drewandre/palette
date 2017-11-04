@@ -18,6 +18,8 @@ class SearchField extends React.Component {
         // console.log(body.palettes);
         this.setState({ searched_color_palettes: body.palettes })
       })
+    } else {
+      this.setState({ searched_color_palettes: [] })
     }
   }
 
@@ -33,10 +35,10 @@ class SearchField extends React.Component {
     // })
 
     return (
-      <div>
+      <div className='palette-search-results-test'>
         <form onSubmit={this.props.handleSelectedPalette}>
           <input
-            className={this.props.className}
+            className={this.props.paletteSearchBarClassName}
             autoComplete='off'
             onChange={this.handleSelectedPalette}
             type='text'
@@ -45,7 +47,8 @@ class SearchField extends React.Component {
         </form>
         <PaletteTiles
           data={this.state.searched_color_palettes}
-          className='palette-list'
+          swatchesClassName={this.props.swatchesClassName}
+          className={this.props.searchResultsClassName}
         />
       </div>
     );

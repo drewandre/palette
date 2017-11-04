@@ -67,15 +67,20 @@ class PaletteContainer extends React.Component {
         </div>
 
         <PaletteTiles
+          swatchesClassName='palette-container'
           className='palette-list'
           data={this.state.color_palettes}
         />
 
-        <SearchField
-          className='palette-search'
-          placeholder='search palettes'
-          handleSelectedPalette={this.handleSelectedPalette}
-        />
+        <div className='make-yellow'>
+          <SearchField
+            paletteSearchBarClassName='palette-search'
+            swatchesClassName='palette-search-results'
+            searchResultsClassName='palette-dropdown'
+            placeholder='search palettes'
+            handleSelectedPalette={this.handleSelectedPalette}
+          />
+        </div>
 
         <div className='container-search'>
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>
