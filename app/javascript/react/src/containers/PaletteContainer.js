@@ -11,7 +11,7 @@ class PaletteContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      color_palettes: [null, null, null, null, null, null, null, null],
+      color_palettes: ['', '', '', '', '', '', '', ''],
       current_palette_number: null,
       current_palette: [null],
       searched_color_palettes: ''
@@ -30,32 +30,38 @@ class PaletteContainer extends React.Component {
     // })
   }
 
-  loadUserPalettes() {
-    fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes`)
+  loadUserPalettes(nextUser) {
+    fetch(`/api/v1/users/${nextUser.handle}/palettes`)
     .then(response => response.json())
     .then(body => {
       const palettes = this.state.color_palettes;
-      for(var i = 0; i < this.state.color_palettes.length; i++) {
-        palettes[i] = body[i]
+      for(var i = 0; i < palettes.length; i++) {
+        palettes[i] = body.palettes[i]
       }
       this.setState({ color_palettes: palettes })
     })
-    // fetch(`/api/v1/users/${this.state.currentUser.handle}/products`)
-    // .then(response => response.json())
-    // .then(body => {
-    //   this.setState({ current_palette_number: body.active_color_palette })
-    // })
 
-    // fetch(`/api/v1/palettes/${this.state.current_palette_number}`)
-    // fetch(`/api/v1/palettes/120`)
-    // .then(response => response.json())
-    // .then(body => {
-    //   this.setState({ current_palette: body })
-    // })
+      // fetch(`/api/v1/users/${this.props.currentUser.handle}/products`)
+      // .then(response => response.json())
+      // .then(body => {
+      //   this.setState({ current_palette_number: body.active_color_palette })
+      // })
+
+      // fetch(`/api/v1/palettes/${this.state.current_palette_number}`)
+      // .then(response => response.json())
+      // .then(body => {
+      //   this.setState({ current_palette: body })
+      // })
   }
 
-  componentWillMount() {
-    this.loadUserPalettes();
+  // componentWillReceiveProps() {
+  //   this.loadUserPalettes();
+  // }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.currentUser != this.props.currentUser) {
+      this.loadUserPalettes(nextProps.currentUser);
+    }
   }
 
   render() {
@@ -72,15 +78,13 @@ class PaletteContainer extends React.Component {
           data={this.state.color_palettes}
         />
 
-        <div className='make-yellow'>
-          <SearchField
-            paletteSearchBarClassName='palette-search'
-            swatchesClassName='palette-search-results'
-            searchResultsClassName='palette-dropdown'
-            placeholder='search palettes'
-            handleSelectedPalette={this.handleSelectedPalette}
-          />
-        </div>
+        <SearchField
+          paletteSearchBarClassName='palette-search'
+          swatchesClassName='palette-container'
+          searchResultsClassName='box palette-dropdown'
+          placeholder='search palettes'
+          handleSelectedPalette={this.handleSelectedPalette}
+        />
 
         <div className='container-search'>
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>

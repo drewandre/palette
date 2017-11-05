@@ -7,9 +7,9 @@ import PaletteContainer from './PaletteContainer'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    // this.state = {
       // data: []
-    }
+    // }
     // this.addSubmissions = this.addSubmissions.bind(this)
   }
 
@@ -58,5 +58,4 @@ class Dashboard extends React.Component {
     )
   }
 }
-
 export default Dashboard;

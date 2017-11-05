@@ -2,10 +2,6 @@ import React from 'react';
 import SliderMath from '../helpers/SliderMath'
 import Slider from './Slider'
 
-let user_handle = 'qbyxndniwg';
-let product_room = 'palette';
-let active_effect = 45
-
 class EffectContainer extends React.Component {
   showSettings(event) {
     event.preventDefault();
@@ -34,11 +30,13 @@ class EffectContainer extends React.Component {
     this.handleSlider_3 = this.handleSlider_3.bind(this);
     this.handleSlider_4 = this.handleSlider_4.bind(this);
     this.handleSlider_5 = this.handleSlider_5.bind(this);
+    this.getEffectSettings = this.getEffectSettings.bind(this);
+    this.getActiveEffect = this.getActiveEffect.bind(this);
     this.postValuesToFetch = this.postValuesToFetch.bind(this);
   }
 
-  componentWillMount() {
-    fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings`)
+  getEffectSettings(nextUser) {
+    fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}/effect_settings`)
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -46,11 +44,20 @@ class EffectContainer extends React.Component {
         sliderValue_2: body.parameter_2,
         sliderValue_3: body.parameter_3,
         sliderValue_4: body.parameter_4,
-        sliderValue_5: body.parameter_5,
-        active_effect: body.active_effect
+        sliderValue_5: body.parameter_5
       })
     })
-    fetch(`/api/v1/effects/${this.state.active_effect}`)
+  }
+
+  getActiveEffect(nextUser) {
+    fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        active_effect: body.active_effect
+      })
+      return fetch(`/api/v1/effects/${body.active_effect}`)
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -88,7 +95,6 @@ class EffectContainer extends React.Component {
       sliderValue_1: sliderValue_1
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_2(sliderValue_2) {
@@ -97,7 +103,6 @@ class EffectContainer extends React.Component {
       sliderValue_2: sliderValue_2
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_3(sliderValue_3) {
@@ -106,7 +111,6 @@ class EffectContainer extends React.Component {
       sliderValue_3: sliderValue_3
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_4(sliderValue_4) {
@@ -115,7 +119,6 @@ class EffectContainer extends React.Component {
       sliderValue_4: sliderValue_4
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_5(sliderValue_5) {
@@ -124,7 +127,13 @@ class EffectContainer extends React.Component {
       sliderValue_5: sliderValue_5
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.currentUser != this.props.currentUser) {
+      this.getEffectSettings(nextProps.currentUser);
+      this.getActiveEffect(nextProps.currentUser);
+    }
   }
 
   render () {

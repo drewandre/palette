@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: []
+      currentUser: ''
     }
     this.loadUserData = this.loadUserData.bind(this);
   }
@@ -31,20 +31,15 @@ class App extends React.Component {
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadUserData();
   }
 
   render() {
-    let currentUser;
-    if(this.state.currentUser != null) {
-      currentUser = this.state.currentUser;
-    }
-
     return(
       <div>
-        <NavBar currentUser={currentUser} />
-        <Dashboard currentUser={currentUser} />
+        <NavBar currentUser={this.state.currentUser} />
+        <Dashboard currentUser={this.state.currentUser} />
       </div>
     )
   }

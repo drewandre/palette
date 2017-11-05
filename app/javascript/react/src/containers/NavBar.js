@@ -4,9 +4,20 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      powerStatus: false
+      powerStatus: 'off'
     }
     this.handlePower = this.handlePower.bind(this);
+    this.getPowerState = this.getPowerState.bind(this);
+  }
+
+  getPowerState(nextUser) {
+    fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        powerStatus: body.on
+      });
+    })
   }
 
   handlePower(buttonPress) {
@@ -15,13 +26,13 @@ class NavBar extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/json" }
     })
-    fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`)
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        powerStatus: body.on
-      });
-    })
+    this.getPowerState(this.props.currentUser);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.currentUser != this.props.currentUser) {
+      this.getPowerState(nextProps.currentUser);
+    }
   }
 
   render() {
@@ -50,5 +61,4 @@ class NavBar extends React.Component {
     );
   }
 }
-
 export default NavBar;
