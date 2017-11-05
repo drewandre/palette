@@ -1,22 +1,3 @@
-.palette-search[type="text"], textarea {
-  text-align: center;
-  position: absolute;
-  right: 75px;
-  top: 17px;
-  width: 65%;
-  max-width: 200px;
-  border-radius: 10px;
-  height: 40px;
-  font-size: 1em;
-  border: 1px solid #4F4F4F;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
-}
-.palette-search[type="text"]:focus, textarea:focus {
-  background-color: #2F2F2F;
-  box-shadow: none;
-}
-
 .select-field select {
   text-align: center;
   position: absolute;

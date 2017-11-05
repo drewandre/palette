@@ -6,7 +6,7 @@ class Api::V1::PalettesController < ApplicationController
 
   def search
     similar_name = "%#{params[:palette_name]}%"
-    @palettes = ColorPalette.where("name LIKE ?", similar_name).limit(8)
+    @palettes = ColorPalette.where("name LIKE ?", similar_name).limit(6)
     render json: @palettes
   end
 

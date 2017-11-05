@@ -34,7 +34,7 @@ class SearchField extends React.Component {
     // })
 
     return (
-      <div className='test-div'>
+      <div>
         <form onSubmit={this.props.handleSelectedPalette}>
           <input
             className={this.props.paletteSearchBarClassName}

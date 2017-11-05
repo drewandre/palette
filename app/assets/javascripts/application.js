@@ -12,14 +12,23 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery_ujs
 //= require_tree .
 
 $(document).ready(function() {
-  $('.nav-dropdown').hide();
-  $('.search-dropdown').hide();
 
-  $('body').click( function(event){
-    console.log('jquery is alive!');
+  $('.palette-search').focusin(function() {
+    $('.palette-list').css({
+      filter: 'blur(20px)'
+    });
+    $('.palette-dropdown').show();
   });
-  
+
+  $('.palette-search').focusout(function() {
+    $('.palette-list').css({
+      filter: 'none'
+    });
+    $('.palette-dropdown').hide();
+  });
+
 });
