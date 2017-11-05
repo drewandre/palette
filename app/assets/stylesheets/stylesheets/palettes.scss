@@ -1,12 +1,17 @@
 .palette-list {
-  position: relative;
   text-align: center;
   display: block;
   top: 20%;
   height: 50%;
-  // margin: 10px;;
-  /* top | right | bottom | left */
-  // padding: 3% 6% 3% 6%;
+
+}
+
+.palette-dropdown {
+  height: 50%;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 100%;
 }
 
 .palette-container {
@@ -21,7 +26,28 @@
 }
 
 .color-swatch {
+  // background-color: rgba(0, 0, 255, 0.25);
   display: inline-block;
   width: 25%;
+  height: 100%;
+}
+
+.palette-search-results {
+  // background-color: green;
+  border: 3px solid black;
+  margin: 2px;
+}
+
+.make-yellow {
+  background-color: yellow;
+}
+
+// .palette-search-results-test {
+//   background-color: red;
+//   // background-color: rgba(0, 0, 255, 0.25);
+// }
+
+.test-div {
+  width: 100%;
   height: 100%;
 }

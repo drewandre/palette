@@ -4,9 +4,10 @@ class Api::V1::PalettesController < ApplicationController
     render json: @user_palettes
   end
 
-  def show
-    @palette = ColorPalette.find_by(id: params[:palette_id])
-    render json: @palette
+  def search
+    similar_name = "%#{params[:palette_name]}%"
+    @palettes = ColorPalette.where("name LIKE ?", similar_name).limit(8)
+    render json: @palettes
   end
 
   def user_show

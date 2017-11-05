@@ -1,58 +1,51 @@
-<div class="row">
-  <div class="small-12 columns">
-    <h1 class="text-center top-padded">Sign Up</h1>
-    <%= form_for @user do |f| %>
+<%= form_for @user do |f| %>
+  <div class='sign-up-info'>
+    <% if @user.errors.present? %>
       <div class="form-errors">
-        <% if @user.errors.present? %>
-          <div class="callout alert">
-            <ul>
-              <% @user.errors.messages.each do |attribute, messages| %>
-                <li>
-                  <strong>
-                    <%= attribute.to_s.humanize %>
-                  </strong>
-                  <%= "#{messages.to_sentence}." %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-      <div class="form-inputs">
-        <fieldset>
-          <%= f.label :handle, "Username" %>
-          <%= f.text_field :handle %>
-        </fieldset>
-        <fieldset>
-          <%= f.label :email %>
-          <%= f.email_field :email %>
-        </fieldset>
-        <div class="row">
-          <div class="small-12 medium-6 columns">
-            <fieldset>
-              <%= f.label :first_name %>
-              <%= f.text_field :first_name, label: "First Name" %>
-            </fieldset>
-          </div>
-          <div class="small-12 medium-6 columns">
-            <fieldset>
-              <%= f.label :last_name %>
-              <%= f.text_field :last_name, label: "Last Name" %>
-            </fieldset>
-          </div>
+        <div>
+          <% @user.errors.messages.each do |attribute, messages| %>
+            <div>
+              <strong>
+                <%= attribute.to_s.humanize %>
+              </strong>
+              <%= "#{messages.to_sentence}." %>
+            </div>
+          <% end %>
         </div>
-        <fieldset>
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-        </fieldset>
-        <fieldset>
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation %>
-        </fieldset>
-      </div>
-      <div class="form-actions">
-        <%= f.submit "Register", class: "button" %>
-      </div>
     <% end %>
   </div>
-</div>
+  <div class="sign-up-form">
+    <i class="fa fa-user fa-4x" id='sign-up-icon' aria-hidden="true"></i>
+    <div id='register'>Register</div>
+    <div>
+      <%= f.text_field :handle, placeholder: "username", autoComplete: "off" %>
+    </div>
+    <div>
+      <%= f.email_field :email, placeholder: "email", autoComplete: "off" %>
+    </div>
+    <div class="row collapse">
+      <div class="small-12 medium-6 columns">
+        <div>
+          <%= f.text_field :first_name, placeholder: "first name", autoComplete: "off" %>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div>
+          <%= f.text_field :last_name, placeholder: "last name", autoComplete: "off" %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= f.password_field :password, placeholder: "password", autoComplete: "off" %>
+    </div>
+    <div>
+      <%= f.password_field :password_confirmation, placeholder: "confirm password", autoComplete: "off" %>
+    </div>
+
+    <div id='continue-text'>Continue</div>
+    <%= button_tag( :class => "button_green") do %>
+      <i class="fa fa-arrow-circle-right fa-2x" id='continue-icon' aria-hidden="true"></i>
+    <% end %>
+
+  </div>
+<% end %>

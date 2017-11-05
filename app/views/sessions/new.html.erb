@@ -1,26 +1,31 @@
 <%= form_for :session, url: sign_in_path do |f| %>
   <div class="form-inputs">
-    <div>
-      <%= f.label :email_or_username %>
-      <%= f.text_field :login %>
+    <i class="fa fa-lock fa-4x" id='lock-icon' aria-hidden="true"></i>
+    <div class='sign-in-error'>
+      <%= flash[:alert] %>
     </div>
     <div>
-      <div>
-        <%= f.label :password %>
-      </div>
-      <div>
+      <%= f.text_field :login, placeholder: "email or username", autoComplete: "off" %>
+    </div>
+    <div>
+      <!-- <div>
         <label>
           <%= link_to "Forgot your password?", new_password_reset_path %>
         </label>
+      </div> -->
+      <%= f.password_field :password, placeholder: "password", autoComplete: "off"  %>
+    </div>
+    <div class="form-actions">
+
+      <div class='button_green'>
+        <a href='/sign-up'><i class="fa fa-arrow-circle-left fa-2x" id='continue-icon' aria-hidden="true"></i></a>
       </div>
-      <%= f.password_field :password %>
+
+      <!-- <%= link_to "Sign Up", sign_up_path, class: "hollow button secondary" %> -->
+
+      <%= button_tag( :class => "button_green") do %>
+        <i class="fa fa-arrow-circle-right fa-2x" id='continue-icon' aria-hidden="true"></i>
+      <% end %>
     </div>
-    <div>
-    </div>
-  </div>
-  <div class="form-actions">
-    <%= f.submit "Sign In", class: "button" %>
-    &nbsp;
-    <%= link_to "Sign Up", sign_up_path, class: "button" %>
   </div>
 <% end %>

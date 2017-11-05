@@ -7,19 +7,19 @@ import PaletteContainer from './PaletteContainer'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      data: []
-    }
-    this.addSubmissions = this.addSubmissions.bind(this)
+    // this.state = {
+      // data: []
+    // }
+    // this.addSubmissions = this.addSubmissions.bind(this)
   }
 
-  showSettings (event) {
-    event.preventDefault();
-  }
+  // showSettings (event) {
+  //   event.preventDefault();
+  // }
 
-  addSubmissions(submission) {
-    this.setState({ data: this.state.data.concat(submission) })
-  }
+  // addSubmissions(submission) {
+  //   this.setState({ data: this.state.data.concat(submission) })
+  // }
 
   render () {
     return (
@@ -29,18 +29,28 @@ class Dashboard extends React.Component {
         </div>
         <div className='row collapse fullwidth'>
           <div className='small-12 medium-12 large-6 columns'>
-            <PaletteContainer className="box" />
+            <PaletteContainer
+              currentUser={this.props.currentUser}
+              className="box"
+            />
           </div>
           <div className='small-12 medium-12 large-6 columns'>
-            <EffectContainer className="box" />
+            <EffectContainer
+              currentUser={this.props.currentUser}
+              className="box"
+            />
           </div>
         <div className='small-12 medium-12 large-4 columns'>
-          <ScheduleContainer className="box" />
+          <ScheduleContainer
+            currentUser={this.props.currentUser}
+            className="box"
+          />
         </div>
         <div className="small-12 medium-12 large-8 columns">
           <ApiContainer
-            className='box'
+            currentUser={this.props.currentUser}
             addSubmissions={this.addSubmissions}
+            className='box'
           />
         </div>
       </div>
@@ -48,5 +58,4 @@ class Dashboard extends React.Component {
     )
   }
 }
-
 export default Dashboard;

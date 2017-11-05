@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20171031151125) do
 
   create_table "products", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "product_name", default: "palette", null: false
+    t.string "product_name", null: false
     t.integer "master_brightness", limit: 2, default: 255, null: false
     t.boolean "energy_saver", default: false, null: false
     t.string "active_effect", default: "1", null: false
@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(version: 20171031151125) do
     t.datetime "turn_on"
     t.datetime "turn_off"
     t.boolean "disable_on_weekend", default: false, null: false
+    t.boolean "on", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "on", default: true, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20171031151125) do
     t.datetime "password_reset_sent_at"
     t.string "remember_digest"
     t.string "universally_unique_id", null: false
+    t.string "current_product_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

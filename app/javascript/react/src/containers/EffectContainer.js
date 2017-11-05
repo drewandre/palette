@@ -2,10 +2,6 @@ import React from 'react';
 import SliderMath from '../helpers/SliderMath'
 import Slider from './Slider'
 
-let user_handle = 'qbyxndniwg';
-let product_room = 'palette';
-let active_effect = 45
-
 class EffectContainer extends React.Component {
   showSettings(event) {
     event.preventDefault();
@@ -34,11 +30,13 @@ class EffectContainer extends React.Component {
     this.handleSlider_3 = this.handleSlider_3.bind(this);
     this.handleSlider_4 = this.handleSlider_4.bind(this);
     this.handleSlider_5 = this.handleSlider_5.bind(this);
+    this.getEffectSettings = this.getEffectSettings.bind(this);
+    this.getActiveEffect = this.getActiveEffect.bind(this);
     this.postValuesToFetch = this.postValuesToFetch.bind(this);
   }
 
-  componentDidMount() {
-    fetch(`/api/v1/users/${user_handle}/products/${product_room}/effect_settings`)
+  getEffectSettings(nextUser) {
+    fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}/effect_settings`)
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -46,11 +44,20 @@ class EffectContainer extends React.Component {
         sliderValue_2: body.parameter_2,
         sliderValue_3: body.parameter_3,
         sliderValue_4: body.parameter_4,
-        sliderValue_5: body.parameter_5,
-        active_effect: body.active_effect
+        sliderValue_5: body.parameter_5
       })
     })
-    fetch(`/api/v1/effects/${active_effect}`)
+  }
+
+  getActiveEffect(nextUser) {
+    fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        active_effect: body.active_effect
+      })
+      return fetch(`/api/v1/effects/${body.active_effect}`)
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({
@@ -73,7 +80,7 @@ class EffectContainer extends React.Component {
         parameter_4: this.state.sliderValue_4,
         parameter_5: this.state.sliderValue_5
       };
-      fetch(`/api/v1/users/${user_handle}/products/${product_room}/effect_settings`, {
+      fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings`, {
         credentials: "same-origin",
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -88,7 +95,6 @@ class EffectContainer extends React.Component {
       sliderValue_1: sliderValue_1
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_2(sliderValue_2) {
@@ -97,7 +103,6 @@ class EffectContainer extends React.Component {
       sliderValue_2: sliderValue_2
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_3(sliderValue_3) {
@@ -106,7 +111,6 @@ class EffectContainer extends React.Component {
       sliderValue_3: sliderValue_3
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_4(sliderValue_4) {
@@ -115,7 +119,6 @@ class EffectContainer extends React.Component {
       sliderValue_4: sliderValue_4
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
-
   }
 
   handleSlider_5(sliderValue_5) {
@@ -124,15 +127,21 @@ class EffectContainer extends React.Component {
       sliderValue_5: sliderValue_5
     })
     setTimeout(() => this.postValuesToFetch(), 1000);
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.currentUser != this.props.currentUser) {
+      this.getEffectSettings(nextProps.currentUser);
+      this.getActiveEffect(nextProps.currentUser);
+    }
   }
 
   render () {
 
-    let loading = null;
-    if (this.state.loading) {
-      loading = <div className='loading-icon'>Loading...</div>
-    } else  { loading = null }
+    // let loading = null;
+    // if (this.state.loading) {
+    //   loading = <div className='loading-icon'>Loading...</div>
+    // } else  { loading = null }
 
     return (
       <div className={this.props.className}>
@@ -142,14 +151,17 @@ class EffectContainer extends React.Component {
           <div className='container-title'>Effects</div>
         </div>
 
-        <div id="components">
+        <div id="Components">
           <div className="Component">
             <div className="Component-slider">
+            {/* <div className='row'> */}
+              {/* <div class="small-6 medium-6 columns"> */}
+                {/* <div className='row'> */}
               <Slider
                 onChange={ this.handleSlider_1 }
                 value={this.state.sliderValue_1}
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -161,8 +173,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_2 }
                 value={ this.state.sliderValue_2 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -171,11 +183,13 @@ class EffectContainer extends React.Component {
                 fixedSliderValue={+this.state.sliderValue_2.toFixed(2)}
                 label={this.state.effect_parameter_2_name}
               />
+            </div>
+            <div className="Component-slider">
               <Slider
                 onChange={ this.handleSlider_3 }
                 value={ this.state.sliderValue_3 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -187,8 +201,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_4 }
                 value={ this.state.sliderValue_4 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -200,8 +214,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_5 }
                 value={ this.state.sliderValue_5 }
-                radius={ 70 }
-                border={ 30 }
+                radius={ 115 }
+                border={ 15 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -213,7 +227,7 @@ class EffectContainer extends React.Component {
             </div>
           </div>
         </div>
-        <div className='container-settings'>
+        <div className='container-search'>
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
       </div>

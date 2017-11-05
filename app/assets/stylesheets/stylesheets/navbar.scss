@@ -9,33 +9,56 @@
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
 }
 
-#account-dropdown {
+.account-dropdown {
   position: absolute;
-  // display: inline-block;
   float: right;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   border-left: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.user-name {
-  // vertical-align: middle;
-  // margin-top: 10px;
-  fontFamily: 'Menlo';
-  font-style: normal;
-  line-height: 1.1em;
-  color: #4F4F4F;
-  display: inline-block;
+#nav-dropdown {
+  position: fixed;
+  // display
+  color: #6F6F6F;
+  top: 69px;
+  height: 50px;
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  background-color: #2F2F2F;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
 }
 
-.user-email {
-  fontFamily: 'Menlo';
+#nav-user-name {
+  color: #6F6F6F;
+  position: absolute;
+  left: 20px;
+  top: 8px;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+
+#nav-user-email {
+  color: #6F6F6F;
+  position: absolute;
+  left: 22px;
+  top: 32px;
+  font-size: 1.2em;
   font-style: italic;
-  line-height: 1.1em;
-  color: #4F4F4F;
-  display: inline-block;
+  font-weight: 200;
+}
+
+#user-icon {
+  position: absolute;
+  left: 187px;
+  top: 9px;
+  border: 1px solid #6F6F6F;
+  border-radius: 200px;
+  padding: 9px 13px;
+  color: #6F6F6F;
 }
 
 #nav-menu-button > i {
@@ -45,27 +68,12 @@
   top: calc(50% - 15px);
 }
 
-#account-dropdown > i {
-  margin-right: 35px;
-  text-align: center;
-  display: inline-block;
-  color: #4F4F4F;
-  position: relative;
-  top: calc(50% - 33px);
-  right: -20px;
-}
-
 #nav-icon {
   display: block;
   margin: auto;
   width: 50%;
   max-width: 100%;
   height: auto;
-}
-
-.test {
-  padding-top: 15px;
-  padding-bottom: 20px;
 }
 
 #power-status {
@@ -85,5 +93,10 @@
 
 #false {
   color: #F19121;
+  margin-top: 26%;
+}
+
+#off {
+  color: yellow;
   margin-top: 26%;
 }
