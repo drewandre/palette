@@ -81,7 +81,7 @@ class PaletteContainer extends React.Component {
         <SearchField
           paletteSearchBarClassName='palette-search'
           swatchesClassName='palette-container'
-          searchResultsClassName='box palette-dropdown'
+          searchResultsClassName='palette-dropdown'
           placeholder='search palettes'
           handleSelectedPalette={this.handleSelectedPalette}
         />
