@@ -1,6 +1,7 @@
 import React from 'react';
+import TimePicker from './TimePicker.js'
 
-class ScheduleContainer extends React.Component {
+class SettingsContainer extends React.Component {
 
   showSettings(event) {
     event.preventDefault()
@@ -36,16 +37,18 @@ class ScheduleContainer extends React.Component {
 
   render () {
     return (
-      <div className={this.props.className} >
+      <div className={this.props.className}>
         <div>
           <i className="fa fa-calendar fa-2x" id="box-icon" aria-hidden="true"></i>
-          <div className='container-title'>Schedule</div>
+          <div className='container-title'>Settings</div>
         </div>
-        <input onChange={this.handleOnTimeChange} className="time-picker" type="time" name="on-time" value={this.state.onTime}></input>
-        <input onChange={this.handleOffTimeChange} className="time-picker" type="time" name="off-time" value={this.state.offTime}></input>
+        <TimePicker />
+        {/* <input className='master-brightness-slider' type="range" min="-10" max="10 " /> */}
+        {/* <input onChange={this.handleOnTimeChange} className="time-picker" type="time" name="on-time" value={this.state.onTime}></input> */}
+        {/* <input onChange={this.handleOffTimeChange} className="time-picker" type="time" name="off-time" value={this.state.offTime}></input> */}
       </div>
     )
   }
 }
 
-export default ScheduleContainer;
+export default SettingsContainer;

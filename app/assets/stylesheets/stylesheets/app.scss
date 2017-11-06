@@ -4,33 +4,32 @@ h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', Fallback, sans-serif;
 }
 
-body {
-  // height: 100%;
+body, html {
+  height: 50%;
+  width: 100%;
+  // height: calc(100%-80px);
   top: 80px;
   background: #292929;
-  overflow: hidden;
 }
 
 a {
-  text-align: center;
-  color: #fff;
+  // text-align: center;
+  color: #6F6F6F;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #D04E59;
+  color: #95C9B4;
 }
 
-main {
-  height: 100%;
-  background: #b4bad2;
-}
+// main {
+//   height: 100%;
+//   background: red;
+// }
 
 .fullwidth {
   width: 100%;
-  height: 100%;
   max-width: initial;
-  font-weight: 100;
 }
 
 .loading-icon {

@@ -22,7 +22,6 @@
 
 #nav-dropdown {
   position: fixed;
-  // display
   color: #6F6F6F;
   top: 69px;
   height: 50px;
@@ -30,6 +29,7 @@
   border-bottom-left-radius: 5px;
   background-color: #2F2F2F;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+  padding-left: 22px;
 }
 
 #nav-user-name {
@@ -86,14 +86,25 @@
   color: #4F4F4F;
 }
 
+#power-status:hover {
+  background-color: lighten(#2F2F2F, 2%);
+}
+
+.account-dropdown:hover {
+  background-color: lighten(#2F2F2F, 2%);
+}
+
 #true {
   color: #4E941A;
   margin-top: 26%;
+  // box-shadow: 2px 2px 2px 1px #4E941A;
 }
+
 
 #false {
   color: #F19121;
   margin-top: 26%;
+  // box-shadow: 2px 2px 2px 1px #F19121;
 }
 
 #off {

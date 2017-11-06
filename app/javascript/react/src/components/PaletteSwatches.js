@@ -15,18 +15,10 @@ const PaletteSwatches = props => {
   let width_3 = 0
   let width_4 = 0
 
-  if(hex_1 != null) {
-    numSwatches+=1
-  }
-  if(hex_2 != null) {
-    numSwatches+=1
-  }
-  if(hex_3 != null) {
-    numSwatches+=1
-  }
-  if(hex_4 != null) {
-    numSwatches+=1
-  }
+  if(hex_1 != null) { numSwatches+=1 }
+  if(hex_2 != null) { numSwatches+=1 }
+  if(hex_3 != null) { numSwatches+=1 }
+  if(hex_4 != null) { numSwatches+=1 }
 
   width_1 = percentage_hex_1 / numSwatches
   width_2 = percentage_hex_2 / numSwatches
@@ -35,10 +27,14 @@ const PaletteSwatches = props => {
 
   return(
     <div className={props.swatchesClassName}>
-      <div className='color-swatch' style={{ backgroundColor: hex_1, width: width_1+'%' }}/>
-      <div className='color-swatch' style={{ backgroundColor: hex_2, width: width_2+'%' }}/>
-      <div className='color-swatch' style={{ backgroundColor: hex_3, width: width_3+'%' }}/>
-      <div className='color-swatch' style={{ backgroundColor: hex_4, width: width_4+'%' }}/>
+      {/* <div className='palette-container-left'/>
+      <div className='palette-container-right'/> */}
+      {/* <div className='make-full'> */}
+        <div className='color-swatch' style={{ backgroundColor: hex_1, width: width_1+'%' }}/>
+        <div className='color-swatch' style={{ backgroundColor: hex_2, width: width_2+'%' }}/>
+        <div className='color-swatch' style={{ backgroundColor: hex_3, width: width_3+'%' }}/>
+        <div className='color-swatch' style={{ backgroundColor: hex_4, width: width_4+'%' }}/>
+      {/* </div> */}
     </div>
   )
 }

@@ -16,4 +16,9 @@ class Api::V1::PalettesController < ApplicationController
     render json: @user_palettes
   end
 
+  def current_user_palette
+    @current_user_palette = ColorPalette.find(params[:id])
+    render json: @current_user_palette
+  end
+
 end

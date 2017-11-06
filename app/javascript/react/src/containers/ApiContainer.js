@@ -54,10 +54,10 @@ class ApiContainer extends React.Component {
           </div>
           {/* <div className='container-dropdown'>Dropdown</div> */}
         </div>
-        {/* <SelectField
+        <SelectField
           value={this.state.selectedApiUrl}
           handleSelect={this.handleSelect}
-        /> */}
+        />
         <div className='container-search'>
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>

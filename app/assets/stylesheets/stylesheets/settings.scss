@@ -29,3 +29,31 @@
   background-color: #2F2F2F;
   color: darken(white, 20%);
 }
+
+.schedule {
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 200;
+  position: absolute;
+  right: 10%;
+  top: 25%;
+}
+
+.time {
+  text-align: center;
+  margin: 5px;
+  width: 65px;
+  height: 100%;
+  display: inline-block;
+  background-color: #292929;
+  // padding-top: 9px;
+  border-radius: 5px;
+}
+
+#time-up {
+  display: block;
+}
+
+#time-down {
+  display: block;
+}
