@@ -10,12 +10,11 @@ class SettingsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      onTime: '09:00',
-      offTime: '17:00',
+      masterBrightess: 255,
       lastKeyPressedTime: 0
     }
-    this.handleOnTimeChange = this.handleOnTimeChange.bind(this);
-    this.handleOffTimeChange = this.handleOffTimeChange.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleMasterBrightness = this.handleMasterBrightness.bind(this);
     this.postScheduleToFetch = this.postScheduleToFetch.bind(this);
   }
 
@@ -25,13 +24,13 @@ class SettingsContainer extends React.Component {
     }
   }
 
-  handleOnTimeChange(onEvent) {
-    this.setState({ onTime: onEvent.target.value})
+  handleTimeChange(onEvent) {
+    // this.setState({ onTime: onEvent.target.value})
     setTimeout(() => this.postScheduleToFetch(), 1500);
   }
 
-  handleOffTimeChange(offEvent) {
-    this.setState({ offEvent: offEvent.target.value})
+  handleMasterBrightness(brightnessEvent) {
+    this.setState({ masterBrightess: brightnessEvent.target.value})
     setTimeout(() => this.postScheduleToFetch(), 1500);
   }
 
@@ -42,10 +41,8 @@ class SettingsContainer extends React.Component {
           <i className="fa fa-calendar fa-2x" id="box-icon" aria-hidden="true"></i>
           <div className='container-title'>Settings</div>
         </div>
-        <TimePicker />
-        {/* <input className='master-brightness-slider' type="range" min="-10" max="10 " /> */}
-        {/* <input onChange={this.handleOnTimeChange} className="time-picker" type="time" name="on-time" value={this.state.onTime}></input> */}
-        {/* <input onChange={this.handleOffTimeChange} className="time-picker" type="time" name="off-time" value={this.state.offTime}></input> */}
+        <TimePicker handleTimeChange={this.handleTimeChange}/>
+        <input onChange={this.handleMasterBrightness} className='master-brightness-slider' type="range" min="0" max="255" />
       </div>
     )
   }

@@ -19,9 +19,13 @@ class Api::V1::ProductsController < ApplicationController
   def update
     user_id = User.find_by(handle: params[:handle])
     @user_product = Product.find_by(product_name: params[:product_name])
-    @user_product.on = !@user_product.on
+    @user_product.update(product_settings_params)
     @user_product.save
     render json: @user_product
+  end
+
+  def product_settings_params
+    params.permit(:active_api)
   end
 
 end

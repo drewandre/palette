@@ -30,7 +30,7 @@ class SearchField extends React.Component {
   }
 
   render() {
-    console.log(this.state.searchResultsEmpty);
+    // console.log(this.state.searchResultsEmpty);
     return (
       <div>
         <form onSubmit={this.props.handleSelectedPalette}>
@@ -42,6 +42,7 @@ class SearchField extends React.Component {
             placeholder={this.props.placeholder}
             id={this.searchResultsEmpty}
           />
+          {/* <i className="fa fa-chevron-down" id='search-arrow' aria-hidden="true"></i> */}
         </form>
         <PaletteTiles
           swatchesClassName={this.props.swatchesClassName}

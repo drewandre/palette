@@ -10,7 +10,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   # def show_current_user
-  #   binding.pry
   #   @user = User.where(id: current_user.id)
   #   render json: @user
   # end

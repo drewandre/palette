@@ -1,19 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-// HT Sonus / Sonus extra light / Sonus light
 h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', Fallback, sans-serif;
 }
 
 body, html {
-  height: 50%;
+  height: 100%;
   width: 100%;
-  // height: calc(100%-80px);
   top: 80px;
   background: #292929;
 }
 
 a {
-  // text-align: center;
   color: #6F6F6F;
   text-decoration: none;
 }
@@ -21,11 +18,6 @@ a:hover,
 a:focus {
   color: #95C9B4;
 }
-
-// main {
-//   height: 100%;
-//   background: red;
-// }
 
 .fullwidth {
   width: 100%;

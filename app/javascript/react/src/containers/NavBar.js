@@ -46,7 +46,7 @@ class NavBar extends React.Component {
             <i className='fa fa-power-off fa-2x' id={this.state.powerStatus.toString()} aria-hidden="true"></i>
           </div>
           <div className='account-dropdown'>
-            <div>
+            <div className='account-info'>
               <i className="fa fa-user fa-2x" id='user-icon' aria-hidden="true"></i>
               <div id='nav-user-name'>{this.props.currentUser.first_name}</div>
               <div id='nav-user-email'>{this.props.currentUser.email}</div>

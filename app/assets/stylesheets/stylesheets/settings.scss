@@ -1,59 +1,75 @@
-.time-picker[type='time'], textarea {
-  text-align: center;
-  position: relative;
-  top: 30%;
-  margin: auto;
-  margin-bottom: 20px;
-  width: 40%;
-  max-width: 200px;
-  border-radius: 10px;
-  height: 40px;
-  font-size: 1em;
-  border: 1px solid #4F4F4F;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
-}
-
-.time-picker[type='time']:focus, textarea:focus {
-  text-align: center;
-  position: relative;
-  top: 30%;
-  margin: auto;
-  margin-bottom: 20px;
-  width: 40%;
-  max-width: 200px;
-  border-radius: 10px;
-  height: 40px;
-  font-size: 1em;
-  border: 1px solid #4F4F4F;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
-}
-
 .schedule {
+  user-select: none;
+  cursor: auto;
   display: inline-block;
   font-size: 2em;
   font-weight: 200;
   position: absolute;
-  right: 10%;
+  right: 7%;
   top: 25%;
+}
+
+.on {
+  position: relative;
+  top: 0px;
+  left: 55px;
+  text-align: center;
+  float: left;
+  height: 56px;
+  width: 55px;
+  background-color: #292929;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  font-size: 0.8em;
+  // vertical-align: middle;
+}
+
+.off {
+  position: relative;
+  top: 56px;
+  left: 0px;
+  text-align: center;
+  float: left;
+  height: 56px;
+  width: 55px;
+  background-color: #292929;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  font-size: 0.8em;
 }
 
 .time {
   text-align: center;
-  margin: 5px;
+  margin-left: 10px;
   width: 65px;
   height: 100%;
   display: inline-block;
   background-color: #292929;
-  // padding-top: 9px;
   border-radius: 5px;
 }
 
 #time-up {
   display: block;
+  color: #95C9B4
 }
 
 #time-down {
   display: block;
+  color: #95C9B4
+}
+
+#time-up:hover {
+  color: lighten(#95C9B4, 15%)
+}
+
+#time-down:hover {
+  color: lighten(#95C9B4, 15%)
+}
+
+#time-up:active {
+  color: lighten(#95C9B4, 40%)
+}
+
+#time-down:active {
+  color: lighten(#95C9B4, 40%)
 }

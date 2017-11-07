@@ -161,8 +161,8 @@ class Slider extends Component {
         />
         <text
           className={styles.sliderValue}
-          x='44%'
-          y='45%'
+          x='48%'
+          y='57%'
           textAnchor='middle'
         >
           {this.props.fixedSliderValue}
@@ -181,8 +181,8 @@ class Slider extends Component {
           d={ d } />
         <text
           className={styles.sliderLabel}
-          x='44%'
-          y='68%'
+          x='48%'
+          y='80%'
           textAnchor='middle'
         >
         {this.props.label}

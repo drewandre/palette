@@ -3,7 +3,6 @@ import PaletteTiles from '../components/PaletteTiles';
 import PaletteDisplay from '../containers/PaletteDisplay';
 import SearchField from '../containers/SearchField';
 
-let index = 0;
 class PaletteContainer extends React.Component {
   showSettings(event) {
     // event.preventDefault();
@@ -61,35 +60,36 @@ class PaletteContainer extends React.Component {
 
   render() {
     return(
-      <div className={this.props.className} >
+      <div className={this.props.className}>
         <div>
           <i className="fa fa-paint-brush fa-2x" id="box-icon" aria-hidden="true"></i>
-          <div className='container-title'>Palettes</div>
+          <div className='container-title'>Palettes | </div>
         </div>
-        <PaletteTiles
-          swatchesClassName='palette-container'
-          className='palette-list'
-          data={this.state.color_palettes}
-        />
 
         <div className='palette-search-results'>
           <SearchField
             paletteSearchBarClassName='palette-search'
             swatchesClassName='palette-search-container'
             searchResultsClassName='palette-dropdown'
-            placeholder='search palettes'
+            placeholder='Search'
             handleSelectedPalette={this.handleSelectedPalette}
           />
         </div>
+        <div className='palette-blur'>
+          <PaletteTiles
+            swatchesClassName='palette-container'
+            className='palette-list'
+            data={this.state.color_palettes}
+          />
 
-        <PaletteDisplay
-          data={this.state.current_palette}
-          // will eventually need to pass the MODIFIED current palette back HERE
-        />
-
-        <div className='container-search' id='palette-search'>
-          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
+          <PaletteDisplay
+            data={this.state.current_palette}
+            // will eventually need to pass the MODIFIED current palette back HERE
+          />
         </div>
+        {/* <div className='container-search' id='palette-search'>
+          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
+        </div> */}
       </div>
     )
   }

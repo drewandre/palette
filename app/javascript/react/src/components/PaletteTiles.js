@@ -2,7 +2,6 @@ import React from 'react';
 import PaletteSwatches from './PaletteSwatches'
 
 const PaletteTiles = props => {
-
   let userPalettes = props.data.map(palette => {
     if(palette != null) {
       return (
