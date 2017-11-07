@@ -1,5 +1,5 @@
 import React from 'react';
-import SliderMath from '../helpers/SliderMath'
+import EffectSelectField from '../components/EffectSelectField'
 import Slider from './Slider'
 
 class EffectContainer extends React.Component {
@@ -23,7 +23,8 @@ class EffectContainer extends React.Component {
       effect_parameter_3_name: '',
       effect_parameter_4_name: '',
       effect_parameter_5_name: '',
-      loading: false
+      loading: false,
+      selectedEffect: ''
     }
     this.handleSlider_1 = this.handleSlider_1.bind(this);
     this.handleSlider_2 = this.handleSlider_2.bind(this);
@@ -33,6 +34,7 @@ class EffectContainer extends React.Component {
     this.getEffectSettings = this.getEffectSettings.bind(this);
     this.getActiveEffect = this.getActiveEffect.bind(this);
     this.postValuesToFetch = this.postValuesToFetch.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   getEffectSettings(nextUser) {
@@ -65,7 +67,8 @@ class EffectContainer extends React.Component {
         effect_parameter_2_name: body.parameter_2_name,
         effect_parameter_3_name: body.parameter_3_name,
         effect_parameter_4_name: body.parameter_4_name,
-        effect_parameter_5_name: body.parameter_5_name
+        effect_parameter_5_name: body.parameter_5_name,
+        effect_name: body.effect_name
       })
     })
   }
@@ -129,6 +132,10 @@ class EffectContainer extends React.Component {
     setTimeout(() => this.postValuesToFetch(), 1000);
   }
 
+  handleSelect(selectedItem) {
+    console.log(selectedItem.target.value);
+  }
+
   componentWillReceiveProps(nextProps) {
     if(nextProps.currentUser != this.props.currentUser) {
       this.getEffectSettings(nextProps.currentUser);
@@ -148,20 +155,21 @@ class EffectContainer extends React.Component {
         {/* {loading} */}
         <div>
           <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
-          <div className='container-title'>Effects</div>
+          <div className='container-title'>Effects | </div>
+          <EffectSelectField
+            value={this.state.selectedEffect}
+            handleSelect={this.handleSelect}
+          />
         </div>
 
         <div id="Components">
           <div className="Component">
             <div className="Component-slider">
-            {/* <div className='row'> */}
-              {/* <div class="small-6 medium-6 columns"> */}
-                {/* <div className='row'> */}
               <Slider
                 onChange={ this.handleSlider_1 }
                 value={this.state.sliderValue_1}
-                radius={ 115 }
-                border={ 15 }
+                radius={ 60 }
+                border={ 5 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -169,12 +177,13 @@ class EffectContainer extends React.Component {
                 start={ 0 }
                 fixedSliderValue={+this.state.sliderValue_1.toFixed(2)}
                 label={this.state.effect_parameter_1_name}
+                id='top-left-slider'
               />
               <Slider
                 onChange={ this.handleSlider_2 }
                 value={ this.state.sliderValue_2 }
-                radius={ 115 }
-                border={ 15 }
+                radius={ 60 }
+                border={ 5 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -182,14 +191,15 @@ class EffectContainer extends React.Component {
                 start={ 0 }
                 fixedSliderValue={+this.state.sliderValue_2.toFixed(2)}
                 label={this.state.effect_parameter_2_name}
+                id='top-right-slider'
               />
             </div>
             <div className="Component-slider">
               <Slider
                 onChange={ this.handleSlider_3 }
                 value={ this.state.sliderValue_3 }
-                radius={ 115 }
-                border={ 15 }
+                radius={ 60 }
+                border={ 5 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -201,8 +211,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_4 }
                 value={ this.state.sliderValue_4 }
-                radius={ 115 }
-                border={ 15 }
+                radius={ 60 }
+                border={ 5 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -214,8 +224,8 @@ class EffectContainer extends React.Component {
               <Slider
                 onChange={ this.handleSlider_5 }
                 value={ this.state.sliderValue_5 }
-                radius={ 115 }
-                border={ 15 }
+                radius={ 60 }
+                border={ 5 }
                 min={ -50 }
                 max={ 50 }
                 angle={ Math.PI / 4 }
@@ -227,9 +237,11 @@ class EffectContainer extends React.Component {
             </div>
           </div>
         </div>
-        <div className='container-search'>
-          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
-        </div>
+        {/* <div className='current-palette'>
+          <div className='current-effect-title'>
+            Current Effect: {this.state.effect_name}
+          </div>
+        </div> */}
       </div>
     )
   }

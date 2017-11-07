@@ -1,12 +1,17 @@
+.dashboard {
+  position: relative;
+  top: -5px;
+}
+
 .box {
   position: relative;
   background: #2F2F2F;
   border-radius: 4px;
   margin: 10px;
-  height: 385px;
-  // padding-bottom: 10px;
+  height: 395px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
   color: #6F6F6F;
+  overflow: hidden;
 }
 
 #box-icon {
@@ -63,9 +68,30 @@
 }
 
 #dashboard-title {
+  user-select: none;
+  pointer-events: none;
+  display: inline-block;
   color: #6F6F6F;
   margin-left: 20px;
   font-size: 2em;
-  font-weight: 200;
-  // letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+#dashboard-info {
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+  top: 6px;
+  left: 10px;
+  display: inline-block;
+  color: #6F6F6F;
+  font-size: 1em;
+  font-weight: 100;
+  line-height: 1.2;
+}
+
+#name-and-updated {
+  display: inline-block;
+  margin-right: 8px;
+  font-weight: 400;
 }

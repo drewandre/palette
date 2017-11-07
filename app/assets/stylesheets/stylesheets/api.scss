@@ -1,0 +1,74 @@
+.api-list {
+  pointer-events: none;
+  text-align: center;
+  position: relative;
+  display: block;
+  top: 7%;
+  height: 50%;
+  z-index: 1;
+}
+
+.connection-tile-list {
+  pointer-events: none;
+  text-align: center;
+  position: relative;
+  display: block;
+  top: 37%;
+  height: 30%;
+  z-index: 1;
+}
+
+.endpoint-tiles {
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  top: 90%;
+  background-color: #373737;
+  margin: 15px;
+  display: inline-block;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  width: 16%;
+  height: 26%;
+  z-index: 3;
+}
+
+.connection-tiles {
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  top: 70%;
+  background-color: #373737;
+  margin: 15px;
+  display: inline-block;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  width: 16%;
+  height: 26%;
+  z-index: 3;
+}
+
+.tile-divider{
+  position: absolute;
+  // display: inline-block;
+  bottom: 7%;
+  left: 10%;
+  width: 80%;
+  border: 0;
+  height: 1px;
+  background: #292929;
+}
+
+.api-key {
+  display: inline-block;
+  font-weight: 500;
+}
+
+.api-value {
+  text-align: center;
+  font-weight: 300;
+}

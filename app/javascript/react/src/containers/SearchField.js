@@ -5,17 +5,24 @@ class SearchField extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      searched_color_palettes: []
+      searched_color_palettes: [],
+      searchResultsEmpty: 'searchSuccess'
     }
     this.handleSelectedPalette = this.handleSelectedPalette.bind(this);
   }
 
   handleSelectedPalette(event){
-    if(event.target.value !== '') {
-      fetch(`/api/v1/palettes/${event.target.value}`)
+    let search = event.target.value.replace(/\s+/, "")
+    if(search !== '') {
+      fetch(`/api/v1/palettes/search/${event.target.value}`)
       .then(response => response.json())
       .then(body => {
         this.setState({ searched_color_palettes: body.palettes })
+        if(body.palettes.length === 0) {
+          this.setState({ searchResultsEmpty: 'searchFail' })
+        } else {
+          this.setState({ searchResultsEmpty: 'searchSuccess' })
+        }
       })
     } else {
       this.setState({ searched_color_palettes: [] })
@@ -23,18 +30,9 @@ class SearchField extends React.Component {
   }
 
   render() {
-
-    // let searchResults = this.state.searched_color_palettes.map(palette =>{
-    //   return (
-    //     <PaletteTiles
-    //       data={this.state.searched_color_palettes}
-    //       className='palette-list'
-    //     />
-    //   );
-    // })
-
+    // console.log(this.state.searchResultsEmpty);
     return (
-      <div className='test-div'>
+      <div>
         <form onSubmit={this.props.handleSelectedPalette}>
           <input
             className={this.props.paletteSearchBarClassName}
@@ -42,7 +40,9 @@ class SearchField extends React.Component {
             onChange={this.handleSelectedPalette}
             type='text'
             placeholder={this.props.placeholder}
+            id={this.searchResultsEmpty}
           />
+          {/* <i className="fa fa-chevron-down" id='search-arrow' aria-hidden="true"></i> */}
         </form>
         <PaletteTiles
           swatchesClassName={this.props.swatchesClassName}

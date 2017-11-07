@@ -12,14 +12,80 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery_ujs
 //= require_tree .
 
 $(document).ready(function() {
-  $('.nav-dropdown').hide();
-  $('.search-dropdown').hide();
 
-  $('body').click( function(event){
-    console.log('jquery is alive!');
+  jQuery.fn.toggleFocus = function(){
+    if (this.is(":focus")) {
+      this.blur();
+    } else {
+      this.focus();
+    }
+  }
+
+  // $(function() {
+  //   $("table").resizableColumns({
+  //     store: window.store
+  //   });
+  // });
+
+  $(document).ready(function() {
+    $('#nav-dropdown').hide();
+    // $('.palette-search-results').hide();
   });
-  
+
+  $('.account-dropdown').click( function(event){
+    event.stopPropagation();
+    $('#nav-dropdown').slideToggle("fast");
+  });
+
+  // $('.palette-search').click( function(event){
+  //   event.stopPropagation();
+  // //   $('.palette-search-results').fadeToggle(50);
+  //   // $( ".palette-search" ).focus();
+  //   $( ".current-palette-title" ).toggle();
+  // });
+
+
+  $('.palette-search').focusin(function() {
+    $('.palette-blur').css({
+      filter: 'blur(60px)'
+    });
+    // $('.current-palette').css({
+    //   filter: 'blur(60px)'
+    // });
+    $('.palette-dropdown').show();
+  });
+
+  $('.palette-search').focusout(function() {
+    $('.palette-blur').css({
+      filter: 'none'
+    });
+    // $('.current-palette').css({
+    //   filter: 'none'
+    // });
+    $('.palette-dropdown').hide();
+  });
+
+  // $(".palette-container").on('mousemove', function(e) {
+  //   var mouseSide;
+  //   if ((e.pageX - this.offsetLeft) < $(this).width() / 2) {
+  //       mouseSide = 'L';
+  //   } else {
+  //       mouseSide = 'R';
+  //   }
+  //   console.log(mouseSide);
+  // });
+
+
+  $(".palette-container-left").on('mousemove', function(e) {
+    console.log('left!');
+  });
+
+  $(".palette-container-right").on('mousemove', function(e) {
+    console.log('right!');
+  });
+
 });

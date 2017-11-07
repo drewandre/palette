@@ -21,8 +21,9 @@
 }
 
 #nav-dropdown {
+  cursor: pointer;
+  pointer-events: auto;
   position: fixed;
-  // display
   color: #6F6F6F;
   top: 69px;
   height: 50px;
@@ -30,28 +31,45 @@
   border-bottom-left-radius: 5px;
   background-color: #2F2F2F;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+  padding-left: 22px;
+}
+
+.account-info {
+  width: 72%;
+  height: 100%;
+  padding-left: 20px;
+  padding-top: 13px;
 }
 
 #nav-user-name {
+  user-select: none;
+  pointer-events: none;
   color: #6F6F6F;
-  position: absolute;
-  left: 20px;
-  top: 8px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 1.4em;
   font-weight: 400;
+  line-height: 1;
 }
 
 #nav-user-email {
+  pointer-events: none;
+  user-select: none;
   color: #6F6F6F;
-  position: absolute;
-  left: 22px;
-  top: 32px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 1.2em;
   font-style: italic;
   font-weight: 200;
+  line-height: 1;
 }
 
 #user-icon {
+  user-select: none;
   position: absolute;
   left: 187px;
   top: 9px;
@@ -86,14 +104,24 @@
   color: #4F4F4F;
 }
 
+#power-status:hover {
+  background-color: lighten(#2F2F2F, 2%);
+}
+
+.account-dropdown:hover {
+  background-color: lighten(#2F2F2F, 2%);
+}
+
 #true {
   color: #4E941A;
   margin-top: 26%;
+  // box-shadow: 2px 2px 2px 1px #4E941A;
 }
 
 #false {
   color: #F19121;
   margin-top: 26%;
+  // box-shadow: 2px 2px 2px 1px #F19121;
 }
 
 #off {

@@ -1,6 +1,6 @@
 import React from 'react';
 import EffectContainer from './EffectContainer'
-import ScheduleContainer from './ScheduleContainer'
+import SettingsContainer from './SettingsContainer'
 import ApiContainer from './ApiContainer'
 import PaletteContainer from './PaletteContainer'
 
@@ -22,10 +22,23 @@ class Dashboard extends React.Component {
   // }
 
   render () {
+    let updated_at = new Date(this.props.currentUser.updated_at)
+    let month = updated_at.getMonth();
+    let day = updated_at.getDate();
+    // let year = updated_at.getYear();
+    let hour = updated_at.getHours();
+    let minutes = updated_at.getMinutes();
+    let seconds = updated_at.getSeconds();
+
     return (
-      <div>
+      <div className='dashboard'>
         <div id='dashboard-title'>
-          Dashboard
+          Dashboard |
+        </div>
+        <div id='dashboard-info'>
+          <div><div id='name-and-updated'>Product:</div>{this.props.currentUser.current_product_name}</div>
+          {/* <div>Last Update: {month}-{day}, {hour}:{minutes}:{seconds}</div> */}
+          <div><div id='name-and-updated'>Last Update:</div>{Date(this.props.currentUser.updated_at)}</div>
         </div>
         <div className='row collapse fullwidth'>
           <div className='small-12 medium-12 large-6 columns'>
@@ -41,7 +54,7 @@ class Dashboard extends React.Component {
             />
           </div>
         <div className='small-12 medium-12 large-4 columns'>
-          <ScheduleContainer
+          <SettingsContainer
             currentUser={this.props.currentUser}
             className="box"
           />

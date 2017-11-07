@@ -150,7 +150,9 @@ class Slider extends Component {
         ref={ (potar) => this.potar = potar }
         className={ styles.slider }
         viewBox={ `${ -halfBorder } ${ -halfBorder } ${ diameter + border } ${ diameter + border }` }
-        onMouseDown={ this.handleMouseDown }>
+        onMouseDown={ this.handleMouseDown }
+        id={this.props.id}
+        >
         <circle
           className={ styles.sliderCircle }
           r={ radius - halfBorder }
@@ -159,8 +161,8 @@ class Slider extends Component {
         />
         <text
           className={styles.sliderValue}
-          x='42%'
-          y='49%'
+          x='48%'
+          y='57%'
           textAnchor='middle'
         >
           {this.props.fixedSliderValue}
@@ -179,8 +181,8 @@ class Slider extends Component {
           d={ d } />
         <text
           className={styles.sliderLabel}
-          x='42%'
-          y='95%'
+          x='48%'
+          y='80%'
           textAnchor='middle'
         >
         {this.props.label}
