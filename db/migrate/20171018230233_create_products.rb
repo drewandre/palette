@@ -8,8 +8,8 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.integer :master_brightness, null: false, default: 255, limit: 1
       t.boolean :energy_saver, null: false, default: false
 
-      t.string :active_effect, null: false, default: 1
-      t.string :active_color_palette, null: false, default: 0
+      t.integer :active_effect, null: false, default: 1
+      t.integer :active_color_palette
       t.string :active_api
 
       t.datetime :turn_on

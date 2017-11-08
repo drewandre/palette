@@ -9,6 +9,6 @@ module ApplicationCable
 
 
 
-    
+
   end
 end

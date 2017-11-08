@@ -3,7 +3,9 @@ class User < ApplicationRecord
   HANDLE_REGEXP = /\A[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*\z/
 
   has_many :products
-  has_many :color_palettes
+  # has_many :color_palettes
+  has_many :user_palettes
+  has_many :color_palettes, through: :user_palettes
   has_many :api_settings, through: :products
   has_many :effect_settings, through: :products
 

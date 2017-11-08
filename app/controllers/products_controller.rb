@@ -8,14 +8,17 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user_id = current_user.id
     @product.product_name = @product.product_name.parameterize
+    @product.active_color_palette = ColorPalette.first.id
+    @product.active_effect = Effect.first.id
     if @product.save
-      current_user.current_product_name = @product.product_name
-      current_user.save
-      p "Registration successful."
+      @effect_setting = EffectSetting.create(product_id: @product.id)
+      @effect_setting.update(active_effect: Effect.first.id)
+      # ApiSetting.create(product_id: @product.id)
+      current_user.update(current_product_name: @product.product_name)
+      UserPalette.create(user_id: current_user.id, color_palette_id: @product.active_color_palette)
       flash[:success] = "Registration successful."
       redirect_to root_path
     else
-      p "There was a problem with your registration."
       flash.now[:alert] = "There was a problem with your registration."
       render :new
     end

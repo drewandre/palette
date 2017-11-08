@@ -133,7 +133,7 @@ class EffectContainer extends React.Component {
   }
 
   handleSelect(selectedItem) {
-    console.log(selectedItem.target.value);
+    this.setState({ selectedEffect: selectedItem.target.value })
   }
 
   componentWillReceiveProps(nextProps) {

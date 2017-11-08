@@ -19,8 +19,19 @@ class SettingsContainer extends React.Component {
   }
 
   postScheduleToFetch() {
-    if (Date.now() - this.state.lastKeyPressedTime > 1500) {
-      alert('posted to fetch')
+    if (Date.now() - this.state.lastKeyPressedTime > 1000) {
+      let formPayload = {
+        masterBrightess: this.state.masterBrightess
+        // onTime: this.state.sliderValue_2,
+        // offTime: this.state.sliderValue_3,
+        // parameter_4: this.state.sliderValue_4
+      };
+      fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings`, {
+        credentials: "same-origin",
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ formPayload })
+      })
     }
   }
 

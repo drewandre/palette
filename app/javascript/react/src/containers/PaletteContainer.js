@@ -1,5 +1,6 @@
 import React from 'react';
 import PaletteTiles from '../components/PaletteTiles';
+import SearchPaletteTiles from '../components/SearchPaletteTiles';
 import PaletteDisplay from '../containers/PaletteDisplay';
 import SearchField from '../containers/SearchField';
 
@@ -17,17 +18,39 @@ class PaletteContainer extends React.Component {
       searched_color_palettes: ''
     }
     this.loadUserPalettes = this.loadUserPalettes.bind(this);
+    this.handleSearchedPalette = this.handleSearchedPalette.bind(this);
     this.handleSelectedPalette = this.handleSelectedPalette.bind(this);
+    this.fetchActiveColorPalette = this.fetchActiveColorPalette.bind(this);
   }
 
-  handleSelectedPalette(event) {
-    console.log(event.target.value);
-    // fetch(`/api/v1/palettes/${event.target.value}`)
-    // .then(response => response.json())
-    // .then(body => {
-    //   console.log(body);
-    //   // this.setState({ searched_color_palettes: body })
-    // })
+  handleSelectedPalette(searchClick) {
+    event.preventDefault();
+    var active_color_palette = parseInt(searchClick.target.attributes[1].value);
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ active_color_palette })
+    })
+    for(var i = 0; i < 8; i++) {
+      if(this.state.color_palettes[i].id === active_color_palette) {
+        this.setState({ current_palette: this.state.color_palettes[i] })
+      }
+    }
+  }
+
+  handleSearchedPalette(searchClick) {
+    event.preventDefault();
+    var palette_id = parseInt(searchClick.target.attributes[1].value);
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ palette_id })
+    })
+    .then(body => {
+      this.loadUserPalettes(this.props.currentUser)
+    })
   }
 
   loadUserPalettes(nextUser) {
@@ -40,6 +63,9 @@ class PaletteContainer extends React.Component {
       }
       this.setState({ color_palettes: palettes })
     })
+  }
+
+  fetchActiveColorPalette(nextUser) {
     fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
     .then(response => response.json())
     .then(body => {
@@ -54,7 +80,8 @@ class PaletteContainer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.currentUser != this.props.currentUser) {
-      this.loadUserPalettes(nextProps.currentUser);
+      this.loadUserPalettes(nextProps.currentUser)
+      this.fetchActiveColorPalette(nextProps.currentUser)
     }
   }
 
@@ -72,7 +99,7 @@ class PaletteContainer extends React.Component {
             swatchesClassName='palette-search-container'
             searchResultsClassName='palette-dropdown'
             placeholder='Search'
-            handleSelectedPalette={this.handleSelectedPalette}
+            handleSearchedPalette={this.handleSearchedPalette}
           />
         </div>
         <div className='palette-blur'>
@@ -80,6 +107,7 @@ class PaletteContainer extends React.Component {
             swatchesClassName='palette-container'
             className='palette-list'
             data={this.state.color_palettes}
+            handleSelectedPalette={this.handleSelectedPalette}
           />
 
           <PaletteDisplay
@@ -87,9 +115,6 @@ class PaletteContainer extends React.Component {
             // will eventually need to pass the MODIFIED current palette back HERE
           />
         </div>
-        {/* <div className='container-search' id='palette-search'>
-          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
-        </div> */}
       </div>
     )
   }

@@ -25,7 +25,7 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def product_settings_params
-    params.permit(:active_api)
+    params.permit(:active_api, :active_color_palette)
   end
 
 end

@@ -48,7 +48,8 @@ class NavBar extends React.Component {
           <div className='account-dropdown'>
             <div className='account-info'>
               <i className="fa fa-user fa-2x" id='user-icon' aria-hidden="true"></i>
-              <div id='nav-user-name'>{this.props.currentUser.first_name}</div>
+              {/* <img src={this.props.currentUser.avatar_url} id='user-icon'/> */}
+              <div id='nav-user-name'>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</div>
               <div id='nav-user-email'>{this.props.currentUser.email}</div>
             </div>
             <div id='nav-dropdown'>

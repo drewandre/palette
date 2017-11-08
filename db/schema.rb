@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031151125) do
+ActiveRecord::Schema.define(version: 20171107211709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,18 @@ ActiveRecord::Schema.define(version: 20171031151125) do
 
   create_table "color_palettes", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "designer", null: false
     t.string "name", null: false
     t.string "hex_1", null: false
     t.string "hex_2"
     t.string "hex_3"
     t.string "hex_4"
+    t.string "hex_5"
     t.integer "percentage_hex_1", limit: 2, default: 100, null: false
     t.integer "percentage_hex_2", limit: 2, default: 100
     t.integer "percentage_hex_3", limit: 2, default: 100
     t.integer "percentage_hex_4", limit: 2, default: 100
+    t.integer "percentage_hex_5", limit: 2, default: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_color_palettes_on_user_id"
@@ -71,8 +74,8 @@ ActiveRecord::Schema.define(version: 20171031151125) do
     t.string "product_name", null: false
     t.integer "master_brightness", limit: 2, default: 255, null: false
     t.boolean "energy_saver", default: false, null: false
-    t.string "active_effect", default: "1", null: false
-    t.string "active_color_palette", default: "0", null: false
+    t.integer "active_effect", default: 1, null: false
+    t.integer "active_color_palette"
     t.string "active_api"
     t.datetime "turn_on"
     t.datetime "turn_off"
@@ -81,6 +84,15 @@ ActiveRecord::Schema.define(version: 20171031151125) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "user_palettes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "color_palette_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_palette_id"], name: "index_user_palettes_on_color_palette_id"
+    t.index ["user_id"], name: "index_user_palettes_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -96,6 +108,7 @@ ActiveRecord::Schema.define(version: 20171031151125) do
     t.datetime "password_reset_sent_at"
     t.string "remember_digest"
     t.string "universally_unique_id", null: false
+    t.string "avatar_url"
     t.string "current_product_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

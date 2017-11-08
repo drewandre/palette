@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.update(first_name: @user.first_name.capitalize, last_name: @user.last_name.capitalize)
+      binding.pry
       # @user.send_confirmation_email
       flash[:success] = "Registration successful."
       # redirect_to root_path

@@ -2,6 +2,8 @@ import React from 'react';
 
 const PaletteSwatches = props => {
   let numSwatches = 0
+  let key = props.key
+  let id = props.id
   let hex_1 = props.hex_1
   let hex_2 = props.hex_2
   let hex_3 = props.hex_3
@@ -26,15 +28,13 @@ const PaletteSwatches = props => {
   width_4 = percentage_hex_4 / numSwatches
 
   return(
-    <div className={props.swatchesClassName}>
+    <div onClick={props.handleSearchClick} value={id} className={props.swatchesClassName}>
       {/* <div className='palette-container-left'/>
       <div className='palette-container-right'/> */}
-      {/* <div className='make-full'> */}
-        <div className='color-swatch' style={{ backgroundColor: hex_1, width: width_1+'%' }}/>
-        <div className='color-swatch' style={{ backgroundColor: hex_2, width: width_2+'%' }}/>
-        <div className='color-swatch' style={{ backgroundColor: hex_3, width: width_3+'%' }}/>
-        <div className='color-swatch' style={{ backgroundColor: hex_4, width: width_4+'%' }}/>
-      {/* </div> */}
+      <div className='color-swatch' value={id} style={{ backgroundColor: hex_1, width: width_1+'%' }}/>
+      <div className='color-swatch' value={id} style={{ backgroundColor: hex_2, width: width_2+'%' }}/>
+      <div className='color-swatch' value={id} style={{ backgroundColor: hex_3, width: width_3+'%' }}/>
+      <div className='color-swatch' value={id} style={{ backgroundColor: hex_4, width: width_4+'%' }}/>
     </div>
   )
 }

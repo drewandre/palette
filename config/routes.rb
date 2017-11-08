@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       post "users/:handle/products/:product_name/effect_settings", to: "effect_settings#update"
 
       get "users/:handle/palettes", to: "palettes#user_show"
+      post "users/:handle/palettes", to: "palettes#user_add"
+
       get "/palettes", to: "palettes#index"
       get "/palettes/:id", to: "palettes#current_user_palette"
       get "/palettes/search/:palette_name", to: "palettes#search"

@@ -72,3 +72,28 @@
   text-align: center;
   font-weight: 300;
 }
+
+.data-search[type="text"], textarea {
+  position: absolute;
+  left: 245px;
+  top: 20px;
+  width: 65%;
+  height: 40px;
+  font-size: 1.6em;
+  font-weight: 100;
+  box-shadow: none;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: none;
+}
+.data-search[type="text"]:focus, textarea:focus {
+  background-color: #2F2F2F;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: none;
+}

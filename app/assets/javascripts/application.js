@@ -15,6 +15,14 @@
 //= require jquery_ujs
 //= require_tree .
 
+// document.getElementsByClassName("palette-search").onkeypress = function(e) {
+//   var key = e.charCode || e.keyCode || 0;
+//   if (key == 13) {
+//     e.preventDefault();
+//   }
+// }
+
+
 $(document).ready(function() {
 
   jQuery.fn.toggleFocus = function(){
@@ -24,11 +32,16 @@ $(document).ready(function() {
       this.focus();
     }
   }
-
   // $(function() {
   //   $("table").resizableColumns({
   //     store: window.store
   //   });
+  // });
+
+
+  // $(document).click( function(event){
+  //   event.stopPropagation();
+  //   $('.palette-dropdown').hide();
   // });
 
   $(document).ready(function() {
@@ -48,25 +61,24 @@ $(document).ready(function() {
   //   $( ".current-palette-title" ).toggle();
   // });
 
-
   $('.palette-search').focusin(function() {
     $('.palette-blur').css({
       filter: 'blur(60px)'
     });
-    // $('.current-palette').css({
-    //   filter: 'blur(60px)'
-    // });
     $('.palette-dropdown').show();
   });
 
   $('.palette-search').focusout(function() {
-    $('.palette-blur').css({
-      filter: 'none'
-    });
-    // $('.current-palette').css({
-    //   filter: 'none'
-    // });
-    $('.palette-dropdown').hide();
+    setTimeout(function(){
+      $('.palette-blur').css({
+        filter: 'none'
+      });
+    }, 300);
+
+
+    setTimeout(function(){
+      $( ".palette-dropdown" ).fadeOut( "fast" );
+    }, 100);
   });
 
   // $(".palette-container").on('mousemove', function(e) {

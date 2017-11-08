@@ -1,5 +1,5 @@
 import React from 'react';
-import PaletteTiles from '../components/PaletteTiles'
+import SearchPaletteTiles from '../components/SearchPaletteTiles'
 
 class SearchField extends React.Component {
   constructor(props) {
@@ -8,10 +8,11 @@ class SearchField extends React.Component {
       searched_color_palettes: [],
       searchResultsEmpty: 'searchSuccess'
     }
-    this.handleSelectedPalette = this.handleSelectedPalette.bind(this);
+    // this.handleSelectedPalette = this.handleSelectedPalette.bind(this);
+    this.handlePaletteSearch = this.handlePaletteSearch.bind(this);
   }
 
-  handleSelectedPalette(event){
+  handlePaletteSearch(event){
     let search = event.target.value.replace(/\s+/, "")
     if(search !== '') {
       fetch(`/api/v1/palettes/search/${event.target.value}`)
@@ -37,17 +38,18 @@ class SearchField extends React.Component {
           <input
             className={this.props.paletteSearchBarClassName}
             autoComplete='off'
-            onChange={this.handleSelectedPalette}
+            onChange={this.handlePaletteSearch}
             type='text'
             placeholder={this.props.placeholder}
             id={this.searchResultsEmpty}
           />
           {/* <i className="fa fa-chevron-down" id='search-arrow' aria-hidden="true"></i> */}
         </form>
-        <PaletteTiles
+        <SearchPaletteTiles
           swatchesClassName={this.props.swatchesClassName}
           className={this.props.searchResultsClassName}
           data={this.state.searched_color_palettes}
+          handleSearchClick={this.props.handleSearchedPalette}
         />
       </div>
     );

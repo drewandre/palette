@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.datetime :password_reset_sent_at
       t.string :remember_digest
       t.string :universally_unique_id, null: false
-
+      t.string :avatar_url
       t.string :current_product_name
 
       t.timestamps null: false
