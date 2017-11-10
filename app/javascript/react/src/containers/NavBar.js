@@ -4,7 +4,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      powerStatus: 'true'
+      powerStatus: true
     }
     this.handlePower = this.handlePower.bind(this);
     this.getPowerState = this.getPowerState.bind(this);
@@ -21,12 +21,18 @@ class NavBar extends React.Component {
   }
 
   handlePower(buttonPress) {
+    this.setState({ powerStatus: !this.state.powerStatus })
+    console.log(this.state.powerStatus);
+    let powerStatus = this.state.powerStatus;
     fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`, {
       credentials: "same-origin",
       method: "POST",
-      headers: { "Content-Type": "application/json" }
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ on: powerStatus })
     })
-    this.getPowerState(this.props.currentUser);
+    // .then(response => {
+    //   this.getPowerState(this.props.currentUser)
+    // })
   }
 
   componentWillReceiveProps(nextProps) {

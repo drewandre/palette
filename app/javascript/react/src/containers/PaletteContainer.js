@@ -29,7 +29,7 @@ class PaletteContainer extends React.Component {
   }
 
   postUploadedPalette(hex_output) {
-    fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes`, {
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes/new`, {
       credentials: "same-origin",
       method: "POST",
       headers: {"Content-Type": "application/json"},

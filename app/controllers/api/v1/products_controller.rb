@@ -1,8 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
-  # protect_from_forgery unless: -> { request.format.json? }
   protect_from_forgery with: :null_session
-  # before_action :skip_authenticity_token
-  # skip_before_filter :verify_authenticity_token, only: [:create]
 
   def index
     user_id = User.find_by(handle: params[:handle])
@@ -26,7 +23,7 @@ class Api::V1::ProductsController < ApplicationController
   private
 
   def product_settings_params
-    params.permit(:active_api, :active_color_palette, :active_effect, :master_brightness)
+    params.permit(:active_api, :active_color_palette, :active_effect, :master_brightness, :powerStatus)
   end
 
 end

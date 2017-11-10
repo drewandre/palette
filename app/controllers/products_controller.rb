@@ -15,14 +15,27 @@ class ProductsController < ApplicationController
     # @product.active_effect = Effect.first.effect_name
     # @product.turn_on = Time.new
     # @product.turn_off = Time.new
+
     @product.update(
       user_id: current_user.id,
       product_name: @product.product_name.parameterize,
       active_color_palette: ColorPalette.first.id,
+      active_api: "real-time-stock-data",
       active_effect: Effect.first.effect_name,
       turn_on: Time.new,
       turn_off: Time.new
     )
+
+    # @product = Product.new(
+    #   user_id: current_user.id,
+    #   product_name: product_params[:product_name].parameterize,
+    #   active_effect: Effect.first.effect_name,
+    #   active_color_palette: ColorPalette.first.id,
+    #   active_api: "real-time-stock-data",
+    #   turn_on: Time.new,
+    #   turn_off: Time.new
+    # )
+
     if @product.save
       effect_names = ["Radiate", "Rainbow", "Splatter", "Flex", "Ambient", "Twinkle"];
       effect_names.length.times do |index|
