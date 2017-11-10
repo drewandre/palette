@@ -28,19 +28,21 @@ Rails.application.routes.draw do
       post "users/:handle/products/:product_name", to: "products#update"
 
       get "users/:handle/products/:product_name/api_settings", to: "api_settings#show"
-      get "users/:handle/products/:product_name/effect_settings", to: "effect_settings#show"
-      post "users/:handle/products/:product_name/effect_settings", to: "effect_settings#update"
+      get "users/:handle/products/:product_name/effect_settings", to: "effect_settings#index"
+      get "users/:handle/products/:product_name/effect_settings/:effect_name", to: "effect_settings#show"
+      post "users/:handle/products/:product_name/effect_settings/:effect_name", to: "effect_settings#update"
 
       get "users/:handle/palettes", to: "palettes#user_show"
-      post "users/:handle/palettes", to: "palettes#user_add"
+      post "users/:handle/palettes", to: "palettes#create"
 
       get "/palettes", to: "palettes#index"
       get "/palettes/:id", to: "palettes#current_user_palette"
       get "/palettes/search/:palette_name", to: "palettes#search"
 
       get "/effects", to: "effects#index"
-      get "/effects/:id", to: "effects#show"
+      get "/effects/:effect_name", to: "effects#show"
 
     end
   end
+  get '*path', to: 'dashboard#index'
 end

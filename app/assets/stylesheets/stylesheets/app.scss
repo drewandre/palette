@@ -3,11 +3,12 @@ h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', Fallback, sans-serif;
 }
 
-body, html {
-  height: 100%;
+body {
+  height: calc(100% - 40px);
   width: 100%;
   top: 80px;
   background: #292929;
+  // overflow: hidden;
 }
 
 a {
@@ -27,4 +28,17 @@ a:focus {
 .loading-icon {
   background-color: red;
   color: white;
+}
+
+@media (max-width: 1024px) {
+  // body {
+  //   overflow-y: scroll;
+  // }
+
+}
+
+@media (max-width: 525px) {
+  #name-and-updated {
+    visibility: hidden;
+  }
 }

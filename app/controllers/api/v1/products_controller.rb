@@ -20,12 +20,13 @@ class Api::V1::ProductsController < ApplicationController
     user_id = User.find_by(handle: params[:handle])
     @user_product = Product.find_by(product_name: params[:product_name])
     @user_product.update(product_settings_params)
-    @user_product.save
     render json: @user_product
   end
 
+  private
+
   def product_settings_params
-    params.permit(:active_api, :active_color_palette)
+    params.permit(:active_api, :active_color_palette, :active_effect, :master_brightness)
   end
 
 end

@@ -2,8 +2,7 @@ class CreateEffectSettings < ActiveRecord::Migration[5.1]
   def change
     create_table :effect_settings do |t|
       t.belongs_to :product
-
-      t.integer :active_effect, null: false, default: 0
+      t.string :effect_name, null: false
       t.integer :parameter_1, null: false, default: 0, limit: 1
       t.integer :parameter_2, null: false, default: 0, limit: 1
       t.integer :parameter_3, null: false, default: 0, limit: 1

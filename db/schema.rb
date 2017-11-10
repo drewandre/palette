@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171107211709) do
 
   create_table "effect_settings", force: :cascade do |t|
     t.bigint "product_id"
-    t.integer "active_effect", default: 0, null: false
+    t.string "effect_name", null: false
     t.integer "parameter_1", limit: 2, default: 0, null: false
     t.integer "parameter_2", limit: 2, default: 0, null: false
     t.integer "parameter_3", limit: 2, default: 0, null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20171107211709) do
     t.string "product_name", null: false
     t.integer "master_brightness", limit: 2, default: 255, null: false
     t.boolean "energy_saver", default: false, null: false
-    t.integer "active_effect", default: 1, null: false
+    t.string "active_effect", null: false
     t.integer "active_color_palette"
     t.string "active_api"
     t.datetime "turn_on"

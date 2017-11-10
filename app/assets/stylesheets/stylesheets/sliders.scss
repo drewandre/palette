@@ -1,16 +1,12 @@
 #Components {
-  // position: absolute;
-  // bottom: 45px;
   flex: 1;
   display: flex;
-  // background-color: red;
   height: 100%;
   padding: 15px;
 }
 
 .Component {
   user-select: none;
-  cursor: none;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -18,14 +14,12 @@
 
 .Component-slider {
   user-select: none;
-  cursor: none;
   display: flex;
   font-size: 5rem;
 }
 
 .Slider {
   user-select: none;
-  cursor: none;
   margin: 3%;
   margin-bottom: 0;
   margin-top: 0;

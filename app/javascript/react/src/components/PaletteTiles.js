@@ -3,7 +3,7 @@ import PaletteSwatches from './PaletteSwatches'
 
 const PaletteTiles = props => {
 
-  let userPalettes = props.data.map(palette => {
+  let userPalettes = props.data.map((palette, index) => {
     if(palette != null) {
       return (
         <PaletteSwatches
@@ -26,7 +26,8 @@ const PaletteTiles = props => {
       return(
         <PaletteSwatches
           swatchesClassName={props.swatchesClassName}
-          // key={null}
+          id='no-hover'
+          // key={9999999999999}
           name={null}
           hex_1={null}
           hex_2={null}

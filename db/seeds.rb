@@ -3,10 +3,10 @@ require_relative './palettes'
 p "Deleting #{User.count} users"
 p "Deleting #{ColorPalette.count} color palettes"
 p "Deleting #{Product.count} products"
-p "Deleting #{ApiSetting.count} api settings"
+# p "Deleting #{ApiSetting.count} api settings"
 p "Deleting #{EffectSetting.count} effect settings"
 p "Deleting #{Effect.count} effects"
-
+p "Deleting #{UserPalette.count} effects"
 
 User.destroy_all
 ColorPalette.destroy_all
@@ -14,6 +14,7 @@ Product.destroy_all
 ApiSetting.destroy_all
 EffectSetting.destroy_all
 Effect.destroy_all
+UserPalette.destroy_all
 
 NUM_USERS = rand(25..50)
 NUM_PALETTES = rand(30..60)
@@ -23,7 +24,7 @@ TOTAL_PRODUCT_COUNT = NUM_USERS + USERS_WITH_EXTRA_PRODUCTS
 TOTAL_PALETTE_COUNT = NUM_PALETTES + USERS_WITH_EXTRA_PALETTES*2
 
 locations = ['Family Room', 'Lobby', 'Foyer', 'Work', 'Palette'];
-effect_names = ['Radiate', "Rainbow", "Splatter", "Flex", "Ambient", "Twinkle"]
+effect_names = ["Radiate", "Rainbow", "Splatter", "Flex", "Ambient", "Twinkle"]
 effect_parameters = [
   ['Density', "Scale", "Speed", "x", "y"],
   ['Width', "Height", "Scale", "x", "y"],
@@ -43,8 +44,7 @@ NUM_USERS.times do
   )
 end
 
-index = 0
-effect_names.length.times do
+effect_names.length.times do |index|
   name_set = rand(0...2)
   Effect.create(
     effect_name: effect_names[index],
@@ -54,12 +54,11 @@ effect_names.length.times do
     parameter_4_name: effect_parameters[name_set][3],
     parameter_5_name: effect_parameters[name_set][4]
   )
-  index = index + 1
 end
 
 # every user will have a color palette to start
 a = User.pluck(:id).to_a.shuffle
-NUM_PALETTES.times do
+NUM_USERS.times do
   user_id = a.pop
   random_palette = rand(0...PALETTES.length)
   ColorPalette.create(
@@ -74,7 +73,7 @@ end
 
 # 90% of users will create more than two color palette
 USERS_WITH_EXTRA_PALETTES.times do
-  user = rand((User.pluck(:id).first)...(User.pluck(:id).last))
+  user = rand((User.pluck(:id).first)..(User.pluck(:id).last))
   random_palette = rand(0...PALETTES.length)
   ColorPalette.create(
     user_id: user,
@@ -116,6 +115,7 @@ NUM_USERS.times do
     user_id: current_user_id,
     product_name: User.find_by(id: current_user_id).current_product_name,
     active_color_palette: rand((ColorPalette.pluck(:id).first)..(ColorPalette.pluck(:id).last)),
+    active_effect: effect_names[rand(0..(effect_names.length))],
     on: [true, false][rand(0...1)]
   )
 end
@@ -142,20 +142,24 @@ end
 
 a = Product.pluck(:id).to_a.shuffle
 TOTAL_PRODUCT_COUNT.times do
-  EffectSetting.create(
-    product_id: a.pop,
-    parameter_1: rand(-50...50),
-    parameter_2: rand(-50...50),
-    parameter_3: rand(-50...50),
-    parameter_4: rand(-50...50),
-    parameter_5: rand(-50...50)
-  )
+  product_id = a.pop
+  effect_names.length.times do |index|
+    EffectSetting.create(
+      product_id: product_id,
+      effect_name: effect_names[index],
+      parameter_1: rand(-30...30),
+      parameter_2: rand(-30...30),
+      parameter_3: rand(-30...30),
+      parameter_4: rand(-30...30),
+      parameter_5: rand(-30...30)
+    )
+  end
 end
 
 p "-------------------"
 p "Created #{User.count} total users"
-p "Created #{TOTAL_PRODUCT_COUNT} products, #{USERS_WITH_EXTRA_PRODUCTS} users with more than one product"
-p "Created #{ApiSetting.count} api settings"
+p "Created #{Product.count} products, #{USERS_WITH_EXTRA_PRODUCTS} users with more than one product"
+p "Created #{UserPalette.count} UserPalettes (user/color palette connections)"
 p "Created #{Effect.count} effects"
 p "Created #{EffectSetting.count} effect settings"
 p "Created #{ColorPalette.count} color palettes, #{USERS_WITH_EXTRA_PALETTES*2} users with more than one palette"

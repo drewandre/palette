@@ -6,7 +6,7 @@ const SearchPaletteTiles = props => {
   let userPalettes = props.data.map(palette => {
     if(palette != null) {
       return (
-        <div className='make-full-width'>
+        <div className='search-results'>
           <PaletteSwatches
             swatchesClassName={props.swatchesClassName}
             handleSearchClick={props.handleSearchClick}

@@ -8,18 +8,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.update(first_name: @user.first_name.capitalize, last_name: @user.last_name.capitalize)
-      binding.pry
       # @user.send_confirmation_email
       flash[:success] = "Registration successful."
       # redirect_to root_path
       sign_in(@user)
-      redirect_to sign_up_products_url
+      redirect_to sign_up_products_path
     else
       flash.now[:alert] = "There was a problem with your registration."
       render :new
     end
   end
-
+  
   def edit
     @user = User.find_by(handle: params[:id])
     authorize_user(@user)

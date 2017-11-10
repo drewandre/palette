@@ -3,23 +3,25 @@ import DataSelectField from '../components/DataSelectField'
 import ApiTiles from '../components/ApiTiles'
 import ConnectionTiles from '../components/ConnectionTiles'
 
+var STOCKS = ['AAPL', 'GOOG', 'NVDA', 'MSFT', 'QCOM', 'DIS', 'NOK', 'AMZN', 'INTC'];
+
 class ApiContainer extends React.Component {
-
-  showSettings (event) {
-    event.preventDefault();
-  }
-
   constructor(props) {
     super(props);
     this.state = {
       endpoint_keys: ['', '', '', '', ''],
       endpoint_values: ['', '', '', '', ''],
-      parameterConnection: ['', '', '', '', ''],
       selectedApiUrl: '',
+      selectedApi: 'Weather',
+      selectedApiOptions: 'Boston',
       fetchError: false,
-      loading: false
+      loading: false,
+      SYMBOL: 'AAPL',
+      CITY: 'Boston',
+      activeEffect: ''
     };
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleOptionsSelect = this.handleOptionsSelect.bind(this);
     this.getActiveApi = this.getActiveApi.bind(this);
     this.fetchStockData = this.fetchStockData.bind(this);
     this.fetchWeatherData = this.fetchWeatherData.bind(this);
@@ -71,16 +73,25 @@ class ApiContainer extends React.Component {
       body: JSON.stringify({ active_api: selectedItem })
     })
     if(selectedItem === "real-time-stock-data") {
-      let selectedApiUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=L2S772FW0QB5CQM0"
-      this.setState({ selectedApiUrl: selectedItem })
+      let selectedApiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.SYMBOL}&interval=1min&apikey=L2S772FW0QB5CQM0`
+      this.setState({ selectedApi: selectedItem })
       this.fetchStockData(selectedApiUrl);
     } else if (selectedItem === "weather") {
-
-      let selectedApiUrl = "http://api.openweathermap.org/data/2.5/weather?q=Boston,us&appid=aa3957e7e64baafee029f61847cde20c"
-      this.setState({ selectedApiUrl: selectedItem })
-      console.log('set selectedApiUrl state to ' + selectedItem);
+      let selectedApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.CITY},us&appid=aa3957e7e64baafee029f61847cde20c`
+      this.setState({ selectedApi: selectedItem })
       this.fetchWeatherData(selectedApiUrl);
     }
+  }
+
+  handleOptionsSelect(option) {
+    if(this.state.selectedApi == 'weather') {
+      this.setState({CITY: option.target.value})
+      console.log('CITY changed to ' + option.target.value);
+    } else if (this.state.selectedApi == 'real-time-stock-data') {
+      this.setState({SYMBOL: option.target.value})
+      console.log('SYMBOL changed to ' + option.target.value);
+    }
+    this.handleSelect(this.state.selectedApi)
   }
 
   getActiveApi(nextUser) {
@@ -100,31 +111,33 @@ class ApiContainer extends React.Component {
     }
   }
 
-  render() {
+  render() {    
     return (
       <div className={this.props.className}>
         <div className='container-info'>
           <div>
-            <i className="fa fa-database fa-2x" id="box-icon" aria-hidden="true"></i>
-            <div className='container-title'>Data | </div>
-            <div className='container-search'>
-              <i className="fa fa-power-off fa-2x" aria-hidden="true"></i>
-            </div>
+            <i className="fa fa-database fa-2x" id="api-box-icon" aria-hidden="true"></i>
+            <div className='container-title'>Data</div>
           </div>
         </div>
         <DataSelectField
           value={this.state.selectedApiUrl}
+          apiValue={this.state.selectedApi}
+          optionsValue={this.state.selectedApiOptions}
           handleSelect={this.handleSelect}
+          handleOptionsSelect={this.handleOptionsSelect}
         />
-        <ApiTiles
-          className='api-list'
-          keys={this.state.endpoint_keys}
-          values={this.state.endpoint_values}
-        />
-        <ConnectionTiles
-          className='connection-tile-list'
-          connections={this.state.parameterConnection}
-        />
+        <div className='api-control'>
+          <ApiTiles
+            className='api-list'
+            keys={this.state.endpoint_keys}
+            values={this.state.endpoint_values}
+          />
+          <ConnectionTiles
+            className='connection-tile-list'
+            effectParameterNames={this.props.effectParameterNames}
+          />
+        </div>
       </div>
     )
   }
