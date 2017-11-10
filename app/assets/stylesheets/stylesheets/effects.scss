@@ -1,4 +1,5 @@
 .effect-search[type="text"], textarea {
+  user-select: none;
   position: absolute;
   left: 245px;
   top: 20px;
@@ -15,6 +16,7 @@
   border: none;
 }
 .effect-search[type="text"]:focus, textarea:focus {
+  user-select: none;
   background-color: #2F2F2F;
   box-shadow: none;
   -webkit-appearance: none;

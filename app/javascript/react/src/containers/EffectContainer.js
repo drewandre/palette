@@ -16,39 +16,22 @@ class EffectContainer extends React.Component {
       sliderValue_4: 0,
       sliderValue_5: 0,
       lastKeyPressedTime: 0,
-      active_effect: 0,
-      effect_name: '',
+      active_effect: '',
       effect_parameter_1_name: '',
       effect_parameter_2_name: '',
       effect_parameter_3_name: '',
       effect_parameter_4_name: '',
       effect_parameter_5_name: '',
-      loading: false,
-      selectedEffect: ''
+      loading: false
     }
     this.handleSlider_1 = this.handleSlider_1.bind(this);
     this.handleSlider_2 = this.handleSlider_2.bind(this);
     this.handleSlider_3 = this.handleSlider_3.bind(this);
     this.handleSlider_4 = this.handleSlider_4.bind(this);
     this.handleSlider_5 = this.handleSlider_5.bind(this);
-    this.getEffectSettings = this.getEffectSettings.bind(this);
     this.getActiveEffect = this.getActiveEffect.bind(this);
-    this.postValuesToFetch = this.postValuesToFetch.bind(this);
+    this.postSliderValuesToFetch = this.postSliderValuesToFetch.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  getEffectSettings(nextUser) {
-    fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}/effect_settings`)
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        sliderValue_1: body.parameter_1,
-        sliderValue_2: body.parameter_2,
-        sliderValue_3: body.parameter_3,
-        sliderValue_4: body.parameter_4,
-        sliderValue_5: body.parameter_5
-      })
-    })
   }
 
   getActiveEffect(nextUser) {
@@ -68,13 +51,23 @@ class EffectContainer extends React.Component {
         effect_parameter_3_name: body.parameter_3_name,
         effect_parameter_4_name: body.parameter_4_name,
         effect_parameter_5_name: body.parameter_5_name,
-        effect_name: body.effect_name
+      })
+      return fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}/effect_settings/${body.effect_name}`)
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        sliderValue_1: body.parameter_1,
+        sliderValue_2: body.parameter_2,
+        sliderValue_3: body.parameter_3,
+        sliderValue_4: body.parameter_4,
+        sliderValue_5: body.parameter_5
       })
     })
   }
 
-  postValuesToFetch() {
-    if (Date.now() - this.state.lastKeyPressedTime > 200) {
+  postSliderValuesToFetch() {
+    if (Date.now() - this.state.lastKeyPressedTime > 300) {
       this.setState({ loading: true })
       let formPayload = {
         parameter_1: this.state.sliderValue_1,
@@ -83,7 +76,7 @@ class EffectContainer extends React.Component {
         parameter_4: this.state.sliderValue_4,
         parameter_5: this.state.sliderValue_5
       };
-      fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings`, {
+      fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings/${this.state.active_effect}`, {
         credentials: "same-origin",
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -97,7 +90,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_1: sliderValue_1
     })
-    setTimeout(() => this.postValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 1000);
   }
 
   handleSlider_2(sliderValue_2) {
@@ -105,7 +98,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_2: sliderValue_2
     })
-    setTimeout(() => this.postValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 1000);
   }
 
   handleSlider_3(sliderValue_3) {
@@ -113,7 +106,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_3: sliderValue_3
     })
-    setTimeout(() => this.postValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 1000);
   }
 
   handleSlider_4(sliderValue_4) {
@@ -121,7 +114,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_4: sliderValue_4
     })
-    setTimeout(() => this.postValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 1000);
   }
 
   handleSlider_5(sliderValue_5) {
@@ -129,16 +122,31 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_5: sliderValue_5
     })
-    setTimeout(() => this.postValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 1000);
   }
 
   handleSelect(selectedItem) {
-    this.setState({ selectedEffect: selectedItem.target.value })
+    let active_effect = selectedItem.target.value
+    let effectPayload = [
+      selectedItem.target.value,
+      this.state.effect_parameter_1_name,
+      this.state.effect_parameter_2_name,
+      this.state.effect_parameter_3_name,
+      this.state.effect_parameter_4_name,
+      this.state.effect_parameter_5_name
+    ]
+    this.props.handleEffectChange(effectPayload);
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ active_effect })
+    })
+    .then(this.getActiveEffect(this.props.currentUser))
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.currentUser != this.props.currentUser) {
-      this.getEffectSettings(nextProps.currentUser);
       this.getActiveEffect(nextProps.currentUser);
     }
   }
@@ -155,9 +163,9 @@ class EffectContainer extends React.Component {
         {/* {loading} */}
         <div>
           <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
-          <div className='container-title'>Effects | </div>
+          <div className='container-title'>Effects</div>
           <EffectSelectField
-            value={this.state.selectedEffect}
+            value={this.state.active_effect}
             handleSelect={this.handleSelect}
           />
         </div>

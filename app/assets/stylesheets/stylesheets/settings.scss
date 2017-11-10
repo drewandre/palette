@@ -6,34 +6,36 @@
   font-weight: 200;
   position: absolute;
   right: 7%;
-  top: 25%;
+  top: 35%;
 }
 
 .on {
   position: relative;
-  top: 0px;
-  left: 55px;
+  padding-bottom: 3px;
+  bottom: 55px;
+  left: 226px;
   text-align: center;
   float: left;
-  height: 56px;
-  width: 55px;
+  height: 40px;
+  width: 107px;
   background-color: #292929;
   border-top-left-radius:5px;
-  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
   font-size: 0.8em;
-  // vertical-align: middle;
 }
 
 .off {
   position: relative;
-  top: 56px;
-  left: 0px;
+  padding-bottom: 3px;
+  padding-right: 2px;
+  bottom: 55px;
+  left: 225px;
   text-align: center;
   float: left;
-  height: 56px;
-  width: 55px;
+  height: 40px;
+  width: 109px;
   background-color: #292929;
-  border-bottom-left-radius:5px;
+  border-top-right-radius:5px;
   border-bottom-right-radius:5px;
   font-size: 0.8em;
 }
@@ -72,4 +74,20 @@
 
 #time-down:active {
   color: lighten(#95C9B4, 40%)
+}
+
+.master-brightness {
+  position: relative;
+  left: 200px;
+  top: 153px;
+  font-size: 1.8em;
+  font-weight: 200;
+}
+
+.scheduling {
+  position: relative;
+  left: 196px;
+  top: 103px;
+  font-size: 1.8em;
+  font-weight: 200;
 }

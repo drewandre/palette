@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def authenticate_user_product
+  #   if !Product.find_by(user)
+  #     redirect_to sign_in_path
+  #   else
+  #     redirect_to sign_up_products
+  #   end
+  # end
+
   def current_user
     if session[:user_id]
       @current_user ||= User.find(session[:user_id]) if session[:user_id]

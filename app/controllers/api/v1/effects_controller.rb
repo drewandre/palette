@@ -5,7 +5,7 @@ class Api::V1::EffectsController < ApplicationController
   end
 
   def show
-    @effect = Effect.find_by(id: params[:id])
+    @effect = Effect.find_by(effect_name: params[:effect_name].capitalize)
     render json: @effect
   end
 end

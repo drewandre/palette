@@ -28,7 +28,7 @@ const PaletteSwatches = props => {
   width_4 = percentage_hex_4 / numSwatches
 
   return(
-    <div onClick={props.handleSearchClick} value={id} className={props.swatchesClassName}>
+    <div onClick={props.handleSearchClick} value={id} className={props.swatchesClassName} id={props.id}>
       {/* <div className='palette-container-left'/>
       <div className='palette-container-right'/> */}
       <div className='color-swatch' value={id} style={{ backgroundColor: hex_1, width: width_1+'%' }}/>

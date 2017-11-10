@@ -4,42 +4,51 @@ import SettingsContainer from './SettingsContainer'
 import ApiContainer from './ApiContainer'
 import PaletteContainer from './PaletteContainer'
 
+var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
 class Dashboard extends React.Component {
   constructor(props) {
-    super(props)
-    // this.state = {
-      // data: []
-    // }
-    // this.addSubmissions = this.addSubmissions.bind(this)
+    super(props);
+    this.state = {
+      activeEffect: '',
+      effectParameterNames: [],
+      day: '',
+      month: '',
+      year: ''
+    }
+    this.getLastConnection = this.getLastConnection.bind(this);
+    this.handleEffectChange = this.handleEffectChange.bind(this);
   }
 
-  // showSettings (event) {
-  //   event.preventDefault();
-  // }
-
-  // addSubmissions(submission) {
-  //   this.setState({ data: this.state.data.concat(submission) })
-  // }
-
-  render () {
-    let updated_at = new Date(this.props.currentUser.updated_at)
-    let month = updated_at.getMonth();
+  getLastConnection() {
+    let updated_at = new Date(this.props.currentUser.created_at)
+    let month = monthNames[updated_at.getMonth()];
     let day = updated_at.getDate();
-    // let year = updated_at.getYear();
-    let hour = updated_at.getHours();
-    let minutes = updated_at.getMinutes();
-    let seconds = updated_at.getSeconds();
+    let year = updated_at.getFullYear();
+    this.setState({
+      day: day,
+      month: month,
+      year: year
+    })
+  }
 
+  handleEffectChange(effect) {
+    let activeEffect = effect.shift();
+    this.setState({
+      activeEffect: activeEffect,
+      effectParameterNames: effect
+    })
+  }
+
+  render() {
     return (
       <div className='dashboard'>
-        <div id='dashboard-title'>
+        <div className='dashboard-title'>
           Dashboard |
         </div>
-        <div id='dashboard-info'>
-          <div><div id='name-and-updated'>Product:</div>{this.props.currentUser.current_product_name}</div>
-          {/* <div>Last Update: {month}-{day}, {hour}:{minutes}:{seconds}</div> */}
-          <div><div id='name-and-updated'>Last Update:</div>{Date(this.props.currentUser.updated_at)}</div>
-        </div>
+        <div id='name-and-updated'>Last Connection: {this.state.day} {this.state.month} {this.state.year}</div>
         <div className='row collapse fullwidth'>
           <div className='small-12 medium-12 large-6 columns'>
             <PaletteContainer
@@ -51,19 +60,21 @@ class Dashboard extends React.Component {
             <EffectContainer
               currentUser={this.props.currentUser}
               className="box"
+              handleEffectChange={this.handleEffectChange}
             />
           </div>
-        <div className='small-12 medium-12 large-4 columns'>
+        <div className='small-12 medium-12 large-5 columns'>
           <SettingsContainer
             currentUser={this.props.currentUser}
             className="box"
           />
         </div>
-        <div className="small-12 medium-12 large-8 columns">
+        <div className="small-12 medium-12 large-7 columns">
           <ApiContainer
             currentUser={this.props.currentUser}
-            addSubmissions={this.addSubmissions}
             className='box'
+            activeEffect={this.state.activeEffect}
+            effectParameterNames={this.state.effectParameterNames}
           />
         </div>
       </div>

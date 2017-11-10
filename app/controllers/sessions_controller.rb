@@ -9,8 +9,10 @@ class SessionsController < ApplicationController
       user = User.find_by(handle: params[:session][:login])
     end
     if user && user.authenticate(params[:session][:password])
+      # && user.authenticate_user_product
+
       # if user.confirmed?
-        # p 'Successful sign in.'
+      #   p 'Successful sign in.'
         flash[:success] = "Signed in as #{user.handle}."
         sign_in(user)
         params[:session][:remember_me] == "1" ? remember(user) : forget(user)

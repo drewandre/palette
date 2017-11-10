@@ -7,7 +7,7 @@
   font-size: 1.6em;
   font-weight: 200;
   background-color: #2F2F2F;
-  color: #4F4F4F;
+  color: #686868;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
@@ -40,6 +40,50 @@
   border: none;
 }
 
+.data-options-field select {
+  background-color: red;
+  position: absolute;
+  left: 290px;
+  top: 15px;
+  width: 150px;
+  height: 50px;
+  font-size: 1.6em;
+  font-weight: 200;
+  background-color: #2F2F2F;
+  color: #686868;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: none;
+}
+
+.data-options-field input:focus {
+  background-color: red;
+  text-align: center;
+  border: none;
+  font-size: 1em;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  -webkit-appearance: none;
+  border: none;
+}
+
+.data-options-field select:active {
+  text-align: center;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  background-color: #2F2F2F;
+  color: darken(white, 20%);
+  border: none;
+  -webkit-appearance: none;
+  border: none;
+}
+
 .effect-select-field select {
   position: absolute;
   left: 225px;
@@ -49,7 +93,7 @@
   font-size: 1.6em;
   font-weight: 200;
   background-color: #2F2F2F;
-  color: #4F4F4F;
+  color: #686868;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
@@ -83,16 +127,16 @@
 }
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 .master-brightness-slider {
   position: absolute;
   right: 7%;
-  top: 60%;
+  top: 70%;
 }
 .master-brightness-slider[type=range]{
-    width: 280px;
+    width: 214px;
     -webkit-appearance: none;
     background: transparent;
 }
@@ -121,8 +165,15 @@
 
 #dropdown-arrow {
   position: absolute;
-  top: 32px;
-  left: 290px;
+  top: 55px;
+  left: 220px;
+  color: #4F4F4F;
+}
+
+#dropdown-arrow-options {
+  position: absolute;
+  top: 55px;
+  left: 331px;
   color: #4F4F4F;
 }
 
@@ -132,10 +183,3 @@
   left: 325px;
   color: #4F4F4F;
 }
-
-// #search-arrow {
-//   position: absolute;
-//   top: 32px;
-//   left: 340px;
-//   color: #4F4F4F;
-// }

@@ -1,9 +1,10 @@
+.make-blue {
+   background-color: blue;
+}
+
 .api-list {
   pointer-events: none;
   text-align: center;
-  position: relative;
-  display: block;
-  top: 7%;
   height: 50%;
   z-index: 1;
 }
@@ -11,21 +12,18 @@
 .connection-tile-list {
   pointer-events: none;
   text-align: center;
-  position: relative;
   display: block;
-  top: 37%;
-  height: 30%;
   z-index: 1;
 }
 
 .endpoint-tiles {
-  text-align: center;
+  // text-align: center;
   pointer-events: none;
   user-select: none;
   position: relative;
   top: 90%;
   background-color: #373737;
-  margin: 15px;
+  margin: 5px;
   display: inline-block;
   overflow: hidden;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -40,15 +38,14 @@
   pointer-events: none;
   user-select: none;
   position: relative;
-  top: 70%;
   background-color: #373737;
-  margin: 15px;
+  color: #6F6F6F;
+  margin: 5px;
   display: inline-block;
   overflow: hidden;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   width: 16%;
-  height: 26%;
   z-index: 3;
 }
 
@@ -75,6 +72,7 @@
 
 .data-search[type="text"], textarea {
   position: absolute;
+  user-select: none;
   left: 245px;
   top: 20px;
   width: 65%;
@@ -83,7 +81,7 @@
   font-weight: 100;
   box-shadow: none;
   background-color: #2F2F2F;
-  color: darken(white, 20%);
+  color: #686868;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
@@ -91,9 +89,16 @@
 }
 .data-search[type="text"]:focus, textarea:focus {
   background-color: #2F2F2F;
+  user-select: none;
   box-shadow: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
   border: none;
+}
+
+.api-control {
+  width: 100%;
+  position: absolute;
+  top: 57%;
 }
