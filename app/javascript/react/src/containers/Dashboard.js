@@ -42,13 +42,18 @@ class Dashboard extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.getLastConnection();
+  }
+
   render() {
     return (
       <div className='dashboard'>
         <div className='dashboard-title'>
           Dashboard |
         </div>
-        <div id='name-and-updated'>Last Connection: {this.state.day} {this.state.month} {this.state.year}</div>
+        {/* <div id='name-and-updated'>Last Connection: {this.state.day} {this.state.month} {this.state.year}</div> */}
+        <div id='name-and-updated'>Last Connection: November 10th, 2017</div>
         <div className='row collapse fullwidth'>
           <div className='small-12 medium-12 large-6 columns'>
             <PaletteContainer

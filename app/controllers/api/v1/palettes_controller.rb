@@ -13,7 +13,7 @@ class Api::V1::PalettesController < ApplicationController
     render json: @palettes
   end
 
-  def create
+  def new
     user = User.find_by(handle: params[:handle])
     @uploaded_palette = ColorPalette.create(
       user_id: user.id,
@@ -27,6 +27,12 @@ class Api::V1::PalettesController < ApplicationController
     )
     @user_palettes = UserPalette.create(user_id: user.id, color_palette_id: @uploaded_palette.id)
     render json: @user_palettes
+  end
+
+  def create
+    user = User.find_by(handle: params[:handle])
+    @user_palette = UserPalette.create(user_id: user.id, color_palette_id: params[:palette_id])
+    render json: @user_palette
   end
 
   def user_show

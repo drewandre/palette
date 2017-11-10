@@ -142,7 +142,9 @@ class EffectContainer extends React.Component {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ active_effect })
     })
-    .then(this.getActiveEffect(this.props.currentUser))
+    .then(response => {
+      this.getActiveEffect(this.props.currentUser)
+    })
   }
 
   componentWillReceiveProps(nextProps) {

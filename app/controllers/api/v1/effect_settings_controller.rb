@@ -1,6 +1,5 @@
 class Api::V1::EffectSettingsController < ApplicationController
-  # before_action :skip_authenticity_token
-  # skip_before_filter :verify_authenticity_token, only: [:create]
+
   protect_from_forgery with: :null_session
 
 

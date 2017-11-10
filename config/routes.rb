@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
       get "users/:handle/palettes", to: "palettes#user_show"
       post "users/:handle/palettes", to: "palettes#create"
+      post "users/:handle/palettes/new", to: "palettes#new"
 
       get "/palettes", to: "palettes#index"
       get "/palettes/:id", to: "palettes#current_user_palette"
