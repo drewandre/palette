@@ -9,12 +9,21 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.user_id = current_user.id
-    @product.product_name = @product.product_name.parameterize
-    @product.active_color_palette = ColorPalette.first.id
-    @product.active_effect = Effect.first.effect_name
-    @product.turn_on = Time.new
-    @product.turn_off = Time.new
+    # @product.user_id = current_user.id
+    # @product.product_name = @product.product_name.parameterize
+    binding.pry
+    # @product.active_color_palette = ColorPalette.first.id
+    # @product.active_effect = Effect.first.effect_name
+    # @product.turn_on = Time.new
+    # @product.turn_off = Time.new
+    @product.update(
+      user_id: current_user.id,
+      product_name: @product.product_name.parameterize,
+      active_color_palette: ColorPalette.first.id,
+      active_effect: Effect.first.effect_name,
+      turn_on: Time.new,
+      turn_off: Time.new
+    )
     if @product.save
       effect_names = ["Radiate", "Rainbow", "Splatter", "Flex", "Ambient", "Twinkle"];
       effect_names.length.times do |index|
