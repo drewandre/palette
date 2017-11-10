@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     # @product.user_id = current_user.id
     # @product.product_name = @product.product_name.parameterize
-    binding.pry
     # @product.active_color_palette = ColorPalette.first.id
     # @product.active_effect = Effect.first.effect_name
     # @product.turn_on = Time.new
