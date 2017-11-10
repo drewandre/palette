@@ -115,7 +115,8 @@ NUM_USERS.times do
     user_id: current_user_id,
     product_name: User.find_by(id: current_user_id).current_product_name,
     active_color_palette: rand((ColorPalette.pluck(:id).first)..(ColorPalette.pluck(:id).last)),
-    active_effect: effect_names[rand(0..(effect_names.length))],
+    # active_effect: effect_names[rand(0..(effect_names.length))],
+    active_effect: 'Rainbow',
     on: [true, false][rand(0...1)]
   )
 end
@@ -127,6 +128,8 @@ USERS_WITH_EXTRA_PRODUCTS.times do
     user_id: rand((User.pluck(:id).first)..(User.pluck(:id).last)),
     product_name: locations[index].parameterize,
     active_color_palette: rand((ColorPalette.pluck(:id).first)..(ColorPalette.pluck(:id).last)),
+    # active_effect: effect_names[rand(0..(effect_names.length))],
+    active_effect: 'Rainbow',
     on: [true, false][rand(0...1)]
   )
 end
