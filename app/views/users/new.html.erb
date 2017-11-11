@@ -1,5 +1,7 @@
-<%= form_for @user do |f| %>
-  <div class='sign-up-info'>
+<div class="sign-up-form">
+  <%= form_for @user do |f| %>
+    <i class="fa fa-user fa-4x" id='sign-up-icon' aria-hidden="true"></i>
+    <div id='register'>Register</div>
     <% if @user.errors.present? %>
       <div class="form-errors">
         <div>
@@ -12,40 +14,30 @@
             </div>
           <% end %>
         </div>
-    <% end %>
-  </div>
-  <div class="sign-up-form">
-    <i class="fa fa-user fa-4x" id='sign-up-icon' aria-hidden="true"></i>
-    <div id='register'>Register</div>
-    <div>
-      <%= f.text_field :handle, placeholder: "username", autoComplete: "off" %>
-    </div>
-    <div>
-      <%= f.email_field :email, placeholder: "email", autoComplete: "off" %>
-    </div>
-    <div class="row collapse">
-      <div class="small-12 medium-6 columns">
-        <div>
-          <%= f.text_field :first_name, placeholder: "first name", autoComplete: "off" %>
-        </div>
       </div>
-      <div class="small-12 medium-6 columns">
-        <div>
-          <%= f.text_field :last_name, placeholder: "last name", autoComplete: "off" %>
-        </div>
+    <% end %>
+    <div class="row">
+      <div class="small-12 medium-6 medium-offset-3 columns">
+        <%= f.text_field :handle, placeholder: "username", autoComplete: "off" %>
+        <%= f.email_field :email, placeholder: "email", autoComplete: "off" %>
+        <%= f.text_field :first_name, placeholder: "first name", autoComplete: "off" %>
+        <%= f.text_field :last_name, placeholder: "last name", autoComplete: "off" %>
+        <%= f.password_field :password, placeholder: "password", autoComplete: "off" %>
+        <%= f.password_field :password_confirmation, placeholder: "confirm password", autoComplete: "off" %>
       </div>
     </div>
-    <div>
-      <%= f.password_field :password, placeholder: "password", autoComplete: "off" %>
-    </div>
-    <div>
-      <%= f.password_field :password_confirmation, placeholder: "confirm password", autoComplete: "off" %>
-    </div>
 
-    <div id='continue-text'>Continue</div>
-    <%= button_tag( :class => "button_green") do %>
-      <i class="fa fa-arrow-circle-right fa-2x" id='continue-icon' aria-hidden="true"></i>
-    <% end %>
-
+    <div class="form-actions">
+      <%= button_tag( :class => "button_green") do %>
+      <div class='continue'>
+        <a href='/sign-in'><i class="fa fa-arrow-circle-left" style='margin-right: 10px' aria-hidden="true"></i>Sign In</a>
+      </div>
+      <% end %>
+      <%= button_tag( :class => "button_green") do %>
+      <div class='continue'>
+        <a>Continue<i class="fa fa-arrow-circle-right" style='margin-left: 10px' aria-hidden="true"></i></a>
+      </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

@@ -12,9 +12,8 @@ class UsersController < ApplicationController
         last_name: @user.last_name.capitalize
       )
       # @user.send_confirmation_email
-      flash[:success] = "Registration successful."
-      # redirect_to root_path
       sign_in(@user)
+      flash[:success] = "Registration successful."
       redirect_to sign_up_products_path
     else
       flash.now[:alert] = "There was a problem with your registration."

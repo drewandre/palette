@@ -9,32 +9,15 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # @product.user_id = current_user.id
-    # @product.product_name = @product.product_name.parameterize
-    # @product.active_color_palette = ColorPalette.first.id
-    # @product.active_effect = Effect.first.effect_name
-    # @product.turn_on = Time.new
-    # @product.turn_off = Time.new
-
     @product.update(
       user_id: current_user.id,
-      product_name: @product.product_name.parameterize,
+      product_name: @product.product_name,
       active_color_palette: ColorPalette.first.id,
       active_api: "real-time-stock-data",
       active_effect: Effect.first.effect_name,
       turn_on: Time.new,
       turn_off: Time.new
     )
-
-    # @product = Product.new(
-    #   user_id: current_user.id,
-    #   product_name: product_params[:product_name].parameterize,
-    #   active_effect: Effect.first.effect_name,
-    #   active_color_palette: ColorPalette.first.id,
-    #   active_api: "real-time-stock-data",
-    #   turn_on: Time.new,
-    #   turn_off: Time.new
-    # )
 
     if @product.save
       effect_names = ["Radiate", "Rainbow", "Splatter", "Flex", "Ambient", "Twinkle"];
@@ -49,7 +32,6 @@ class ProductsController < ApplicationController
           parameter_5: rand(-30...30)
         )
       end
-      # ApiSetting.create(product_id: @product.id)
       current_user.update(current_product_name: @product.product_name)
       UserPalette.create(user_id: current_user.id, color_palette_id: @product.active_color_palette)
       flash[:success] = "Registration successful."

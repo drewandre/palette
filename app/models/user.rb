@@ -3,7 +3,6 @@ class User < ApplicationRecord
   HANDLE_REGEXP = /\A[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*\z/
 
   has_many :products
-  # has_many :color_palettes
   has_many :user_palettes
   has_many :color_palettes, through: :user_palettes
   has_many :api_settings, through: :products
@@ -18,9 +17,9 @@ class User < ApplicationRecord
 
   validates_format_of :email, with: EMAIL_REGEXP
   validates_format_of :handle, with: HANDLE_REGEXP
-  validates_length_of :handle, in: 3..30
-  validates_presence_of :email, :first_name, :handle, :last_name
-  validates_uniqueness_of :email, :handle, :universally_unique_id
+  validates_length_of :handle, in: 3..30, :message => "must be at least 3 characters"
+  validates_presence_of :email, :first_name, :handle, :last_name, :message => "can't be blank"
+  validates_uniqueness_of :email, :handle, :universally_unique_id, :message => "already exists"
 
   def authenticated?(attribute, token)
     digest = self.send("#{attribute}_digest")
