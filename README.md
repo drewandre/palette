@@ -10,7 +10,7 @@ Project Trello: http://bit.ly/2zFYUQV</br>
 
 README
 
-<strong>Palette</strong>
+<h1>Palette</h1>
 
 Description
 
