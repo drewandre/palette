@@ -8,16 +8,11 @@ User stories: http://bit.ly/2yIIwRL</br>
 ER diagram: http://bit.ly/2zHAhDx</br>
 Project Trello: http://bit.ly/2zFYUQV</br>
 
-README
-
 <h1>Palette</h1>
 
-Description
+## Description
 
-<hr>
-
-Features
-
+## Features
 Users can create and update their own personal account.
 Users can sign in/out of their account
 Users can optionally add a profile picture to their account.
@@ -30,8 +25,8 @@ Users can add memories on individual events
 Users can edit reviews they have created.
 Users can view their personal timelines with their memories in their profiles.
 Admins can delete any review, timeline, or event.
-Technologies
-<hr>
+
+## Technologies
 Backend: Rails 5.1.2
 Frontend: React.js and Embedded Ruby
 User Auth: Github Omniauth
@@ -39,8 +34,8 @@ Image Hosting: Amazon Web Services
 Styling: Foundation
 Database: Postgres
 Testing: RSpec, Capybara, Jasmine, Karma, Enzyme
-To run this app on your local machine
-<hr>
+
+## To run this app on your local machine
 Install Ruby.2.3.3
 In a terminal, run git clone https://github.com/luigilake/pensieve.git
 Navigate to the project's root directory with cd pensieve
