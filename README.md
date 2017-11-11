@@ -29,7 +29,7 @@ Users can edit reviews they have created.
 Users can view their personal timelines with their memories in their profiles.
 Admins can delete any review, timeline, or event.
 Technologies
-</hr>
+<hr>
 Backend: Rails 5.1.2
 Frontend: React.js and Embedded Ruby
 User Auth: Github Omniauth
