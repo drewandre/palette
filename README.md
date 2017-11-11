@@ -14,6 +14,8 @@ README
 
 Description
 
+<hr>
+
 Features
 
 Users can create and update their own personal account.
@@ -38,7 +40,7 @@ Styling: Foundation
 Database: Postgres
 Testing: RSpec, Capybara, Jasmine, Karma, Enzyme
 To run this app on your local machine
-</hr>
+<hr>
 Install Ruby.2.3.3
 In a terminal, run git clone https://github.com/luigilake/pensieve.git
 Navigate to the project's root directory with cd pensieve
