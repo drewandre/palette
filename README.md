@@ -29,7 +29,7 @@ Users can edit reviews they have created.
 Users can view their personal timelines with their memories in their profiles.
 Admins can delete any review, timeline, or event.
 Technologies
-
+</hr>
 Backend: Rails 5.1.2
 Frontend: React.js and Embedded Ruby
 User Auth: Github Omniauth
@@ -38,7 +38,7 @@ Styling: Foundation
 Database: Postgres
 Testing: RSpec, Capybara, Jasmine, Karma, Enzyme
 To run this app on your local machine
-
+</hr>
 Install Ruby.2.3.3
 In a terminal, run git clone https://github.com/luigilake/pensieve.git
 Navigate to the project's root directory with cd pensieve
