@@ -41,6 +41,7 @@ class PaletteDisplay extends React.Component {
           <div className='current-palette-title'>Displaying: {this.state.name}</div>
           <PaletteSwatches
             swatchesClassName='current-palette'
+            handlePaletteDelete={null}
             key={this.state.key}
             hex_1={this.state.hex_1}
             hex_2={this.state.hex_2}

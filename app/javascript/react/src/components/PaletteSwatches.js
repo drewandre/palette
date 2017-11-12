@@ -29,8 +29,7 @@ const PaletteSwatches = props => {
 
   return(
     <div onClick={props.handleSearchClick} value={id} className={props.swatchesClassName} id={props.id}>
-      {/* <div className='palette-container-left'/>
-      <div className='palette-container-right'/> */}
+      {props.handlePaletteDelete ? <i onClick={props.handlePaletteDelete} className="fa fa-minus-circle" id='palette-delete' aria-hidden="true"></i>: null}
       <div className='color-swatch' value={id} style={{ backgroundColor: hex_1, width: width_1+'%' }}/>
       <div className='color-swatch' value={id} style={{ backgroundColor: hex_2, width: width_2+'%' }}/>
       <div className='color-swatch' value={id} style={{ backgroundColor: hex_3, width: width_3+'%' }}/>

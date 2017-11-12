@@ -60,7 +60,7 @@ class NavBar extends React.Component {
             </div>
             <div id='nav-dropdown'>
               <div><a href='/sign-out'>Sign Out</a></div>
-              <div><a href='/sign-out'>My Products</a></div>
+              {/* <div><a href='/sign-out'>My Products</a></div> */}
             </div>
           </div>
         </div>

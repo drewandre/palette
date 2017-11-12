@@ -1,6 +1,7 @@
 .dashboard {
   position: relative;
   top: -5px;
+  // height: 100%;
 }
 
 .box {
@@ -8,7 +9,8 @@
   background: #2F2F2F;
   border-radius: 4px;
   margin: 10px;
-  height: 440px;
+  // height: 40vh;
+  height: 395px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
   color: #6F6F6F;
   overflow: hidden;
@@ -122,13 +124,3 @@
   font-weight: 100;
   line-height: 1.2;
 }
-
-// .dashboard-title:after {
-//   content:"";
-//   background: #686868;
-//   position: absolute;
-//   bottom: 0;
-//   right: 0;
-//   height: 60%;
-//   width: 1px;
-// }

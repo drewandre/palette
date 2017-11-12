@@ -2,13 +2,13 @@ import React from 'react';
 import PaletteSwatches from './PaletteSwatches'
 
 const PaletteTiles = props => {
-
   let userPalettes = props.data.map((palette, index) => {
     if(palette != null) {
       return (
         <PaletteSwatches
           swatchesClassName={props.swatchesClassName}
           handleSearchClick={props.handleSelectedPalette}
+          handlePaletteDelete={props.handlePaletteDelete}
           key={palette.id}
           id={palette.id}
           hex_1={palette.hex_1}
@@ -27,7 +27,7 @@ const PaletteTiles = props => {
         <PaletteSwatches
           swatchesClassName={props.swatchesClassName}
           id='no-hover'
-          // key={9999999999999}
+          // key={null}
           name={null}
           hex_1={null}
           hex_2={null}
