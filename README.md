@@ -31,9 +31,9 @@ Palette is a dashboard for controlling the smart led products designed by Drew A
 
 ## To run this app on your local machine
 * Install Ruby.2.3.3
-* In a terminal, run git clone https://github.com/drewandre/palette-dashboard.git
-* Navigate to the project's root directory with cd palette-dashboard
-* Run bundle install && npm install && rake db:setup
-* In terminal, run rails s
-* In another terminal window, run ./bin/webpacker-dev-server
+* In a terminal, run git clone `https://github.com/drewandre/palette-dashboard.git`
+* Navigate to the project's root directory with `cd palette-dashboard`
+* Run `bundle install && npm install && rake db:setup`
+* In terminal, run `rails s`
+* In another terminal window, run `./bin/webpacker-dev-server`
 * Visit http://localhost:3000/ in your browser.
