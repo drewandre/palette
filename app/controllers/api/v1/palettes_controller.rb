@@ -31,7 +31,14 @@ class Api::V1::PalettesController < ApplicationController
 
   def create
     user = User.find_by(handle: params[:handle])
-    @user_palette = UserPalette.create(user_id: user.id, color_palette_id: params[:palette_id])
+    if (
+      user.color_palettes.count < 8 &&
+      !UserPalette.exists?(user_id: user.id, color_palette_id: params[:palette_id])
+    )
+      @user_palette = UserPalette.create(user_id: user.id, color_palette_id: params[:palette_id])
+    else
+      flash[:error] = "Only eight color palettes allowed!"
+    end
     render json: @user_palette
   end
 
@@ -52,5 +59,15 @@ class Api::V1::PalettesController < ApplicationController
     @current_user_palette = ColorPalette.find(params[:id])
     render json: @current_user_palette
   end
+
+  def destroy_user_palette
+    user = User.find_by(handle: params[:handle])
+    user_palette = UserPalette.find_by(color_palette_id: params[:palette][:palette_id], user_id: user.id)
+    UserPalette.destroy(user_palette.id)
+  end
+
+  # def palatte_params
+  #   params.permit(:id)
+  # end
 
 end

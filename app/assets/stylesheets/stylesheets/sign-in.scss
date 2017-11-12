@@ -1,8 +1,8 @@
 #session_login[type="text"], textarea {
   font-weight: 200;
   text-align: center;
-  margin: 30px;
-  width: 400px;
+  // margin: 30px;
+  // width: 400px;
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
@@ -14,8 +14,8 @@
 #session_password[type="password"], textarea {
   text-align: center;
   font-weight: 200;
-  margin: 30px;
-  width: 400px;
+  // margin: 30px;
+  // width: 400px;
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
@@ -24,18 +24,10 @@
   border: 1px solid #454545;
 }
 
-.form-inputs {
-  text-align: center;
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 #lock-icon {
   border: 1px solid #454545;
   border-radius: 200px;
-  margin: auto;
+  margin-bottom: 5px;
   padding: 15px 25px;
   color: #454545;
   // transform: translate(-50%, -50%);
@@ -43,9 +35,10 @@
 
 .form-actions {
   color: black;
+  background-color: red;
 }
 
 .sign-in-error {
-  margin-top: 22px;
-  color: #454545;
+  margin-bottom: 22px;
+  color: #757575;
 }

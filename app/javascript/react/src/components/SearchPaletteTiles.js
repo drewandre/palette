@@ -10,6 +10,7 @@ const SearchPaletteTiles = props => {
           <PaletteSwatches
             swatchesClassName={props.swatchesClassName}
             handleSearchClick={props.handleSearchClick}
+            handlePaletteDelete={props.handlePaletteDelete}
             key={palette.id}
             id={palette.id}
             hex_1={palette.hex_1}

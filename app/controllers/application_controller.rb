@@ -1,24 +1,25 @@
 class ApplicationController < ActionController::Base
 
 
-  helper_method :current_user, :user_signed_in?, :authenticate_user!
+  helper_method :current_user, :user_signed_in?, :authenticate_user!, :authenticate_user_product!
   protect_from_forgery with: :exception
 
   def authenticate_user!
     if !user_signed_in?
       persist_location!
-      flash[:alert] = "You need to sign in before continuing."
+      # flash[:alert] = "You need to sign in before continuing."
       redirect_to sign_in_path
     end
   end
 
-  # def authenticate_user_product
-  #   if !Product.find_by(user)
-  #     redirect_to sign_in_path
-  #   else
-  #     redirect_to sign_up_products
-  #   end
-  # end
+  def authenticate_user_product!
+    if user_signed_in?
+      user = User.find_by(id: current_user.id)
+      if !user.products.exists?
+        redirect_to sign_up_products_path
+      end
+    end
+  end
 
   def current_user
     if session[:user_id]

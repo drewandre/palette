@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';

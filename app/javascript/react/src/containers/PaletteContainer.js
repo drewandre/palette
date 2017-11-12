@@ -26,6 +26,7 @@ class PaletteContainer extends React.Component {
     this.retrieveProminentColors = this.retrieveProminentColors.bind(this);
     this.onDrop = this.onDrop.bind(this);
     this.handlePaletteNameChange = this.handlePaletteNameChange.bind(this);
+    this.handlePaletteDelete = this.handlePaletteDelete.bind(this);
   }
 
   postUploadedPalette(hex_output) {
@@ -80,6 +81,7 @@ class PaletteContainer extends React.Component {
     for(var i = 0; i < 8; i++) {
       if(this.state.color_palettes[i].id === active_color_palette) {
         this.setState({ current_palette: this.state.color_palettes[i] })
+        break
       }
     }
   }
@@ -103,7 +105,7 @@ class PaletteContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       const palettes = this.state.color_palettes;
-      for(var i = 0; i < palettes.length; i++) {
+      for(var i = 0; i < 8; i++) {
         palettes[i] = body.palettes[i]
       }
       this.setState({ color_palettes: palettes })
@@ -138,6 +140,20 @@ class PaletteContainer extends React.Component {
       filter: 'none'
     });
     this.retrieveProminentColors(palette_name);
+  }
+
+  handlePaletteDelete(event) {
+    event.stopPropagation();
+    var palette_id = event.target.parentElement.id;
+    fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes`, {
+      credentials: "same-origin",
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ palette_id })
+    })
+    .then(response => {
+      this.loadUserPalettes(this.props.currentUser)
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -180,6 +196,7 @@ class PaletteContainer extends React.Component {
             </div>
             <div className='palette-blur'>
               <PaletteTiles
+                handlePaletteDelete={this.handlePaletteDelete}
                 swatchesClassName='palette-container'
                 className='palette-list'
                 data={this.state.color_palettes}

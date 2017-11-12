@@ -34,7 +34,6 @@ class SearchField extends React.Component {
     // console.log(this.state.searchResultsEmpty);
     return (
       <div>
-        {/* <form onSubmit={this.props.handleSelectedPalette}> */}
         <input
           className={this.props.paletteSearchBarClassName}
           autoComplete='off'
@@ -43,8 +42,6 @@ class SearchField extends React.Component {
           placeholder={this.props.placeholder}
           id={this.searchResultsEmpty}
         />
-          {/* <i className="fa fa-chevron-down" id='search-arrow' aria-hidden="true"></i> */}
-        {/* </form> */}
         <SearchPaletteTiles
           swatchesClassName={this.props.swatchesClassName}
           className={this.props.searchResultsClassName}
