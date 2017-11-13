@@ -48,7 +48,7 @@ class ApiContainer extends React.Component {
     .then(body => {
       var endpoint_keys = ['conditions', 'fahrenheit', 'humidity', 'cloudiness', 'wind speed'];
       var endpoint_values = this.state.endpoint_values;
-      endpoint_values[0] = (body.weather[0].main;
+      endpoint_values[0] = body.weather[0].main;
       endpoint_values[1] = ((Math.round(body.main.temp) - 273) + 32).toFixed(0)+'°F';
       endpoint_values[2] = (body.main.humidity)+'%';
       endpoint_values[3] = (body.clouds.all)+'%';
