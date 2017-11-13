@@ -38,12 +38,11 @@ class ApiContainer extends React.Component {
     lastUpdated = `${hours}:${minutes}:${seconds}`
     this.setState({ lastUpdated: lastUpdated })
     let currentApi = this.state.selectedApi;
-    // console.log('FETCHING API: ' + currentApi);
     if(currentApi === "real-time-stock-data") {
       let selectedApiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.SYMBOL}&interval=1min&apikey=L2S772FW0QB5CQM0`
       this.fetchStockData(selectedApiUrl);
     } else if (currentApi === "weather") {
-      let selectedApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.CITY},us&appid=aa3957e7e64baafee029f61847cde20c`
+      let selectedApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.CITY},us&appid=aa3957e7e64baafee029f61847cde20c`
       this.fetchWeatherData(selectedApiUrl);
     }
   }
@@ -53,7 +52,7 @@ class ApiContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       var endpoint_keys = ['open', 'high', 'low', 'close', 'volume'];
-      var last_refreshed = Object.values(body)[0]["3. Last Refreshed"];
+      // var last_refreshed = Object.values(body)[0]["3. Last Refreshed"];
       var stock_history = Object.values(body)[1];
       var current_stock_value = Object.values(stock_history)[1];
       this.setState({
