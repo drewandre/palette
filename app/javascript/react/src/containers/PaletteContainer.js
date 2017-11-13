@@ -151,7 +151,6 @@ class PaletteContainer extends React.Component {
   }
 
   handlePaletteDelete(event) {
-    this.props.handleLoading(true);
     event.stopPropagation();
     var palette_id = event.target.parentElement.id;
     fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes`, {
@@ -162,7 +161,6 @@ class PaletteContainer extends React.Component {
     })
     .then(response => {
       this.loadUserPalettes(this.props.currentUser)
-      this.props.handleLoading(false);
     });
   }
 

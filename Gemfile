@@ -1,6 +1,7 @@
 source 'https://rubygems.org/'
 
 gem 'active_model_serializers'
+gem 'huey'
 gem 'faker'
 gem "bcrypt"
 gem "jbuilder", "~> 2.5"
