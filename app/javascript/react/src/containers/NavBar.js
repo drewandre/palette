@@ -4,7 +4,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      powerStatus: true
+      powerStatus: false
     }
     this.handlePower = this.handlePower.bind(this);
     this.getPowerState = this.getPowerState.bind(this);
@@ -16,23 +16,20 @@ class NavBar extends React.Component {
     .then(body => {
       this.setState({
         powerStatus: body.on
-      });
+      })
+      console.log('intitial power state set to ' + body.on);
     })
   }
 
-  handlePower(buttonPress) {
+  handlePower() {
     this.setState({ powerStatus: !this.state.powerStatus })
-    console.log(this.state.powerStatus);
-    let powerStatus = this.state.powerStatus;
+    let on = !this.state.powerStatus;
     fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`, {
       credentials: "same-origin",
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({ on: powerStatus })
+      body: JSON.stringify({ on: on })
     })
-    // .then(response => {
-    //   this.getPowerState(this.props.currentUser)
-    // })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -60,7 +57,6 @@ class NavBar extends React.Component {
             </div>
             <div id='nav-dropdown'>
               <div><a href='/sign-out'>Sign Out</a></div>
-              {/* <div><a href='/sign-out'>My Products</a></div> */}
             </div>
           </div>
         </div>

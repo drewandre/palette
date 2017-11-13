@@ -77,6 +77,7 @@
 }
 
 .master-brightness {
+  user-select: none;
   position: relative;
   left: 200px;
   top: 153px;
@@ -85,6 +86,7 @@
 }
 
 .scheduling {
+  user-select: none;
   position: relative;
   left: 196px;
   top: 103px;

@@ -22,8 +22,8 @@ class Dashboard extends React.Component {
     this.handleEffectChange = this.handleEffectChange.bind(this);
   }
 
-  getLastConnection() {
-    let updated_at = new Date(this.props.currentUser.created_at)
+  getLastConnection(currentUser) {
+    let updated_at = new Date(currentUser.created_at)
     let month = monthNames[updated_at.getMonth()];
     let day = updated_at.getDate();
     let year = updated_at.getFullYear();
@@ -42,8 +42,10 @@ class Dashboard extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.getLastConnection();
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.currentUser != this.props.currentUser) {
+      this.getLastConnection(nextProps.currentUser);
+    }
   }
 
   render() {
@@ -52,8 +54,7 @@ class Dashboard extends React.Component {
         <div className='dashboard-title'>
           Dashboard |
         </div>
-        {/* <div id='name-and-updated'>Last Connection: {this.state.day} {this.state.month} {this.state.year}</div> */}
-        <div id='name-and-updated'>Last Connection: November 10th, 2017</div>
+        <div id='name-and-updated'>Last Connection: {this.state.day} {this.state.month} {this.state.year}</div>
         <div className='row collapse fullwidth'>
           <div className='small-12 medium-12 large-6 columns'>
             <PaletteContainer
