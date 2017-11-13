@@ -1,7 +1,42 @@
+welcome-nav {
+  font-family: 'Montserrat';
+  font-weight: 200;
+  // text-align: right;
+  padding-left: 20px;
+  padding-top: 13px;
+  z-index: 999;
+  color: #6F6F6F;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+  background-color: #2F2F2F;
+}
+
+.palette {
+  font-size: 2em;
+}
+
 .sign-up-form {
   text-align: center;
+  position: absolute;
+  top: 1vh;
+  width: 100%;
+}
+
+.sign-in-form {
+  text-align: center;
+  position: absolute;
+  top: 1vh;
+  width: 100%;
+}
+
+.product-form {
+  text-align: center;
   position: relative;
-  top: 10%;
+  padding-top: 10%;
+  top: 1vh;
   width: 100%;
 }
 

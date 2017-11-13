@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.update(
       user_id: current_user.id,
-      product_name: @product.product_name,
+      product_name: @product.product_name.downcase,
       active_color_palette: ColorPalette.first.id,
       active_api: "real-time-stock-data",
       active_effect: Effect.first.effect_name,
