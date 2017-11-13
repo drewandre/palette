@@ -44,7 +44,6 @@ const DataSelectField = props => {
         <select value={props.apiValue} onChange={props.handleSelect} className="data-search">
           <option value="weather">Weather</option>
           <option value="real-time-stock-data">Stocks</option>
-          <option value="slack">Spotify</option>
         </select>
         <i className="fa fa-chevron-down" id='data-dropdown-arrow' aria-hidden="true"></i>
       </div>

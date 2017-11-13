@@ -17,13 +17,35 @@ class ApiContainer extends React.Component {
       fetchError: false,
       SYMBOL: 'AAPL',
       CITY: 'Boston',
-      activeEffect: ''
+      activeEffect: '',
+      intervalId: null,
+      lastUpdated: ''
     };
     this.handleSelect = this.handleSelect.bind(this);
     this.handleOptionsSelect = this.handleOptionsSelect.bind(this);
     this.getActiveApi = this.getActiveApi.bind(this);
     this.fetchStockData = this.fetchStockData.bind(this);
     this.fetchWeatherData = this.fetchWeatherData.bind(this);
+    this.fetchCurrentApi = this.fetchCurrentApi.bind(this);
+  }
+
+  fetchCurrentApi() {
+    this.props.handleLoading(true);
+    var lastUpdated = new Date();
+    var hours = lastUpdated.getHours();
+    var minutes = lastUpdated.getMinutes();
+    var seconds = lastUpdated.getSeconds();
+    lastUpdated = `${hours}:${minutes}:${seconds}`
+    this.setState({ lastUpdated: lastUpdated })
+    let currentApi = this.state.selectedApi;
+    // console.log('FETCHING API: ' + currentApi);
+    if(currentApi === "real-time-stock-data") {
+      let selectedApiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.SYMBOL}&interval=1min&apikey=L2S772FW0QB5CQM0`
+      this.fetchStockData(selectedApiUrl);
+    } else if (currentApi === "weather") {
+      let selectedApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.CITY},us&appid=aa3957e7e64baafee029f61847cde20c`
+      this.fetchWeatherData(selectedApiUrl);
+    }
   }
 
   fetchStockData(apiUrlString) {
@@ -72,25 +94,16 @@ class ApiContainer extends React.Component {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ active_api: selectedItem })
     })
-    if(selectedItem === "real-time-stock-data") {
-      let selectedApiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.SYMBOL}&interval=1min&apikey=L2S772FW0QB5CQM0`
-      this.setState({ selectedApi: selectedItem })
-      this.fetchStockData(selectedApiUrl);
-    } else if (selectedItem === "weather") {
-      let selectedApiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.CITY},us&appid=aa3957e7e64baafee029f61847cde20c`
-      this.setState({ selectedApi: selectedItem })
-      this.fetchWeatherData(selectedApiUrl);
-    }
+    .then(response => { this.setState({ selectedApi: selectedItem }) })
+    .then(response => { this.fetchCurrentApi() })
   }
 
   handleOptionsSelect(option) {
     this.props.handleLoading(true)
     if(this.state.selectedApi == 'weather') {
       this.setState({CITY: option.target.value})
-      console.log('CITY changed to ' + option.target.value);
     } else if (this.state.selectedApi == 'real-time-stock-data') {
       this.setState({SYMBOL: option.target.value})
-      console.log('SYMBOL changed to ' + option.target.value);
     }
     this.handleSelect(this.state.selectedApi)
   }
@@ -105,6 +118,15 @@ class ApiContainer extends React.Component {
       })
       this.handleSelect(body.active_api);
     })
+  }
+
+  componentDidMount() {
+    var intervalId = setInterval(this.fetchCurrentApi, 60000);
+    this.setState({ intervalId: intervalId });
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.state.intervalId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -129,6 +151,7 @@ class ApiContainer extends React.Component {
           handleSelect={this.handleSelect}
           handleOptionsSelect={this.handleOptionsSelect}
         />
+        <div className='last-updated'>Last Update: {this.state.lastUpdated}</div>
         <div className='api-control'>
           <ApiTiles
             className='api-list'

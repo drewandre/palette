@@ -91,7 +91,6 @@ class TimePicker extends React.Component {
 
   handleMinuteUp() {
     let minute = Number(this.state.minute);
-    console.log('this.state.minute: ' + minute);
     minute += 5;
     if (minute > 55) {
       minute = 0
@@ -150,8 +149,8 @@ class TimePicker extends React.Component {
         })
       }
       this.props.handleLoading(false)
-      console.log(this.state.turn_off);
-      console.log(this.state.turn_on);
+      // console.log(this.state.turn_off);
+      // console.log(this.state.turn_on);
     })
   }
 
@@ -170,9 +169,9 @@ class TimePicker extends React.Component {
         </div>
         <div id='schedule-text'>Schedule</div>
         <div className='time'>
-          <i onClick={this.handleAmPm} className="fa fa-caret-up" id='time-up' aria-hidden="true"></i>
-          {this.state.AM_PM}
-          <i onClick={this.handleAmPm} className="fa fa-caret-down" id='time-down' aria-hidden="true"></i>
+          <i onClick={this.handleHourUp} className="fa fa-caret-up" id='time-up' aria-hidden="true"></i>
+          {this.state.hour}
+          <i onClick={this.handleHourDown} className="fa fa-caret-down" id='time-down' aria-hidden="true"></i>
         </div>
         <div className='time'>
           <i onClick={this.handleMinuteUp} className="fa fa-caret-up" id='time-up' aria-hidden="true"></i>
@@ -180,9 +179,9 @@ class TimePicker extends React.Component {
           <i onClick={this.handleMinuteDown} className="fa fa-caret-down" id='time-down' aria-hidden="true"></i>
         </div>
         <div className='time'>
-          <i onClick={this.handleHourUp} className="fa fa-caret-up" id='time-up' aria-hidden="true"></i>
-          {this.state.hour}
-          <i onClick={this.handleHourDown} className="fa fa-caret-down" id='time-down' aria-hidden="true"></i>
+          <i onClick={this.handleAmPm} className="fa fa-caret-up" id='time-up' aria-hidden="true"></i>
+          {this.state.AM_PM}
+          <i onClick={this.handleAmPm} className="fa fa-caret-down" id='time-down' aria-hidden="true"></i>
         </div>
       </div>
     );

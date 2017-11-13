@@ -7,8 +7,16 @@
 .api-control {
   width: 100%;
   position: absolute;
-  top: 20%;
+  top: 25%;
   height: 100%;
+}
+
+.last-updated {
+  user-select: none;
+  position: relative;
+  left: 189px;
+  font-weight: 100;
+  font-size: 1.5em;
 }
 
 .connection-tile-list {
