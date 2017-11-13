@@ -9,13 +9,12 @@ class ApiContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      endpoint_keys: ['', '', '', '', ''],
-      endpoint_values: ['', '', '', '', ''],
+      endpoint_keys: [null, null, null, null, null],
+      endpoint_values: [null, null, null, null, null],
       selectedApiUrl: '',
       selectedApi: 'Weather',
       selectedApiOptions: 'Boston',
       fetchError: false,
-      loading: false,
       SYMBOL: 'AAPL',
       CITY: 'Boston',
       activeEffect: ''
@@ -28,7 +27,6 @@ class ApiContainer extends React.Component {
   }
 
   fetchStockData(apiUrlString) {
-    this.setState({ loading: true })
     fetch(apiUrlString)
     .then(response => response.json())
     .then(body => {
@@ -40,29 +38,31 @@ class ApiContainer extends React.Component {
         endpoint_keys: endpoint_keys,
         endpoint_values: Object.values(current_stock_value)
       })
+      this.props.handleLoading(false)
     })
   }
 
   fetchWeatherData(apiUrlString) {
-    this.setState({ loading: true })
     fetch(apiUrlString)
     .then(response => response.json())
     .then(body => {
       var endpoint_keys = ['conditions', 'fahrenheit', 'humidity', 'cloudiness', 'wind speed'];
       var endpoint_values = this.state.endpoint_values;
-      endpoint_values[0] = (body.weather[0].main);
-      endpoint_values[1] = (((Math.round(body.main.temp) - 273) + 32).toFixed(0)+'°F');
-      endpoint_values[2] = ((body.main.humidity)+'%');
-      endpoint_values[3] = ((body.clouds.all)+'%');
-      endpoint_values[4] = ((body.wind.speed)+'m/s');
+      endpoint_values[0] = (body.weather[0].main;
+      endpoint_values[1] = ((Math.round(body.main.temp) - 273) + 32).toFixed(0)+'°F';
+      endpoint_values[2] = (body.main.humidity)+'%';
+      endpoint_values[3] = (body.clouds.all)+'%';
+      endpoint_values[4] = (body.wind.speed)+'m/s';
       this.setState({
         endpoint_keys: endpoint_keys,
         endpoint_values: endpoint_values
       })
+      this.props.handleLoading(false)
     })
   }
 
   handleSelect(selectedItem) {
+    this.props.handleLoading(true)
     if(typeof(selectedItem)!="string") {
       selectedItem = selectedItem.target.value
     }
@@ -84,6 +84,7 @@ class ApiContainer extends React.Component {
   }
 
   handleOptionsSelect(option) {
+    this.props.handleLoading(true)
     if(this.state.selectedApi == 'weather') {
       this.setState({CITY: option.target.value})
       console.log('CITY changed to ' + option.target.value);
@@ -95,6 +96,7 @@ class ApiContainer extends React.Component {
   }
 
   getActiveApi(nextUser) {
+    this.props.handleLoading(true)
     fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
     .then(response => response.json())
     .then(body => {
@@ -111,7 +113,7 @@ class ApiContainer extends React.Component {
     }
   }
 
-  render() {    
+  render() {
     return (
       <div className={this.props.className}>
         <div className='container-info'>

@@ -16,11 +16,11 @@ class SettingsContainer extends React.Component {
 
   postScheduleToFetch() {
     if (Date.now() - this.state.lastKeyPressedTime > 1000) {
+      this.props.handleLoading(true)
       let formPayload = {
         master_brightness: this.state.masterBrightness
         // onTime: this.state.sliderValue_2,
         // offTime: this.state.sliderValue_3,
-        // parameter_4: this.state.sliderValue_4
       };
       fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`, {
         credentials: "same-origin",
@@ -28,6 +28,7 @@ class SettingsContainer extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formPayload)
       })
+      .then(response => { this.props.handleLoading(false) })
     }
   }
 
@@ -45,12 +46,14 @@ class SettingsContainer extends React.Component {
   }
 
   getMasterBrightness(nextUser) {
+    this.props.handleLoading(true)
     fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
     .then(response => response.json())
     .then(body => {
       this.setState({
         masterBrightness: body.master_brightness
       })
+      this.props.handleLoading(false)
     })
   }
 
@@ -68,13 +71,15 @@ class SettingsContainer extends React.Component {
           <div className='container-title'>Settings</div>
           <div id='settings-info'>{this.props.currentUser.current_product_name}</div>
         </div>
-        <div className='scheduling'>Scheduling</div>
-        <TimePicker
-          handleTimeChange={this.handleTimeChange}
-          currentUser={this.props.currentUser}
-        />
-        <div className='master-brightness'>Brightness</div>
-        <input onChange={this.handleMasterBrightness} value={this.state.masterBrightness} className='master-brightness-slider' type="range" min="0" max="255" />
+        <div className='schedule'>
+          <TimePicker
+            handleLoading={this.props.handleLoading}
+            handleTimeChange={this.handleTimeChange}
+            currentUser={this.props.currentUser}
+          />
+          <div id='master-brightness'>Brightness</div>
+          <input onChange={this.handleMasterBrightness} value={this.state.masterBrightness} className='master-brightness-slider' type="range" min="0" max="255" />
+        </div>
       </div>
     )
   }

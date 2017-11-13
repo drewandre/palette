@@ -46,11 +46,13 @@ const DataSelectField = props => {
           <option value="real-time-stock-data">Stocks</option>
           <option value="slack">Spotify</option>
         </select>
+        <i className="fa fa-chevron-down" id='data-dropdown-arrow' aria-hidden="true"></i>
       </div>
       <div className='data-options-field'>
         <select value={props.selectedApiOptions} onChange={props.handleOptionsSelect} className="data-search">
           {options}
         </select>
+        <i className="fa fa-chevron-down" id='data-options-dropdown-arrow' aria-hidden="true"></i>
       </div>
     </div>
   )

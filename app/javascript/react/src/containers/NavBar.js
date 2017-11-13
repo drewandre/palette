@@ -17,7 +17,6 @@ class NavBar extends React.Component {
       this.setState({
         powerStatus: body.on
       })
-      console.log('intitial power state set to ' + body.on);
     })
   }
 
@@ -53,7 +52,7 @@ class NavBar extends React.Component {
               <i className="fa fa-user fa-2x" id='user-icon' aria-hidden="true"></i>
               {/* <img src={this.props.currentUser.avatar_url} id='user-icon'/> */}
               <div id='nav-user-name'>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</div>
-              <div id='nav-user-email'>{this.props.currentUser.email}</div>
+              <div id='nav-user-email'>{this.props.currentUser.handle}</div>
             </div>
             <div id='nav-dropdown'>
               <div><a href='/sign-out'>Sign Out</a></div>

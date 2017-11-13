@@ -21,8 +21,7 @@ class EffectContainer extends React.Component {
       effect_parameter_2_name: '',
       effect_parameter_3_name: '',
       effect_parameter_4_name: '',
-      effect_parameter_5_name: '',
-      loading: false
+      effect_parameter_5_name: ''
     }
     this.handleSlider_1 = this.handleSlider_1.bind(this);
     this.handleSlider_2 = this.handleSlider_2.bind(this);
@@ -35,6 +34,8 @@ class EffectContainer extends React.Component {
   }
 
   getActiveEffect(nextUser) {
+    this.props.handleLoading(true);
+    let formPayload = [];
     fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
     .then(response => response.json())
     .then(body => {
@@ -52,6 +53,7 @@ class EffectContainer extends React.Component {
         effect_parameter_4_name: body.parameter_4_name,
         effect_parameter_5_name: body.parameter_5_name,
       })
+      formPayload = [body.effect_name, body.parameter_1_name, body.parameter_2_name, body.parameter_3_name, body.parameter_4_name, body.parameter_5_name]
       return fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}/effect_settings/${body.effect_name}`)
     })
     .then(response => response.json())
@@ -63,12 +65,14 @@ class EffectContainer extends React.Component {
         sliderValue_4: body.parameter_4,
         sliderValue_5: body.parameter_5
       })
+      this.props.handleEffectChange(formPayload);
+      this.props.handleLoading(false);
     })
   }
 
   postSliderValuesToFetch() {
-    if (Date.now() - this.state.lastKeyPressedTime > 300) {
-      this.setState({ loading: true })
+    if (Date.now() - this.state.lastKeyPressedTime > 500) {
+      this.props.handleLoading(true);
       let formPayload = {
         parameter_1: this.state.sliderValue_1,
         parameter_2: this.state.sliderValue_2,
@@ -82,7 +86,8 @@ class EffectContainer extends React.Component {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ formPayload })
       })
-    } else this.setState({ loading: false })
+      .then(response => { this.props.handleLoading(false) })
+    }
   }
 
   handleSlider_1(sliderValue_1) {
@@ -90,7 +95,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_1: sliderValue_1
     })
-    setTimeout(() => this.postSliderValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 500);
   }
 
   handleSlider_2(sliderValue_2) {
@@ -98,7 +103,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_2: sliderValue_2
     })
-    setTimeout(() => this.postSliderValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 500);
   }
 
   handleSlider_3(sliderValue_3) {
@@ -106,7 +111,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_3: sliderValue_3
     })
-    setTimeout(() => this.postSliderValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 500);
   }
 
   handleSlider_4(sliderValue_4) {
@@ -114,7 +119,7 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_4: sliderValue_4
     })
-    setTimeout(() => this.postSliderValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 500);
   }
 
   handleSlider_5(sliderValue_5) {
@@ -122,10 +127,11 @@ class EffectContainer extends React.Component {
       lastKeyPressedTime: Date.now(),
       sliderValue_5: sliderValue_5
     })
-    setTimeout(() => this.postSliderValuesToFetch(), 1000);
+    setTimeout(() => this.postSliderValuesToFetch(), 500);
   }
 
   handleSelect(selectedItem) {
+    this.props.handleLoading(true);
     let active_effect = selectedItem.target.value
     let effectPayload = [
       selectedItem.target.value,
@@ -144,6 +150,7 @@ class EffectContainer extends React.Component {
     })
     .then(response => {
       this.getActiveEffect(this.props.currentUser)
+      this.props.handleLoading(false);
     })
   }
 
@@ -154,15 +161,8 @@ class EffectContainer extends React.Component {
   }
 
   render () {
-
-    // let loading = null;
-    // if (this.state.loading) {
-    //   loading = <div className='loading-icon'>Loading...</div>
-    // } else  { loading = null }
-
     return (
       <div className={this.props.className}>
-        {/* {loading} */}
         <div>
           <i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true"></i>
           <div className='container-title'>Effects</div>
@@ -247,11 +247,6 @@ class EffectContainer extends React.Component {
             </div>
           </div>
         </div>
-        {/* <div className='current-palette'>
-          <div className='current-effect-title'>
-            Current Effect: {this.state.effect_name}
-          </div>
-        </div> */}
       </div>
     )
   }

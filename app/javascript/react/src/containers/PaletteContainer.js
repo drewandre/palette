@@ -38,10 +38,12 @@ class PaletteContainer extends React.Component {
     })
     .then(body => {
       this.loadUserPalettes(this.props.currentUser)
+      this.props.handleLoading(false);
     })
   }
 
   retrieveProminentColors(palette_name) {
+    this.props.handleLoading(true);
     const that = this
     if (this.state.TEMP_PALETTE_FILE) {
       var img = new Image();
@@ -78,12 +80,14 @@ class PaletteContainer extends React.Component {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({ active_color_palette })
     })
-    for(var i = 0; i < 8; i++) {
-      if(this.state.color_palettes[i].id === active_color_palette) {
-        this.setState({ current_palette: this.state.color_palettes[i] })
-        break
+    .then(response => {
+      for(var i = 0; i < 8; i++) {
+        if(this.state.color_palettes[i].id === active_color_palette) {
+          this.setState({ current_palette: this.state.color_palettes[i] })
+          break
+        }
       }
-    }
+    })
   }
 
   handleSearchedPalette(searchClick) {
@@ -101,6 +105,7 @@ class PaletteContainer extends React.Component {
   }
 
   loadUserPalettes(nextUser) {
+    this.props.handleLoading(true);
     fetch(`/api/v1/users/${nextUser.handle}/palettes`)
     .then(response => response.json())
     .then(body => {
@@ -109,10 +114,12 @@ class PaletteContainer extends React.Component {
         palettes[i] = body.palettes[i]
       }
       this.setState({ color_palettes: palettes })
+      this.props.handleLoading(false);
     })
   }
 
   fetchActiveColorPalette(nextUser) {
+    this.props.handleLoading(true);
     fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`)
     .then(response => response.json())
     .then(body => {
@@ -122,6 +129,7 @@ class PaletteContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       this.setState({ current_palette: body })
+      this.props.handleLoading(false);
     })
   }
 
@@ -143,6 +151,7 @@ class PaletteContainer extends React.Component {
   }
 
   handlePaletteDelete(event) {
+    this.props.handleLoading(true);
     event.stopPropagation();
     var palette_id = event.target.parentElement.id;
     fetch(`/api/v1/users/${this.props.currentUser.handle}/palettes`, {
@@ -153,6 +162,7 @@ class PaletteContainer extends React.Component {
     })
     .then(response => {
       this.loadUserPalettes(this.props.currentUser)
+      this.props.handleLoading(false);
     });
   }
 
@@ -164,7 +174,6 @@ class PaletteContainer extends React.Component {
   }
 
   render() {
-
     let palette_name_input;
     if(this.state.waiting_for_palette_name) {
       palette_name_input =
@@ -175,7 +184,6 @@ class PaletteContainer extends React.Component {
     } else {
       palette_name_input = null
     }
-
     return(
         <div className={this.props.className}>
           {palette_name_input}

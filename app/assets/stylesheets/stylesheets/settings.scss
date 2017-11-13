@@ -1,47 +1,51 @@
 .schedule {
+  // background-color: rgba(200,0,0,0.1);
   user-select: none;
   cursor: auto;
-  display: inline-block;
   font-size: 2em;
   font-weight: 200;
-  position: absolute;
-  right: 7%;
-  top: 35%;
+  padding: 35px;
+  width: 100%;
+  height: 80%;
+}
+
+.on-off {
+  width: 100%;
+  height: 50%;
+  margin-bottom: 10px;
+  float: right;
 }
 
 .on {
-  position: relative;
-  padding-bottom: 3px;
-  bottom: 55px;
-  left: 226px;
+  display: inline-block;
   text-align: center;
-  float: left;
-  height: 40px;
+  padding-top: 5px;
+  float: right;
+  height: 90%;
   width: 107px;
-  background-color: #292929;
-  border-top-left-radius:5px;
-  border-bottom-left-radius:5px;
-  font-size: 0.8em;
-}
-
-.off {
-  position: relative;
-  padding-bottom: 3px;
-  padding-right: 2px;
-  bottom: 55px;
-  left: 225px;
-  text-align: center;
-  float: left;
-  height: 40px;
-  width: 109px;
   background-color: #292929;
   border-top-right-radius:5px;
   border-bottom-right-radius:5px;
   font-size: 0.8em;
 }
 
+.off {
+  display: inline-block;
+  padding-right: 2px;
+  text-align: center;
+  padding-top: 5px;
+  float: right;
+  height: 90%;
+  width: 109px;
+  background-color: #292929;
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+  font-size: 0.8em;
+}
+
 .time {
   text-align: center;
+  float: right;
   margin-left: 10px;
   width: 65px;
   height: 100%;
@@ -76,20 +80,24 @@
   color: lighten(#95C9B4, 40%)
 }
 
-.master-brightness {
+#schedule-text {
+  // background-color: rgba(0,0,200,0.1);
   user-select: none;
-  position: relative;
-  left: 200px;
-  top: 153px;
-  font-size: 1.8em;
+  float: left;
+  position: absolute;
+  top: 46%;
+  right: 280px;
+  font-size: 0.8em;
   font-weight: 200;
 }
 
-.scheduling {
+#master-brightness {
+  // background-color: rgba(0,200,0,0.1);
   user-select: none;
-  position: relative;
-  left: 196px;
-  top: 103px;
-  font-size: 1.8em;
+  float: left;
+  position: absolute;
+  top: 65%;
+  right: 280px;
+  font-size: 0.8em;
   font-weight: 200;
 }
