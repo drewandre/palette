@@ -3,12 +3,11 @@ h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', Fallback, sans-serif;
 }
 
-body {
+body, html {
   height: calc(100% - 40px);
   width: 100%;
   top: 80px;
   background: #292929;
-  // overflow: hidden;
 }
 
 a {
@@ -23,11 +22,6 @@ a:focus {
 .fullwidth {
   width: 100%;
   max-width: initial;
-}
-
-.loading-icon {
-  background-color: red;
-  color: white;
 }
 
 @media (max-width: 1024px) {

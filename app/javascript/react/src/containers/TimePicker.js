@@ -91,7 +91,6 @@ class TimePicker extends React.Component {
 
   handleMinuteUp() {
     let minute = Number(this.state.minute);
-    console.log('this.state.minute: ' + minute);
     minute += 5;
     if (minute > 55) {
       minute = 0
@@ -130,6 +129,7 @@ class TimePicker extends React.Component {
   }
 
   fetchTime(nextUser) {
+    this.props.handleLoading(true)
     fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}`, {
       credentials: 'same-origin',
       method: 'GET',
@@ -148,8 +148,9 @@ class TimePicker extends React.Component {
           turn_on: body.turn_off
         })
       }
-      console.log(this.state.turn_off);
-      console.log(this.state.turn_on);
+      this.props.handleLoading(false)
+      // console.log(this.state.turn_off);
+      // console.log(this.state.turn_on);
     })
   }
 
@@ -161,9 +162,12 @@ class TimePicker extends React.Component {
 
   render() {
     return (
-      <div className='schedule'>
-        <div className='on' style={this.getOnStyle()} onClick={this.handleOnOff}>On</div>
-        <div className='off' style={this.getOffStyle()} onClick={this.handleOnOff}>Off</div>
+      <div>
+        <div className='on-off'>
+          <div className='on' style={this.getOnStyle()} onClick={this.handleOnOff}>On</div>
+          <div className='off' style={this.getOffStyle()} onClick={this.handleOnOff}>Off</div>
+        </div>
+        <div id='schedule-text'>Schedule</div>
         <div className='time'>
           <i onClick={this.handleHourUp} className="fa fa-caret-up" id='time-up' aria-hidden="true"></i>
           {this.state.hour}

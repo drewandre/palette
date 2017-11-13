@@ -1,12 +1,22 @@
-.make-blue {
-   background-color: blue;
-}
-
 .api-list {
   pointer-events: none;
   text-align: center;
-  height: 50%;
   z-index: 1;
+}
+
+.api-control {
+  width: 100%;
+  position: absolute;
+  top: 25%;
+  height: 100%;
+}
+
+.last-updated {
+  user-select: none;
+  position: relative;
+  left: 189px;
+  font-weight: 100;
+  font-size: 1.5em;
 }
 
 .connection-tile-list {
@@ -17,19 +27,16 @@
 }
 
 .endpoint-tiles {
-  // text-align: center;
   pointer-events: none;
   user-select: none;
-  position: relative;
-  top: 90%;
   background-color: #373737;
   margin: 5px;
   display: inline-block;
   overflow: hidden;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 12px;
-  width: 16%;
-  height: 26%;
+  height: 100%;
+  width: 18%;
   z-index: 3;
 }
 
@@ -45,14 +52,18 @@
   overflow: hidden;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 12px;
-  width: 16%;
+  height: 100px;
+  font-size: 1.7vw;
+  padding-top: 25px;
+  font-weight: 200;
+  width: 18%;
   z-index: 3;
 }
 
 .tile-divider{
-  position: absolute;
-  // display: inline-block;
-  bottom: 7%;
+  position: relative;
+  padding: 0px;
+  bottom: 50%;
   left: 10%;
   width: 80%;
   border: 0;
@@ -61,13 +72,17 @@
 }
 
 .api-key {
+  padding-top: 10px;
   display: inline-block;
-  font-weight: 500;
+  font-weight: 300;
+  font-size: 1.8vw;
 }
 
 .api-value {
+  padding-bottom: 10px;
   text-align: center;
   font-weight: 300;
+  font-size: 2vw;
 }
 
 .data-search[type="text"], textarea {
@@ -97,8 +112,14 @@
   border: none;
 }
 
-.api-control {
-  width: 100%;
+#data-options-dropdown-arrow {
   position: absolute;
-  top: 30%;
+  top: 34px;
+  left: 283px;
+}
+
+#data-dropdown-arrow {
+  position: absolute;
+  top: 34px;
+  left: 416px;
 }

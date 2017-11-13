@@ -17,7 +17,7 @@
 .select-field input:focus {
   text-align: center;
   border: none;
-  font-size: 1em;
+  font-size: 1.6em;
   background-color: #2F2F2F;
   color: darken(white, 20%);
   border: none;
@@ -30,7 +30,7 @@
 
 .select-field select:active {
   text-align: center;
-  font-size: 1em;
+  font-size: 1.6em;
   outline: none;
   border: none;
   background-color: #2F2F2F;
@@ -43,7 +43,7 @@
 .data-options-field select {
   background-color: red;
   position: absolute;
-  left: 290px;
+  left: 310px;
   top: 15px;
   width: 150px;
   height: 50px;
@@ -61,7 +61,7 @@
   background-color: red;
   text-align: center;
   border: none;
-  font-size: 1em;
+  font-size: 1.6em;
   background-color: #2F2F2F;
   color: darken(white, 20%);
   border: none;
@@ -74,7 +74,7 @@
 
 .data-options-field select:active {
   text-align: center;
-  font-size: 1em;
+  font-size: 1.6em;
   outline: none;
   border: none;
   background-color: #2F2F2F;
@@ -103,7 +103,7 @@
 .effect-select-field input:focus {
   text-align: center;
   border: none;
-  font-size: 1em;
+  font-size: 1.6em;
   background-color: #2F2F2F;
   color: darken(white, 20%);
   border: none;
@@ -116,7 +116,7 @@
 
 .effect-select-field select:active {
   text-align: center;
-  font-size: 1em;
+  font-size: 1.6em;
   outline: none;
   border: none;
   background-color: #2F2F2F;
@@ -131,8 +131,9 @@
 }
 
 .master-brightness-slider {
+  // float: left;
   position: absolute;
-  right: 7%;
+  left: 35px;
   top: 70%;
 }
 .master-brightness-slider[type=range]{
@@ -160,7 +161,7 @@
 }
 
 .master-brightness-slider[type=range]:focus {
-    outline: none;
+  outline: none;
 }
 
 #dropdown-arrow {
@@ -180,6 +181,6 @@
 #effect-dropdown-arrow {
   position: absolute;
   top: 32px;
-  left: 325px;
+  left: 333px;
   color: #4F4F4F;
 }

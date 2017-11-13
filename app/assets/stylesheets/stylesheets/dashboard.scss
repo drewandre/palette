@@ -1,7 +1,15 @@
 .dashboard {
   position: relative;
   top: -5px;
-  // height: 100%;
+}
+
+#spinner {
+  display: inline-block;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 7px;
+  left: 190px;
 }
 
 .box {
