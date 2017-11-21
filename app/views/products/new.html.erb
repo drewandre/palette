@@ -1,10 +1,11 @@
-<welcome-nav>
-  <a href='https://www.linkedin.com/in/drewandre'>Palette: Designed by Drew André</a>
-</welcome-nav>
 <div class="sign-up-form">
   <%= form_for @product do |f| %>
+  <% autofocus = 'on' %>
     <i class="fa fa-user fa-4x" id='sign-up-icon' aria-hidden="true"></i>
     <div id='register-name'>Hi, <%= current_user.first_name%>!</div>
+    <div class='form-errors'><%= flash[:alert] %></div>
+    <!-- <div class='form-errors'><%= flash[:success] %></div> -->
+    <div class='bridge-discover-errors'><%= flash[:error] %></div>
     <% if @product.errors.present? %>
       <div class="form-errors">
         <div>
@@ -21,8 +22,8 @@
     <% end %>
     <div class="row">
       <div class="small-12 medium-6 medium-offset-3 columns">
-        <div id='register-success'>Name your product:</div>
-        <%= f.text_field :product_name, autoComplete: "off", autofocus: 'on' %>
+        <div id='register-success'>Where is your system?</div>
+        <%= f.text_field :product_name, autoComplete: "off", autofocus: 'on', placeholder: "'family room'"%>
       </div>
     </div>
     <div class="form-actions">

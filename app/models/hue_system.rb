@@ -1,0 +1,2 @@
+class HueSystem < ApplicationRecord
+end

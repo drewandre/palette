@@ -55,7 +55,10 @@ class NavBar extends React.Component {
               <div id='nav-user-email'>{this.props.currentUser.handle}</div>
             </div>
             <div id='nav-dropdown'>
-              <div><a href='/sign-out'>Sign Out</a></div>
+              <div>
+                {/* link_to("Sign Out", "http://www.example.com", method: :delete) */}
+                <a href='/sign-out'>Sign Out</a>
+              </div>
             </div>
           </div>
         </div>
