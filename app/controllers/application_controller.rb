@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       user = User.find_by(id: current_user.id)
       if !user.products.exists?
-        redirect_to sign_up_products_path
+        redirect_to setup_path
       end
     end
   end

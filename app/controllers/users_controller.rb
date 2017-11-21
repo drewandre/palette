@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       # @user.send_confirmation_email
       sign_in(@user)
       flash[:success] = "Registration successful."
-      redirect_to sign_up_products_path
+      redirect_to setup_path
     else
       flash.now[:alert] = "There was a problem with your registration."
       render :new
@@ -65,14 +65,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-
-  # def check_captcha
-  #   unless verify_recaptcha
-  #     self.resource = resource_class.new sign_up_params
-  #     respond_with_navigational(resource) { render :new }
-  #   end
-  # end
-
+  
   def update_params
     params.require(:user).permit(:email, :first_name, :last_name)
   end

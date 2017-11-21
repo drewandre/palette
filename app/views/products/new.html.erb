@@ -4,7 +4,6 @@
     <i class="fa fa-user fa-4x" id='sign-up-icon' aria-hidden="true"></i>
     <div id='register-name'>Hi, <%= current_user.first_name%>!</div>
     <div class='form-errors'><%= flash[:alert] %></div>
-    <!-- <div class='form-errors'><%= flash[:success] %></div> -->
     <div class='bridge-discover-errors'><%= flash[:error] %></div>
     <% if @product.errors.present? %>
       <div class="form-errors">
