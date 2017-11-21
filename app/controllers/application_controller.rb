@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
 
-  helper_method :current_user, :user_signed_in?, :authenticate_user!, :authenticate_user_product!
+  helper_method :current_user, :user_signed_in?, :authenticate_user!, :authenticate_user_product!, :find_bridge
   protect_from_forgery with: :exception
 
   def authenticate_user!
@@ -79,4 +79,5 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
     !current_user.nil?
   end
+
 end

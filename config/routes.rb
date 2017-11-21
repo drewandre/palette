@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   post "sign-in", to: "sessions#create"
   delete "sign-out", to: "sessions#destroy"
   get "sign-out", to: "sessions#destroy"
+  
   get "sign-up", to: "users#new", as: :sign_up
 
   get "sign-up/products", to: "products#new"
-
+  get "setup", to: "hue_systems#new"
 
   resources :account_confirmations, only: [:edit]
   resources :password_resets, only: [:create, :edit, :new, :update]

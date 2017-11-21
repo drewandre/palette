@@ -1,0 +1,2 @@
+class HueSystemsController < ApplicationController
+end
