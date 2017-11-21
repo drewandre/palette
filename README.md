@@ -25,7 +25,7 @@ Palette is a dashboard for controlling the smart led products designed by Drew A
 * Frontend: React.js
 * Database: Postgres
 * State management: Redux
-* Palette generation: Vibrant.js / dropzone.js
+* Palette generation: <a href='https://jariz.github.io/vibrant.js/'>Vibrant.js</a> / <a href='http://www.dropzonejs.com/'>dropzone.js</a>
 * User Auth: bcrypt-ruby 
 * Styling: CSS3 & Foundation
 * Testing: RSpec, Capybara, Jasmine, Karma, Enzyme
