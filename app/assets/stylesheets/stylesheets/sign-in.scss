@@ -1,36 +1,35 @@
+$login-background-color: #2F2F2F;
+$login-input-border: #454545;
+$sign-in-error: #757575;
+
 #session_login[type="text"], textarea {
   font-weight: 200;
   text-align: center;
-  // margin: 30px;
-  // width: 400px;
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
-  background-color: #2F2F2F;
+  background-color: $login-background-color;
   color: white;
-  border: 1px solid #454545;
+  border: 1px solid $login-input-border;
 }
 
 #session_password[type="password"], textarea {
   text-align: center;
   font-weight: 200;
-  // margin: 30px;
-  // width: 400px;
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
-  background-color: #2F2F2F;
+  background-color: $login-background-color;
   color: white;
-  border: 1px solid #454545;
+  border: 1px solid $login-input-border;
 }
 
 #lock-icon {
-  border: 1px solid #454545;
+  border: 1px solid $login-input-border;
   border-radius: 200px;
   margin-bottom: 5px;
   padding: 15px 25px;
-  color: #454545;
-  // transform: translate(-50%, -50%);
+  color: $login-input-border;
 }
 
 .form-actions {
@@ -39,5 +38,5 @@
 
 .sign-in-error {
   margin-bottom: 22px;
-  color: #757575;
+  color: $sign-in-error;
 }

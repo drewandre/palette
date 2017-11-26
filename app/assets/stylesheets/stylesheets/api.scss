@@ -1,3 +1,10 @@
+$endpoint-tile-color: #373737;
+$input-background-color: #2F2F2F;
+$input-text-color: #686868;
+$connection-tile-text-color: #6F6F6F;
+$tile-divider-color: #292929;
+$transparent-border: rgba(0, 0, 0, 0.2);
+
 .api-list {
   pointer-events: none;
   text-align: center;
@@ -29,11 +36,11 @@
 .endpoint-tiles {
   pointer-events: none;
   user-select: none;
-  background-color: #373737;
+  background-color: $endpoint-tile-color;
   margin: 5px;
   display: inline-block;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid $transparent-border;
   border-radius: 12px;
   height: 100%;
   width: 18%;
@@ -45,12 +52,12 @@
   pointer-events: none;
   user-select: none;
   position: relative;
-  background-color: #373737;
-  color: #6F6F6F;
+  background-color: $endpoint-tile-color;
+  color: $connection-tile-text-color;
   margin: 5px;
   display: inline-block;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid $transparent-border;
   border-radius: 12px;
   height: 100px;
   font-size: 1.7vw;
@@ -68,7 +75,7 @@
   width: 80%;
   border: 0;
   height: 1px;
-  background: #292929;
+  background: $tile-divider-color;
 }
 
 .api-key {
@@ -95,15 +102,15 @@
   font-size: 1.6em;
   font-weight: 100;
   box-shadow: none;
-  background-color: #2F2F2F;
-  color: #686868;
+  background-color: $input-background-color;
+  color: $input-text-color;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
   border: none;
 }
 .data-search[type="text"]:focus, textarea:focus {
-  background-color: #2F2F2F;
+  background-color: $input-background-color;
   user-select: none;
   box-shadow: none;
   -webkit-appearance: none;

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       )
       # @user.send_confirmation_email
       sign_in(@user)
-      flash[:success] = "Registration successful."
+      # flash[:success] = "Registration successful."
       redirect_to setup_path
     else
       flash.now[:alert] = "There was a problem with your registration."
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   def update_params
     params.require(:user).permit(:email, :first_name, :last_name)
   end

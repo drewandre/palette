@@ -10,8 +10,8 @@ Rails.application.routes.draw do
 
   get "sign-up", to: "users#new", as: :sign_up
 
-  # get "setup", to: "products#new"
-  get "setup", to: "hue_systems#new"
+  get "setup", to: "products#new"
+  # get "setup", to: "hue_systems#new"
 
   resources :account_confirmations, only: [:edit]
   resources :password_resets, only: [:create, :edit, :new, :update]

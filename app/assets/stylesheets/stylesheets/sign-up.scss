@@ -1,17 +1,24 @@
+$main-background-color: #2F2F2F;
+$main-background-color-accent-1: #6F6F6F;
+$main-background-color-accent-2: #454545;
+$form-background-color: #757575;
+$error-color: #FDA429;
+$white: #fff;
+$transparent: rgba(0,0,0,0);
+
 welcome-nav {
   font-family: 'Montserrat';
   font-weight: 200;
-  // text-align: right;
   padding-left: 20px;
   padding-top: 13px;
   z-index: 999;
-  color: #6F6F6F;
+  color: $main-background-color-accent-1;
   position: fixed;
   top: 0px;
   left: 0px;
   height: 50px;
   width: 100%;
-  background-color: #2F2F2F;
+  background-color: $main-background-color;
 }
 
 .palette {
@@ -19,7 +26,7 @@ welcome-nav {
 }
 
 .sign-up-form {
-  color: white;
+  color: $white;
   text-align: center;
   position: absolute;
   top: 1vh;
@@ -43,7 +50,7 @@ welcome-nav {
 
 #register {
   user-select: none;
-  color: #757575;
+  color: $form-background-color;
   font-weight: 100;
   font-size: 2em;
   margin-bottom: 15px;
@@ -51,7 +58,7 @@ welcome-nav {
 
 #register-success {
   user-select: none;
-  color: #757575;
+  color: $form-background-color;
   font-weight: 100;
   font-size: 1.7em;
   margin-bottom: 15px;
@@ -59,20 +66,20 @@ welcome-nav {
 
 #register-name {
   user-select: none;
-  color: #757575;
+  color: $form-background-color;
   font-weight: 200;
   font-size: 1.7em;
   margin-bottom: 10px;
 }
 
 .continue {
-  color: #757575;
+  color: $form-background-color;
   font-weight: 100;
   font-size: 1.7em;
 }
 
 .sign-up {
-  color: #757575;
+  color: $form-background-color;
   font-weight: 100;
   font-size: 1.7em;
 }
@@ -93,17 +100,17 @@ welcome-nav {
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
-  background-color: #2F2F2F;
+  background-color: $main-background-color;
   color: white;
-  border: 1px solid #454545;
+  border: 1px solid $main-background-color-accent-2;
 }
 
 #sign-up-icon {
-  border: 1px solid #454545;
+  border: 1px solid $main-background-color-accent-2;
   border-radius: 200px;
   margin-bottom: 15px;
   padding: 15px 22px;
-  color: #454545;
+  color: $main-background-color-accent-2;
 }
 
 #sign-in-button {
@@ -111,18 +118,18 @@ welcome-nav {
 }
 
 .form-errors {
-  color: #757575;
+  color: $form-background-color;
   margin-bottom: 15px;
 }
 
-.bridge-discover-errors {
+.bridge-discover-status {
   width: 30%;
   min-width: 300px;
-  color: #292929;
+  color: $main-background-color-accent-1;
   border-radius: 10px;
   margin: auto;
-  background-color: orange;
-  color: #757575;
+  background-color: $error-color;
+  color: $form-background-color;
   padding: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -135,18 +142,18 @@ welcome-nav {
 .button_green {
   display: hidden;
   background-repeat: no-repeat;
-  background-color: rgba(0,0,0,0)
+  background-color: $transparent;
 }
 
 .button_green:hover {
   display: hidden;
   background-repeat: no-repeat;
-  background-color: rgba(0,0,0,0)
+  background-color: $transparent;
 }
 
 .button_green:active {
   display: hidden;
   background-repeat: no-repeat;
-  background-color: rgba(0,0,0,0);
+  background-color: $transparent;
   border: none;
 }

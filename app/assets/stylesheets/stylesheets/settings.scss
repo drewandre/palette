@@ -1,3 +1,8 @@
+$light-blue-accent: #292929;
+$time-arrows: #95C9B4;
+$time-arrows-hover: lighten($time-arrows, 15%);
+$time-arrows-double-hover: lighten($time-arrows, 40%);
+
 .schedule {
   user-select: none;
   cursor: auto;
@@ -26,7 +31,7 @@
   float: left;
   height: 100%;
   width: 107px;
-  background-color: #292929;
+  background-color: $light-blue-accent;
   border-top-left-radius:5px;
   border-bottom-left-radius:5px;
   font-size: 0.8em;
@@ -34,13 +39,12 @@
 
 .off {
   display: inline-block;
-  // padding-left: 2px;
   text-align: center;
   padding-top: 3px;
   float: left;
   height: 100%;
   width: 108px;
-  background-color: #292929;
+  background-color: $light-blue-accent;
   border-top-right-radius:5px;
   border-bottom-right-radius:5px;
   font-size: 0.8em;
@@ -53,38 +57,37 @@
   width: 65px;
   height: 100%;
   display: inline-block;
-  background-color: #292929;
+  background-color: $light-blue-accent;
   border-radius: 5px;
 }
 
 #time-up {
   display: block;
-  color: #95C9B4
+  color: $time-arrows;
 }
 
 #time-down {
   display: block;
-  color: #95C9B4
+  color: $time-arrows;
 }
 
 #time-up:hover {
-  color: lighten(#95C9B4, 15%)
+  color: $time-arrows-hover;
 }
 
 #time-down:hover {
-  color: lighten(#95C9B4, 15%)
+  color: $time-arrows-hover;
 }
 
 #time-up:active {
-  color: lighten(#95C9B4, 40%)
+  color: $time-arrows-double-hover;
 }
 
 #time-down:active {
-  color: lighten(#95C9B4, 40%)
+  color: $time-arrows-double-hover;
 }
 
 #schedule-text {
-  // background-color: rgba(0,0,200,0.1);
   user-select: none;
   float: right;
   position: absolute;
@@ -95,7 +98,6 @@
 }
 
 #master-brightness {
-  // background-color: rgba(0,200,0,0.1);
   user-select: none;
   float: right;
   position: absolute;

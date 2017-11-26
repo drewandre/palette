@@ -1,3 +1,8 @@
+$palette-delete-color-hover: #98C8B3;
+$palette-name-input-background-color: #2F2F2F;
+$palette-container-background-color: #373737;
+$palette-title: #6F6F6F;
+
 .search-results {
   height: 15%;
   margin-bottom: 10px;
@@ -9,11 +14,11 @@
   padding: 2px;
   padding-top: 4px;
   font-size: 1.6em;
-  color: #373737;
+  color: $palette-container-background-color;
 }
 
 #palette-delete:hover {
-  color: #98C8B3;
+  color: $palette-delete-color-hover;
 }
 
 .make-fullwidth {
@@ -38,7 +43,7 @@
   font-size: 2em;
   font-weight: 300;
   box-shadow: none;
-  background-color: #2F2F2F;
+  background-color: $palette-name-input-background-color;
   color: darken(white, 20%);
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -47,7 +52,7 @@
 }
 
 .palette-name-input[type="text"]:focus, textarea:focus {
-  background-color: #2F2F2F;
+  background-color: $palette-name-input-background-color;
   box-shadow: none;
   background: none;
   border: none;
@@ -78,7 +83,7 @@
 
 .palette-container {
   pointer-events: all;
-  background-color: #373737;
+  background-color: $palette-container-background-color;
   margin: 15px;
   display: inline-block;
   overflow: hidden;
@@ -111,7 +116,7 @@
   width: 30%;
   max-width: 200px;
   height: 100%;
-  background-color: #373737;
+  background-color: $palette-container-background-color;
   margin-top: 10px;
   overflow: hidden;
   border-radius: 12px;
@@ -141,7 +146,7 @@
   font-size: 1.6em;
   font-weight: 300;
   box-shadow: none;
-  background-color: #2F2F2F;
+  background-color: $palette-name-input-background-color;
   color: darken(white, 20%);
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -151,7 +156,7 @@
 }
 
 .palette-search[type="text"]:focus, textarea:focus {
-  background-color: #2F2F2F;
+  background-color: $palette-name-input-background-color;
   box-shadow: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -170,7 +175,7 @@
   width: 100%;
   height: 40px;
   z-index: 0;
-  background-color: #373737;
+  background-color: $palette-container-background-color;
 }
 
 .make-full {
@@ -189,7 +194,7 @@
 .current-palette-title {
   user-select: none;
   pointer-events: none;
-  color: #6F6F6F;
+  color: $palette-title;
   z-index: 3;
   font-size: 1.55em;
   font-weight: 200;
@@ -201,7 +206,7 @@
 .current-effect-title {
   user-select: none;
   pointer-events: none;
-  color: #6F6F6F;
+  color: $palette-title;
   z-index: 3;
   font-size: 1.55em;
   font-weight: 200;
@@ -222,7 +227,6 @@
   position: relative;
   bottom: 8px;
   left: 20px;
-  // font-size: 1.8vw;
   font-size: 2em;
   font-weight: 200;
   user-select: none;
@@ -248,11 +252,11 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  color: #6F6F6F;
+  color: $palette-title;
 }
 
 #palette-upload:hover {
-  color: lighten(#6F6F6F, 25%);
+  color: lighten($palette-title, 25%);
 }
 
 .upload-instructions {

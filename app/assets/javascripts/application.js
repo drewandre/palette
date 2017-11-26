@@ -102,5 +102,5 @@ $(document).ready(function() {
       $( ".palette-dropdown" ).fadeOut( "fast" );
     }, 100);
   });
-  
+
 });
