@@ -1,3 +1,10 @@
+$input-background-color: #2F2F2F;
+$input-text-color: #686868;
+$arrow-color: #4F4F4F;
+$brightness-slider-color: #292929;
+$brightness-slider-background-color: #95C9B4;
+$off-white: darken(white, 20%);
+
 .select-field select {
   position: absolute;
   left: 180px;
@@ -6,8 +13,8 @@
   height: 50px;
   font-size: 1.6em;
   font-weight: 200;
-  background-color: #2F2F2F;
-  color: #686868;
+  background-color: $input-background-color;
+  color: $input-text-color;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
@@ -18,8 +25,8 @@
   text-align: center;
   border: none;
   font-size: 1.6em;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
+  background-color: $input-background-color;
+  color: $off-white;
   border: none;
   outline: none;
   box-shadow: none;
@@ -33,8 +40,8 @@
   font-size: 1.6em;
   outline: none;
   border: none;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
+  background-color: $input-background-color;
+  color: $off-white;
   border: none;
   -webkit-appearance: none;
   border: none;
@@ -49,8 +56,8 @@
   height: 50px;
   font-size: 1.6em;
   font-weight: 200;
-  background-color: #2F2F2F;
-  color: #686868;
+  background-color: $input-background-color;
+  color: $input-text-color;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
@@ -62,8 +69,8 @@
   text-align: center;
   border: none;
   font-size: 1.6em;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
+  background-color: $input-background-color;
+  color: $off-white;
   border: none;
   outline: none;
   box-shadow: none;
@@ -77,8 +84,8 @@
   font-size: 1.6em;
   outline: none;
   border: none;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
+  background-color: $input-background-color;
+  color: $off-white;
   border: none;
   -webkit-appearance: none;
   border: none;
@@ -92,8 +99,8 @@
   height: 50px;
   font-size: 1.6em;
   font-weight: 200;
-  background-color: #2F2F2F;
-  color: #686868;
+  background-color: $input-background-color;
+  color: $input-text-color;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: none;
@@ -104,8 +111,8 @@
   text-align: center;
   border: none;
   font-size: 1.6em;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
+  background-color: $input-background-color;
+  color: $off-white;
   border: none;
   outline: none;
   box-shadow: none;
@@ -119,8 +126,8 @@
   font-size: 1.6em;
   outline: none;
   border: none;
-  background-color: #2F2F2F;
-  color: darken(white, 20%);
+  background-color: $input-background-color;
+  color: $off-white;
   border: none;
   -webkit-appearance: none;
   border: none;
@@ -131,7 +138,6 @@
 }
 
 .master-brightness-slider {
-  // float: left;
   position: absolute;
   left: 35px;
   top: 70%;
@@ -145,7 +151,7 @@
 .master-brightness-slider[type=range]::-webkit-slider-runnable-track {
     width: 280px;
     height: 5px;
-    background: #292929;
+    background: $brightness-slider-color;
     border: none;
     border-radius: 3px;
 }
@@ -156,7 +162,7 @@
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: #95C9B4;
+    background: $brightness-slider-background-color;
     margin-top: -5px;
 }
 
@@ -168,19 +174,19 @@
   position: absolute;
   top: 55px;
   left: 220px;
-  color: #4F4F4F;
+  color: $arrow-color;
 }
 
 #dropdown-arrow-options {
   position: absolute;
   top: 55px;
   left: 331px;
-  color: #4F4F4F;
+  color: $arrow-color;
 }
 
 #effect-dropdown-arrow {
   position: absolute;
   top: 32px;
   left: 333px;
-  color: #4F4F4F;
+  color: $arrow-color;
 }

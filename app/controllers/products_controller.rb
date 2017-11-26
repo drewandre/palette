@@ -5,11 +5,28 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    find_bridge
+
+    begin
+      if Huey::Request.register
+        flash[:success] = 'Found a bridge!'
+        # redirect_to setup_path
+      end
+    end
+  rescue StandardError => e
+    error = [
+      "<h4>Could not find a bridge!</h4>
+      <br />
+      <h5>Make sure your bridge is <strong>powered on</strong> and connected to the <strong>same network</strong> as your device.</h5>
+      <br />
+      <h5>You can still name your system and connect it later!</h5>"
+    ]
+    flash[:error] = error.join("<br/>").html_safe
+    # redirect_to setup_path
+
+
   end
 
   def create
-
     @product = Product.new(product_params)
     @product.update(
       user_id: current_user.id,
@@ -41,23 +58,6 @@ class ProductsController < ApplicationController
       flash.now[:alert] = "There was a problem with your registration."
       render :new
     end
-  end
-
-  def find_bridge
-    begin
-      if Huey::Request.register
-        flash[:success] = 'Found a bridge!'
-      end
-    end
-  rescue StandardError => e
-    error = [
-      "<h4>Could not find a bridge!</h4>
-      <br />
-      <h5>Make sure your bridge is powered on and connected to the same network as your device.</h5>
-      <br />
-      <h5>You can still name your system and set it up later!</h5>"
-    ]
-    flash[:error] = error.join("<br/>").html_safe
   end
 
   def product_params

@@ -1,3 +1,6 @@
+$main-menu-color: #373A47;
+$main-menu-icon: #bdc3c7;
+
 .bm-burger-button {
   position: fixed;
   width: 36px;
@@ -7,19 +10,19 @@
 }
 
 .bm-burger-bars {
-  background: #373a47;
+  background: $main-menu-color;
 }
 
 .bm-morph-shape {
-  fill: #373a47;
+  fill: $main-menu-color;
 }
 
 .bm-menu {
-  background: #373a47;
+  background: $main-menu-color;
 }
 
 .bm-cross {
-  background: #bdc3c7;
+  background: $main-menu-icon;
 }
 
 .bm-menu {
@@ -32,6 +35,6 @@
 }
 
 .bm-item-list {
-  color: #b8b7ad;
+  color: $main-menu-icon;
   padding: 0.8em;
 }

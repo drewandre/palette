@@ -1,3 +1,7 @@
+$slider-bar: #373737;
+$slider-value: #494949;
+$slider-progress: #97C9B3;
+
 #Components {
   flex: 1;
   display: flex;
@@ -35,27 +39,24 @@
 
 .Slider-bar {
   user-select: none;
-  stroke: #373737;
-  // border: 2px solid rgba(0, 0, 0, 0.2);
-  // box-shadow: 15px 15px 15px black;
+  stroke: $slider-bar;
 }
 
 .Slider-progress {
   user-select: none;
-  stroke: #97C9B3;
-  // box-shadow: 10px 5px 5px black;
+  stroke: $slider-progress;
 }
 
 .Slider-value {
   user-select: none;
-  fill: #494949;
+  fill: $slider-value;
   font-size: 0.5em;
   font-weight: 200;
 }
 
 .Slider-label {
   user-select: none;
-  fill: #494949;
+  fill: $slider-value;
   font-weight: 200;
   font-size: 0.25em;
 }
@@ -63,10 +64,8 @@
 #top-left-slider {
   margin-left: 14%;
   margin-right: 3%;
-  // background-color: red;
 }
 #top-right-slider {
   margin-right: 14%;
   margin-left: 3%;
-  // background-color: blue;
 }

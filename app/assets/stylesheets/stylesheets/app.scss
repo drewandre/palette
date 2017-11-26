@@ -1,3 +1,7 @@
+$background-color: #292929;
+$link-color: #6F6F6F;
+$link-hover: #95C9B4;
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', Fallback, sans-serif;
@@ -7,16 +11,16 @@ body, html {
   height: calc(100% - 40px);
   width: 100%;
   top: 80px;
-  background: #292929;
+  background: $background-color;
 }
 
 a {
-  color: #6F6F6F;
+  color: $link-color;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #95C9B4;
+  color: $link-hover;
 }
 
 .fullwidth {
@@ -28,7 +32,6 @@ a:focus {
   // body {
   //   overflow-y: scroll;
   // }
-
 }
 
 @media (max-width: 525px) {
