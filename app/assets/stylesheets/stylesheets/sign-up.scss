@@ -56,6 +56,14 @@ welcome-nav {
   margin-bottom: 15px;
 }
 
+#demo {
+  user-select: none;
+  color: $form-background-color;
+  font-weight: 100;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+
 #register-success {
   user-select: none;
   color: $form-background-color;
