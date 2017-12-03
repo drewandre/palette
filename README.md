@@ -2,7 +2,7 @@
 
 [ ![Codeship Status for drewandre/palette-dashboard](https://app.codeship.com/projects/1558e670-aa28-0135-20c8-36aeb956401e/status?branch=master)](https://app.codeship.com/projects/256469)
 
-###### This project is a work-in-progress. While the app does send an M-SEARCH command to return any Philips Hue bridges on local network, this master branch does not yet write color data to the lights. ######
+###### This project is a work-in-progress. While the app does send an M-SEARCH command to return any Philips Hue bridges on local network, this master branch does not yet write color data to the lights. It is prepped for this feature, however.######
 
 ## TODO:
 - Replace ***Settings*** tile with a ***Scenes*** tile, allowing for user to retain preset color palettes across multiple bulbs and store master room settings.
