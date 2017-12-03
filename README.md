@@ -4,6 +4,8 @@
 
 ###### This project is a work-in-progress. While the app does run an M-SEARCH request to return any Philips Hue bridges on local network, this master branch does not yet write color data to the lights. It is prepped for this feature, however.######
 
+![alt text](https://github.com/drewandre/palette/blob/master/public/palette.png)
+
 ## TODO:
 - Replace ***Settings*** tile with a ***Scenes*** tile, allowing for user to retain preset color palettes across multiple bulbs and store master room settings.
 - Add flexible dividers to main color palette display so that user can adjust how much of each color is present in each palette.
