@@ -22,8 +22,6 @@ class ProductsController < ApplicationController
     ]
     flash[:error] = error.join("<br/>").html_safe
     # redirect_to setup_path
-
-
   end
 
   def create
