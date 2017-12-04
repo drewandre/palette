@@ -1,6 +1,6 @@
-# [Palette](https://palette-dashboard.herokuapp.com/) &middot; [ ![Codeship Status for drewandre/palette-dashboard](https://app.codeship.com/projects/1558e670-aa28-0135-20c8-36aeb956401e/status?branch=master)](https://app.codeship.com/projects/256469) [![Coverage Status](https://coveralls.io/repos/github/drewandre/palette-dashboard/badge.svg?branch=master)](https://coveralls.io/github/drewandre/palette-dashboard?branch=master)
+# [Palette](https://palette-dashboard.herokuapp.com/) &middot; [ ![Codeship Status for drewandre/palette-dashboard](https://app.codeship.com/projects/1558e670-aa28-0135-20c8-36aeb956401e/status?branch=master)](https://app.codeship.com/projects/256469)
 
-###### This project is a work-in-progress. While the app does run an M-SEARCH request to return any Philips Hue bridges on local network, this master branch does not yet write color data to the lights.
+###### This project is a work-in-progress. While the app does run an M-SEARCH request to return any Philips Hue bridges on local network, this master branch only writes color to a Bridge through the terminal.
 
 ![alt text](https://github.com/drewandre/palette/blob/master/public/palette.png)
 
