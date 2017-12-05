@@ -1,6 +1,5 @@
-import React from 'react';
-// import SliderMath from '../helpers/SliderMath'
-const { Component, PropTypes } = React
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
   slider: "Slider",
@@ -15,7 +14,6 @@ const clamp = (min, max, value) => Math.max(min, Math.min(max, value))
 
 class Slider extends Component {
 
-  // static propTypes = {
   constructor(props) {
     super(props)
     this.state = {
@@ -52,8 +50,6 @@ class Slider extends Component {
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
   }
-  // };
-
   // static defaultProps = {
   //   radius: 50,
   //   border: 50,
@@ -196,5 +192,13 @@ class Slider extends Component {
     )
   }
 }
+
+Slider.propTypes = {
+  onChange: PropTypes.func,
+  radius: PropTypes.number.isRequired,
+  border: PropTypes.number.isRequired,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+};
 
 export default Slider;

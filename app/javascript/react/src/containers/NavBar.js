@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class NavBar extends React.Component {
+class NavBar extends Component {
   constructor(props) {
     super(props)
     this.state = {

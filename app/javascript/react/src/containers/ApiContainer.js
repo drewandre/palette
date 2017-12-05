@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DataSelectField from '../components/DataSelectField'
 import ApiTiles from '../components/ApiTiles'
 import ConnectionTiles from '../components/ConnectionTiles'
 
 var STOCKS = ['AAPL', 'GOOG', 'NVDA', 'MSFT', 'QCOM', 'DIS', 'NOK', 'AMZN', 'INTC'];
 
-class ApiContainer extends React.Component {
+class ApiContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
