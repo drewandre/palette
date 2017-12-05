@@ -1,10 +1,8 @@
-$light-blue-accent: #292929;
-$time-arrows: #95C9B4;
-$time-arrows-hover: lighten($time-arrows, 15%);
-$time-arrows-double-hover: lighten($time-arrows, 40%);
+@import "colors";
+@import "mixins";
 
 .schedule {
-  user-select: none;
+  @include no-user-select();
   cursor: auto;
   font-size: 2em;
   font-weight: 200;
@@ -63,32 +61,32 @@ $time-arrows-double-hover: lighten($time-arrows, 40%);
 
 #time-up {
   display: block;
-  color: $time-arrows;
+  color: $light-blue-accent;
 }
 
 #time-down {
   display: block;
-  color: $time-arrows;
+  color: $light-blue-accent;
 }
 
 #time-up:hover {
-  color: $time-arrows-hover;
+  color: lighten($light-blue-accent, 15%);
 }
 
 #time-down:hover {
-  color: $time-arrows-hover;
+  color: lighten($light-blue-accent, 15%);
 }
 
 #time-up:active {
-  color: $time-arrows-double-hover;
+  color: lighten($light-blue-accent, 40%);
 }
 
 #time-down:active {
-  color: $time-arrows-double-hover;
+  color: lighten($light-blue-accent, 40%);
 }
 
 #schedule-text {
-  user-select: none;
+  @include no-user-select();
   float: right;
   position: absolute;
   top: 40%;
@@ -98,7 +96,7 @@ $time-arrows-double-hover: lighten($time-arrows, 40%);
 }
 
 #master-brightness {
-  user-select: none;
+  @include no-user-select();
   float: right;
   position: absolute;
   top: 65%;

@@ -186,7 +186,7 @@ class PaletteContainer extends React.Component {
         <div className={this.props.className}>
           {palette_name_input}
           <div className='upload-instructions'>Drop image here to create a custom color palette</div>
-          <Dropzone onDrop={this.onDrop} disableClick='true' className='palette-dropzone'>
+          <Dropzone onDrop={this.onDrop} disableClick={true} className='palette-dropzone'>
             <div>
               <i className="fa fa-paint-brush fa-2x" id="box-icon" aria-hidden="true"></i>
               <div className='container-title'>Palettes</div>

@@ -6,21 +6,20 @@
   },
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
-    "babel-preset-react": "^6.24.1",
     "better-react-spinkit": "^2.0.2",
     "coffeescript": "1.12.7",
     "core-js": "^2.5.1",
     "node-vibrant": "^3.0.0-alpha.2",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-burger-menu": "^2.1.9",
-    "react-color": "^2.13.8",
-    "react-dom": "^16.0.0",
-    "react-dropzone": "^4.2.1",
-    "react-reflex": "^2.0.10",
-    "react-resizable-grid": "^1.0.1"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "jasmine-core": "^2.8.0",
@@ -34,6 +33,6 @@
     "phantomjs-prebuilt": "^2.1.15",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.0.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^2.9.5"
   }
 }

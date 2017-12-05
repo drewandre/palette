@@ -1,6 +1,5 @@
-$background-color: #292929;
-$link-color: #6F6F6F;
-$link-hover: #95C9B4;
+@import "colors";
+@import "mixins";
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 h1, h2, h3, h4, h5 {
@@ -8,34 +7,22 @@ h1, h2, h3, h4, h5 {
 }
 
 body, html {
+  background: $background-color;
   height: calc(100% - 40px);
   width: 100%;
   top: 80px;
-  background: $background-color;
 }
 
 a {
-  color: $link-color;
+  color: $text-light;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: $link-hover;
+  color: $light-blue-accent;
 }
 
 .fullwidth {
   width: 100%;
   max-width: initial;
-}
-
-@media (max-width: 1024px) {
-  // body {
-  //   overflow-y: scroll;
-  // }
-}
-
-@media (max-width: 525px) {
-  #name-and-updated {
-    visibility: hidden;
-  }
 }
