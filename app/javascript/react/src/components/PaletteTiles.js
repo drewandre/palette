@@ -23,7 +23,6 @@ const PaletteTiles = props => {
       );
     }
     else {
-      debugger
       return(
         <PaletteSwatches
           swatchesClassName={props.swatchesClassName}
