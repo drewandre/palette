@@ -190,7 +190,7 @@
 }
 
 .current-palette-title {
-  user-select: none;
+  @include no-user-select();
   pointer-events: none;
   color: $text-light;
   z-index: 3;
@@ -202,7 +202,7 @@
 }
 
 .current-effect-title {
-  user-select: none;
+  @include no-user-select();
   pointer-events: none;
   color: $text-light;
   z-index: 3;
@@ -221,25 +221,25 @@
 }
 
 .palette-name {
-  user-select: none;
+  @include no-user-select();
   position: relative;
   bottom: 8px;
   left: 20px;
   font-size: 2em;
   font-weight: 200;
-  user-select: none;
+  @include no-user-select();
 }
 
 .palette-designer {
   overflow: hidden;
-  user-select: none;
+  @include no-user-select();
   position: relative;
   bottom: 10px;
   margin-left: 30px;
   font-size: 1.5em;
   font-style: italic;
   font-weight: 100;
-  user-select: none;
+  @include no-user-select();
 }
 
 #no-hover:hover {

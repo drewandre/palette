@@ -7,10 +7,10 @@ h1, h2, h3, h4, h5 {
 }
 
 body, html {
+  background: $background-color;
   height: calc(100% - 40px);
   width: 100%;
   top: 80px;
-  background: $background-color;
 }
 
 a {
@@ -25,16 +25,4 @@ a:focus {
 .fullwidth {
   width: 100%;
   max-width: initial;
-}
-
-@media (max-width: 1024px) {
-  // body {
-  //   overflow-y: scroll;
-  // }
-}
-
-@media (max-width: 525px) {
-  #name-and-updated {
-    visibility: hidden;
-  }
 }

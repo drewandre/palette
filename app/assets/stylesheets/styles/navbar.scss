@@ -46,7 +46,7 @@
 }
 
 #nav-user-name {
-  user-select: none;
+  @include no-user-select();
   pointer-events: none;
   color: $text-light;
   display: block;
@@ -60,7 +60,7 @@
 
 #nav-user-email {
   pointer-events: none;
-  user-select: none;
+  @include no-user-select();
   color: $text-light;
   display: block;
   white-space: nowrap;
@@ -74,7 +74,7 @@
 }
 
 #user-icon {
-  user-select: none;
+  @include no-user-select();
   position: absolute;
   left: 135px;
   top: 9px;

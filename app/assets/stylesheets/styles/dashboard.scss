@@ -7,8 +7,8 @@
 }
 
 #spinner {
+  @include no-user-select();
   display: inline-block;
-  user-select: none;
   pointer-events: none;
   position: absolute;
   top: 7px;
@@ -27,7 +27,7 @@
 }
 
 #box-icon {
-  user-select: none;
+  @include no-user-select();
   cursor: default;
   color: $text-light;
   position: absolute;
@@ -36,7 +36,7 @@
 }
 
 #api-box-icon {
-  user-select: none;
+  @include no-user-select();
   cursor: default;
   color: $text-light;
   position: absolute;
@@ -45,7 +45,7 @@
 }
 
 .container-title {
-  user-select: none;
+  @include no-user-select();
   cursor: default;
   display: block;
   letter-spacing: 0.08em;
@@ -94,7 +94,7 @@
 }
 
 .container-info {
-  user-select: none;
+  @include no-user-select();
   align-items: stretch;
   display: flex;
   flex-direction: row;
@@ -102,7 +102,7 @@
 }
 
 .dashboard-title {
-  user-select: none;
+  @include no-user-select();
   pointer-events: none;
   display: inline-block;
   color: $text-light;
@@ -112,7 +112,7 @@
 }
 
 #name-and-updated {
-  user-select: none;
+  @include no-user-select();
   pointer-events: none;
   position: absolute;
   top: 12px;
@@ -123,7 +123,7 @@
 }
 
 #settings-info {
-  user-select: none;
+  @include no-user-select();
   pointer-events: none;
   position: absolute;
   top: 20px;

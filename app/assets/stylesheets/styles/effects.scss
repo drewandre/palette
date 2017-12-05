@@ -2,7 +2,8 @@
 @import "mixins";
 
 .effect-search[type="text"], textarea {
-  user-select: none;
+  @include no-user-select();
+  @include disable-default-appearance();
   position: absolute;
   left: 245px;
   top: 20px;
@@ -10,20 +11,11 @@
   height: 40px;
   font-size: 1.6em;
   font-weight: 100;
-  box-shadow: none;
   background-color: $tile-light;
   color: darken(white, 20%);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: none;
-  border: none;
 }
 .effect-search[type="text"]:focus, textarea:focus {
-  user-select: none;
+  @include no-user-select();
+  @include disable-default-appearance();
   background-color: $tile-light;
-  box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: none;
-  border: none;
 }

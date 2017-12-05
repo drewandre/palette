@@ -2,7 +2,7 @@
 @import "mixins";
 
 .schedule {
-  user-select: none;
+  @include no-user-select();
   cursor: auto;
   font-size: 2em;
   font-weight: 200;
@@ -86,7 +86,7 @@
 }
 
 #schedule-text {
-  user-select: none;
+  @include no-user-select();
   float: right;
   position: absolute;
   top: 40%;
@@ -96,7 +96,7 @@
 }
 
 #master-brightness {
-  user-select: none;
+  @include no-user-select();
   float: right;
   position: absolute;
   top: 65%;

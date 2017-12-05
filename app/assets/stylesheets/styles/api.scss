@@ -8,14 +8,14 @@
 }
 
 .api-control {
-  width: 100%;
   position: absolute;
+  width: 100%;
   top: 25%;
   height: 100%;
 }
 
 .last-updated {
-  user-select: none;
+  @include no-user-select();
   position: relative;
   left: 189px;
   font-weight: 100;
@@ -30,8 +30,8 @@
 }
 
 .endpoint-tiles {
+  @include no-user-select();
   pointer-events: none;
-  user-select: none;
   background-color: $tile-lighter;
   margin: 5px;
   display: inline-block;
@@ -44,9 +44,9 @@
 }
 
 .connection-tiles {
+  @include no-user-select();
   text-align: center;
   pointer-events: none;
-  user-select: none;
   position: relative;
   background-color: $tile-lighter;
   color: $text-light;
@@ -89,30 +89,22 @@
 }
 
 .data-search[type="text"], textarea {
+  @include no-user-select();
+  @include disable-default-appearance();
   position: absolute;
-  user-select: none;
   left: 245px;
   top: 20px;
   width: 65%;
   height: 40px;
   font-size: 1.6em;
   font-weight: 100;
-  box-shadow: none;
   background-color: $tile-light;
   color: $text-light;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: none;
-  border: none;
 }
 .data-search[type="text"]:focus, textarea:focus {
+  @include no-user-select();
+  @include disable-default-appearance();
   background-color: $tile-light;
-  user-select: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: none;
-  border: none;
 }
 
 #data-options-dropdown-arrow {

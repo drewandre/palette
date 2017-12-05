@@ -44,7 +44,7 @@ welcome-nav {
 }
 
 #register {
-  user-select: none;
+  @include no-user-select();
   color: $text-light;
   font-weight: 100;
   font-size: 2em;
@@ -52,7 +52,7 @@ welcome-nav {
 }
 
 #demo {
-  user-select: none;
+  @include no-user-select();
   color: $text-light;
   font-weight: 100;
   font-size: 1.4em;
@@ -60,7 +60,7 @@ welcome-nav {
 }
 
 #register-success {
-  user-select: none;
+  @include no-user-select();
   color: $text-light;
   font-weight: 100;
   font-size: 1.7em;
@@ -68,7 +68,7 @@ welcome-nav {
 }
 
 #register-name {
-  user-select: none;
+  @include no-user-select();
   color: $text-light;
   font-weight: 200;
   font-size: 1.7em;
