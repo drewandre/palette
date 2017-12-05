@@ -1,6 +1,5 @@
-$login-background-color: #2F2F2F;
-$login-input-border: #454545;
-$sign-in-error: #757575;
+@import "colors";
+@import "mixins";
 
 #session_login[type="text"], textarea {
   font-weight: 200;
@@ -8,9 +7,9 @@ $sign-in-error: #757575;
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
-  background-color: $login-background-color;
+  background-color: $tile-light;
   color: white;
-  border: 1px solid $login-input-border;
+  border: 1px solid $tile-lighter;
 }
 
 #session_password[type="password"], textarea {
@@ -19,17 +18,17 @@ $sign-in-error: #757575;
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
-  background-color: $login-background-color;
+  background-color: $tile-light;
   color: white;
-  border: 1px solid $login-input-border;
+  border: 1px solid $tile-lighter;
 }
 
 #lock-icon {
-  border: 1px solid $login-input-border;
+  border: 1px solid $tile-lighter;
   border-radius: 200px;
   margin-bottom: 5px;
   padding: 15px 25px;
-  color: $login-input-border;
+  color: $tile-lighter;
 }
 
 .form-actions {
@@ -38,5 +37,5 @@ $sign-in-error: #757575;
 
 .sign-in-error {
   margin-bottom: 22px;
-  color: $sign-in-error;
+  color: $text-light;
 }

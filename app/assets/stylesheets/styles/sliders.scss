@@ -1,6 +1,5 @@
-$slider-bar: #373737;
-$slider-value: #494949;
-$slider-progress: #97C9B3;
+@import "colors";
+@import "mixins";
 
 #Components {
   flex: 1;
@@ -10,20 +9,20 @@ $slider-progress: #97C9B3;
 }
 
 .Component {
-  user-select: none;
+  @include no-user-select();
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .Component-slider {
-  user-select: none;
+  @include no-user-select();
   display: flex;
   font-size: 5rem;
 }
 
 .Slider {
-  user-select: none;
+  @include no-user-select();
   margin: 3%;
   margin-bottom: 0;
   margin-top: 0;
@@ -33,30 +32,30 @@ $slider-progress: #97C9B3;
 }
 
 .Slider-circle {
-  user-select: none;
+  @include no-user-select();
   fill: rgb(31, 41, 46);
 }
 
 .Slider-bar {
-  user-select: none;
-  stroke: $slider-bar;
+  @include no-user-select();
+  stroke: $tile-lighter;
 }
 
 .Slider-progress {
-  user-select: none;
-  stroke: $slider-progress;
+  @include no-user-select();
+  stroke: $light-blue-accent;
 }
 
 .Slider-value {
-  user-select: none;
-  fill: $slider-value;
+  @include no-user-select();
+  fill: $text-light;
   font-size: 0.5em;
   font-weight: 200;
 }
 
 .Slider-label {
-  user-select: none;
-  fill: $slider-value;
+  @include no-user-select();
+  fill: $text-light;
   font-weight: 200;
   font-size: 0.25em;
 }

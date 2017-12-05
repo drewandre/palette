@@ -1,9 +1,5 @@
-$endpoint-tile-color: #373737;
-$input-background-color: #2F2F2F;
-$input-text-color: #686868;
-$connection-tile-text-color: #6F6F6F;
-$tile-divider-color: #292929;
-$transparent-border: rgba(0, 0, 0, 0.2);
+@import "colors";
+@import "mixins";
 
 .api-list {
   pointer-events: none;
@@ -12,14 +8,14 @@ $transparent-border: rgba(0, 0, 0, 0.2);
 }
 
 .api-control {
-  width: 100%;
   position: absolute;
+  width: 100%;
   top: 25%;
   height: 100%;
 }
 
 .last-updated {
-  user-select: none;
+  @include no-user-select();
   position: relative;
   left: 189px;
   font-weight: 100;
@@ -34,13 +30,13 @@ $transparent-border: rgba(0, 0, 0, 0.2);
 }
 
 .endpoint-tiles {
+  @include no-user-select();
   pointer-events: none;
-  user-select: none;
-  background-color: $endpoint-tile-color;
+  background-color: $tile-lighter;
   margin: 5px;
   display: inline-block;
   overflow: hidden;
-  border: 2px solid $transparent-border;
+  border: 2px solid rgba(0,0,0,0.2);
   border-radius: 12px;
   height: 100%;
   width: 18%;
@@ -48,16 +44,16 @@ $transparent-border: rgba(0, 0, 0, 0.2);
 }
 
 .connection-tiles {
+  @include no-user-select();
   text-align: center;
   pointer-events: none;
-  user-select: none;
   position: relative;
-  background-color: $endpoint-tile-color;
-  color: $connection-tile-text-color;
+  background-color: $tile-lighter;
+  color: $text-light;
   margin: 5px;
   display: inline-block;
   overflow: hidden;
-  border: 2px solid $transparent-border;
+  border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   height: 100px;
   font-size: 1.7vw;
@@ -75,7 +71,7 @@ $transparent-border: rgba(0, 0, 0, 0.2);
   width: 80%;
   border: 0;
   height: 1px;
-  background: $tile-divider-color;
+  background: $background_color;
 }
 
 .api-key {
@@ -93,30 +89,22 @@ $transparent-border: rgba(0, 0, 0, 0.2);
 }
 
 .data-search[type="text"], textarea {
+  @include no-user-select();
+  @include disable-default-appearance();
   position: absolute;
-  user-select: none;
   left: 245px;
   top: 20px;
   width: 65%;
   height: 40px;
   font-size: 1.6em;
   font-weight: 100;
-  box-shadow: none;
-  background-color: $input-background-color;
-  color: $input-text-color;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: none;
-  border: none;
+  background-color: $tile-light;
+  color: $text-light;
 }
 .data-search[type="text"]:focus, textarea:focus {
-  background-color: $input-background-color;
-  user-select: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: none;
-  border: none;
+  @include no-user-select();
+  @include disable-default-appearance();
+  background-color: $tile-light;
 }
 
 #data-options-dropdown-arrow {

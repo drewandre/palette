@@ -32,6 +32,5 @@
 * In a terminal, run git clone `https://github.com/drewandre/palette-dashboard.git`
 * Navigate to the project's root directory with `cd palette-dashboard`
 * Run `bundle install && npm install && rake db:setup && rake db:seed`
-* In terminal, run `rails s`
-* In another terminal window, run `./bin/webpacker-dev-server`
-* Visit http://localhost:3000/ in your browser.
+* In a separate terminal, run `foreman start`
+* Visit http://localhost:5000/ in your browser.

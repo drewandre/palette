@@ -71,10 +71,13 @@ module.exports = function(config) {
       module: {
         loaders: [
           {
-            test: /\.jsx?/,
+            test: /\.(js|jsx)?$/,
+            loader: 'babel',
             exclude: /node_modules/,
-            loader: 'babel-loader'
-          }
+            query: {
+                presets: ['react', 'es2015']
+            }
+          },
         ]
       },
       externals: {

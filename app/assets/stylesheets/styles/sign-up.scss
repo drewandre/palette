@@ -1,10 +1,5 @@
-$main-background-color: #2F2F2F;
-$main-background-color-accent-1: #6F6F6F;
-$main-background-color-accent-2: #454545;
-$form-background-color: #757575;
-$error-color: #FDA429;
-$white: #fff;
-$transparent: rgba(0,0,0,0);
+@import "colors";
+@import "mixins";
 
 welcome-nav {
   font-family: 'Montserrat';
@@ -12,13 +7,13 @@ welcome-nav {
   padding-left: 20px;
   padding-top: 13px;
   z-index: 999;
-  color: $main-background-color-accent-1;
+  color: $text-light;
   position: fixed;
   top: 0px;
   left: 0px;
   height: 50px;
   width: 100%;
-  background-color: $main-background-color;
+  background-color: $tile-light;
 }
 
 .palette {
@@ -49,45 +44,45 @@ welcome-nav {
 }
 
 #register {
-  user-select: none;
-  color: $form-background-color;
+  @include no-user-select();
+  color: $text-light;
   font-weight: 100;
   font-size: 2em;
   margin-bottom: 15px;
 }
 
 #demo {
-  user-select: none;
-  color: $form-background-color;
+  @include no-user-select();
+  color: $text-light;
   font-weight: 100;
   font-size: 1.4em;
   margin-bottom: 15px;
 }
 
 #register-success {
-  user-select: none;
-  color: $form-background-color;
+  @include no-user-select();
+  color: $text-light;
   font-weight: 100;
   font-size: 1.7em;
   margin-bottom: 15px;
 }
 
 #register-name {
-  user-select: none;
-  color: $form-background-color;
+  @include no-user-select();
+  color: $text-light;
   font-weight: 200;
   font-size: 1.7em;
   margin-bottom: 10px;
 }
 
 .continue {
-  color: $form-background-color;
+  color: $text-light;
   font-weight: 100;
   font-size: 1.7em;
 }
 
 .sign-up {
-  color: $form-background-color;
+  color: $text-light;
   font-weight: 100;
   font-size: 1.7em;
 }
@@ -108,17 +103,17 @@ welcome-nav {
   border-radius: 10px;
   height: 50px;
   font-size: 1.5em;
-  background-color: $main-background-color;
+  background-color: $tile-light;
   color: white;
-  border: 1px solid $main-background-color-accent-2;
+  border: 1px solid $tile-lighter;
 }
 
 #sign-up-icon {
-  border: 1px solid $main-background-color-accent-2;
+  border: 1px solid $tile-lighter;
   border-radius: 200px;
   margin-bottom: 15px;
   padding: 15px 22px;
-  color: $main-background-color-accent-2;
+  color: $tile-lighter;
 }
 
 #sign-in-button {
@@ -126,18 +121,18 @@ welcome-nav {
 }
 
 .form-errors {
-  color: $form-background-color;
+  color: $text-light;
   margin-bottom: 15px;
 }
 
 .bridge-discover-status {
   width: 30%;
   min-width: 300px;
-  color: $main-background-color-accent-1;
+  color: $text-light;
   border-radius: 10px;
   margin: auto;
-  background-color: $error-color;
-  color: $form-background-color;
+  background-color: $error;
+  color: $text-light;
   padding: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -150,18 +145,18 @@ welcome-nav {
 .button_green {
   display: hidden;
   background-repeat: no-repeat;
-  background-color: $transparent;
+  opacity: 0;
 }
 
 .button_green:hover {
   display: hidden;
   background-repeat: no-repeat;
-  background-color: $transparent;
+  opacity: 0;
 }
 
 .button_green:active {
   display: hidden;
   background-repeat: no-repeat;
-  background-color: $transparent;
+  opacity: 0;
   border: none;
 }

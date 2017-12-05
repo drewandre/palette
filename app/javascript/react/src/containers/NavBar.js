@@ -40,10 +40,8 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className='fixed-nav-bar'>
+        <div id='nav-logo'>palette</div>
         <div className={this.props.className}>
-          <div id='nav-menu-button'>
-            <i className="fa fa-bars fa-2x" aria-hidden="true"></i>
-          </div>
           <div onClick={this.handlePower} id='power-status'>
             <i className='fa fa-power-off fa-2x' id={this.state.powerStatus.toString()} aria-hidden="true"></i>
           </div>
