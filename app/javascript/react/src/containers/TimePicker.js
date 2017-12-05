@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-class TimePicker extends React.Component {
+class TimePicker extends Component {
   constructor(props) {
     super(props)
     this.state = {

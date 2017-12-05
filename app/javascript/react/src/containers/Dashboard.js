@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import EffectContainer from './EffectContainer'
 import SettingsContainer from './SettingsContainer'
 import ApiContainer from './ApiContainer'
@@ -9,7 +10,7 @@ var monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -105,4 +106,9 @@ class Dashboard extends React.Component {
     )
   }
 }
+
+Dashboard.propTypes = {
+  currentUser: PropTypes.array
+};
+
 export default Dashboard;

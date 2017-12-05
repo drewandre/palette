@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import EffectSelectField from '../components/EffectSelectField'
 import Slider from './Slider'
 
-class EffectContainer extends React.Component {
+class EffectContainer extends Component {
   showSettings(event) {
     event.preventDefault();
   }

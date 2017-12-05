@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PaletteTiles from '../components/PaletteTiles';
 import SearchPaletteTiles from '../components/SearchPaletteTiles';
 import PaletteDisplay from '../containers/PaletteDisplay';
@@ -7,7 +8,7 @@ import PaletteNameInput from '../components/PaletteNameInput'
 import * as Vibrant from 'node-vibrant'
 import Dropzone from 'react-dropzone'
 
-class PaletteContainer extends React.Component {
+class PaletteContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {

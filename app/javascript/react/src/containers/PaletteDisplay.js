@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PaletteSwatches from '../components/PaletteSwatches'
 
-class PaletteDisplay extends React.Component {
+class PaletteDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
