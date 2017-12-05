@@ -27,7 +27,7 @@ const PaletteTiles = props => {
         <PaletteSwatches
           swatchesClassName={props.swatchesClassName}
           id='no-hover'
-          // key='undefined'
+          key={Date.now + Math.random() * 100}
           name={null}
           hex_1={null}
           hex_2={null}

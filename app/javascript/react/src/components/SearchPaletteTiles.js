@@ -35,7 +35,7 @@ const SearchPaletteTiles = props => {
       return(
         <PaletteSwatches
           swatchesClassName={props.swatchesClassName}
-          // key={null}
+          key={Date.now + Math.random() * 100}
           name={null}
           hex_1={null}
           hex_2={null}

@@ -34,7 +34,7 @@ const DataSelectField = props => {
 
   let options = options_switch.map(option => {
     return (
-      <option value={option}>{[option][0]}</option>
+      <option value={option} key={Date.now + Math.random() * 100}>{[option][0]}</option>
     );
   });
 

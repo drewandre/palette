@@ -11,7 +11,7 @@ const ApiTiles = props => {
 
   let endpoints = result.map(endpoint => {
     return (
-      <div className='endpoint-tiles'>
+      <div className='endpoint-tiles' key={Date.now + Math.random() * 100}>
         <div className='api-key'>{endpoint[0]}</div>
         <hr className='tile-divider'/>
         <div className='api-value'>{endpoint[1]}</div>
