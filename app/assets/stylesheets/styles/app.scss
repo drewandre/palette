@@ -1,6 +1,5 @@
-$background-color: #292929;
-$link-color: #6F6F6F;
-$link-hover: #95C9B4;
+@import "colors";
+@import "mixins";
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 h1, h2, h3, h4, h5 {
@@ -15,12 +14,12 @@ body, html {
 }
 
 a {
-  color: $link-color;
+  color: $text-light;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: $link-hover;
+  color: $light-blue-accent;
 }
 
 .fullwidth {

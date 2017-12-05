@@ -2,7 +2,7 @@ import React from 'react';
 
 const PaletteSwatches = props => {
   let numSwatches = 0
-  let key = props.key
+  // let key = props.id
   let id = props.id
   let hex_1 = props.hex_1
   let hex_2 = props.hex_2
@@ -28,7 +28,7 @@ const PaletteSwatches = props => {
   width_4 = percentage_hex_4 / numSwatches
 
   return(
-    <div onClick={props.handleSearchClick} value={id} className={props.swatchesClassName} id={props.id}>
+    <div onClick={props.handleSearchClick} value={id} className={props.swatchesClassName} key={props.id}>
       {props.handlePaletteDelete ? <i onClick={props.handlePaletteDelete} className="fa fa-minus-circle fa-lg" id='palette-delete' aria-hidden="true"></i>: null}
       <div className='color-swatch' value={id} style={{ backgroundColor: hex_1, width: width_1+'%' }}/>
       <div className='color-swatch' value={id} style={{ backgroundColor: hex_2, width: width_2+'%' }}/>

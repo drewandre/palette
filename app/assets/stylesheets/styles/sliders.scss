@@ -1,6 +1,5 @@
-$slider-bar: #373737;
-$slider-value: #494949;
-$slider-progress: #97C9B3;
+@import "colors";
+@import "mixins";
 
 #Components {
   flex: 1;
@@ -39,24 +38,24 @@ $slider-progress: #97C9B3;
 
 .Slider-bar {
   user-select: none;
-  stroke: $slider-bar;
+  stroke: $tile-lighter;
 }
 
 .Slider-progress {
   user-select: none;
-  stroke: $slider-progress;
+  stroke: $light-blue-accent;
 }
 
 .Slider-value {
   user-select: none;
-  fill: $slider-value;
+  fill: $text-light;
   font-size: 0.5em;
   font-weight: 200;
 }
 
 .Slider-label {
   user-select: none;
-  fill: $slider-value;
+  fill: $text-light;
   font-weight: 200;
   font-size: 0.25em;
 }

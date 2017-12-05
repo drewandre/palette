@@ -1,4 +1,5 @@
-$input-background-color: #2F2F2F;
+@import "colors";
+@import "mixins";
 
 .effect-search[type="text"], textarea {
   user-select: none;
@@ -10,7 +11,7 @@ $input-background-color: #2F2F2F;
   font-size: 1.6em;
   font-weight: 100;
   box-shadow: none;
-  background-color: $input-background-color;
+  background-color: $tile-light;
   color: darken(white, 20%);
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -19,7 +20,7 @@ $input-background-color: #2F2F2F;
 }
 .effect-search[type="text"]:focus, textarea:focus {
   user-select: none;
-  background-color: $input-background-color;
+  background-color: $tile-light;
   box-shadow: none;
   -webkit-appearance: none;
   -moz-appearance: none;

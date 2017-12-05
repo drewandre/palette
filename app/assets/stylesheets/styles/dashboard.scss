@@ -1,8 +1,5 @@
-$tile-background-color: #2F2F2F;
-$tile-text-color: #6F6F6F;
-$box-shadow: rgba(0, 0, 0, .1);
-$white: #fff;
-$container-title-border: #686868;
+@import "colors";
+@import "mixins";
 
 .dashboard {
   position: relative;
@@ -20,19 +17,19 @@ $container-title-border: #686868;
 
 .box {
   position: relative;
-  background: $tile-background-color;
+  background: $tile-light;
   border-radius: 4px;
   margin: 10px;
   height: 395px;
-  box-shadow: 2px 2px 2px 1px $box-shadow;
-  color: $tile-text-color;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+  color: $text-light;
   overflow: hidden;
 }
 
 #box-icon {
   user-select: none;
   cursor: default;
-  color: $tile-text-color;
+  color: $text-light;
   position: absolute;
   left: 20px;
   top: 20px;
@@ -41,7 +38,7 @@ $container-title-border: #686868;
 #api-box-icon {
   user-select: none;
   cursor: default;
-  color: $tile-text-color;
+  color: $text-light;
   position: absolute;
   left: 20px;
   top: 20px;
@@ -65,7 +62,7 @@ $container-title-border: #686868;
 
 .container-title:after {
   content:"";
-  background: $container-title-border;
+  background: $text-light;
   position: absolute;
   bottom: 20%;
   right: 0;
@@ -75,7 +72,7 @@ $container-title-border: #686868;
 
 .container-search {
   cursor: pointer;
-  color: $tile-text-color;
+  color: $text-light;
   position: absolute;
   right: 25px;
   top: 20px;
@@ -86,14 +83,14 @@ $container-title-border: #686868;
   left: 198px;
   top: 16px;
   font-weight: bold;
-  color: $tile-text-color;
+  color: $text-light;
 }
 
 #container-dropdown {
   position: absolute;
   left: 298px;
   top: 29px;
-  color: $tile-text-color;
+  color: $text-light;
 }
 
 .container-info {
@@ -108,7 +105,7 @@ $container-title-border: #686868;
   user-select: none;
   pointer-events: none;
   display: inline-block;
-  color: $tile-text-color;
+  color: $text-light;
   margin-left: 20px;
   font-size: 2em;
   font-weight: 300;
@@ -120,7 +117,7 @@ $container-title-border: #686868;
   position: absolute;
   top: 12px;
   left: 190px;
-  color: $tile-text-color;
+  color: $text-light;
   font-size: 1.25em;
   font-weight: 200;
 }
@@ -132,7 +129,7 @@ $container-title-border: #686868;
   top: 20px;
   left: 260px;
   display: inline-block;
-  color: $tile-text-color;
+  color: $text-light;
   font-size: 1.8em;
   font-weight: 100;
   line-height: 1.2;
