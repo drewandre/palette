@@ -48,17 +48,20 @@ class Slider extends Component {
         }
       }
     }
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
   }
   // };
 
-  static defaultProps = {
-    radius: 50,
-    border: 50,
-    origin: 1,
-    start: 0,
-    angle: Math.PI / 2,
-    value: 0,
-  };
+  // static defaultProps = {
+  //   radius: 50,
+  //   border: 50,
+  //   origin: 1,
+  //   start: 0,
+  //   angle: Math.PI / 2,
+  //   value: 0,
+  // };
 
   componentDidMount() {
     document.addEventListener("mousemove", this.handleMouseMove)
@@ -70,9 +73,11 @@ class Slider extends Component {
     document.removeEventListener("mouseup", this.handleMouseUp)
   }
 
-  handleMouseUp = () => this.setState({ isPinching: false });
+  handleMouseUp() {
+    this.setState({ isPinching: false })
+  };
 
-  handleMouseDown = (e) => {
+  handleMouseDown(e) {
     const {
       top,
       height,
@@ -84,7 +89,7 @@ class Slider extends Component {
     e.preventDefault()
   };
 
-  handleMouseMove = (e) => {
+  handleMouseMove(e) {
     if (this.state.isPinching) {
       const {
         top,
