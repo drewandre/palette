@@ -30,16 +30,8 @@
       </div>
     </div>
     <div class="form-actions">
-      <%= button_tag( :class => "button_green") do %>
-      <div class='continue'>
-        <a href='/sign-in'><i class="fa fa-arrow-circle-left" style='margin-right: 10px' aria-hidden="true"></i>Sign In</a>
-      </div>
-      <% end %>
-      <%= button_tag( :class => "button_green") do %>
-      <div class='continue'>
-        <a>Continue<i class="fa fa-arrow-circle-right" style='margin-left: 10px' aria-hidden="true"></i></a>
-      </div>
-      <% end %>
+      <a href='/sign-in' id='login-signup-button'><i class="fa fa-arrow-circle-left" style='margin-right: 10px' aria-hidden="true"></i>Sign In</a>
+      <a id='login-signup-button'>Continue<i class="fa fa-arrow-circle-right" style='margin-left: 10px' aria-hidden="true"></i></a>
     </div>
   </div>
 <% end %>

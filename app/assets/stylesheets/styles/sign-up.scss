@@ -75,20 +75,11 @@ welcome-nav {
   margin-bottom: 10px;
 }
 
-.continue {
-  color: $text-light;
-  font-weight: 100;
-  font-size: 1.7em;
-}
-
-.sign-up {
-  color: $text-light;
-  font-weight: 100;
-  font-size: 1.7em;
-}
-
-#continue-icon:hover {
-  color: white;
+#login-signup-button {
+  font-size: 2em;
+  padding: 5px;
+  font-weight: 200;
+  margin: 10px;
 }
 
 #user_handle[type="text"], textarea,
@@ -116,10 +107,6 @@ welcome-nav {
   color: $tile-lighter;
 }
 
-#sign-in-button {
-  visibility: hidden;
-}
-
 .form-errors {
   color: $text-light;
   margin-bottom: 15px;
@@ -136,27 +123,4 @@ welcome-nav {
   padding: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
-}
-
-.form-actions {
-  height: 0;
-}
-
-.button_green {
-  display: hidden;
-  background-repeat: no-repeat;
-  opacity: 0;
-}
-
-.button_green:hover {
-  display: hidden;
-  background-repeat: no-repeat;
-  opacity: 0;
-}
-
-.button_green:active {
-  display: hidden;
-  background-repeat: no-repeat;
-  opacity: 0;
-  border: none;
 }

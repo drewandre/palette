@@ -26,16 +26,8 @@
       </div>
     </div>
     <div class="form-actions">
-      <%= button_tag( :class => "button_green") do %>
-      <div class='continue'>
-        <a href='/sign-out'><i class="fa fa-arrow-circle-left" style='margin-right: 10px' aria-hidden="true"></i>Sign Out</a>
-      </div>
-      <% end %>
-      <%= button_tag( :class => "button_green") do %>
-      <div class='continue'>
-        <a>Continue<i class="fa fa-arrow-circle-right" style='margin-left: 10px' aria-hidden="true"></i></a>
-      </div>
-      <% end %>
+      <a href='/sign-out' id='login-signup-button'><i class="fa fa-arrow-circle-left" style='margin-right: 10px' aria-hidden="true"></i>Sign Out</a>
+      <a id='login-signup-button'>Continue<i class="fa fa-arrow-circle-right" style='margin-left: 10px' aria-hidden="true"></i></a>
     </div>
     </div>
   </div>
