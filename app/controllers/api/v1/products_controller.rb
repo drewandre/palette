@@ -20,6 +20,8 @@ class Api::V1::ProductsController < ApplicationController
     render json: @user_product
   end
 
+  private
+
   def product_settings_params
     params.permit(:active_api, :active_color_palette, :active_effect, :master_brightness, :on)
   end

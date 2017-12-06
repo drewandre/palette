@@ -1,37 +1,39 @@
-@import "colors";
-@import "mixins";
+@import 'colors';
+@import 'mixins';
 
-#session_login[type="text"], textarea {
-  font-weight: 200;
-  text-align: center;
-  border-radius: 10px;
-  height: 50px;
-  font-size: 1.5em;
-  background-color: $tile-light;
-  color: white;
-  border: 1px solid $tile-lighter;
+#session_login[type='text'],
+textarea {
+	font-weight: 200;
+	text-align: center;
+	border-radius: 10px;
+	height: 50px;
+	font-size: 1.5em;
+	background-color: $tile-light;
+	color: white;
+	border: 1px solid $tile-lighter;
 }
 
-#session_password[type="password"], textarea {
-  text-align: center;
-  font-weight: 200;
-  border-radius: 10px;
-  height: 50px;
-  font-size: 1.5em;
-  background-color: $tile-light;
-  color: white;
-  border: 1px solid $tile-lighter;
+#session_password[type='password'],
+textarea {
+	text-align: center;
+	font-weight: 200;
+	border-radius: 10px;
+	height: 50px;
+	font-size: 1.5em;
+	background-color: $tile-light;
+	color: white;
+	border: 1px solid $tile-lighter;
 }
 
 #lock-icon {
-  border: 1px solid $tile-lighter;
-  border-radius: 200px;
-  margin-bottom: 5px;
-  padding: 15px 25px;
-  color: $tile-lighter;
+	border: 1px solid $tile-lighter;
+	border-radius: 200px;
+	margin-bottom: 5px;
+	padding: 15px 25px;
+	color: $tile-lighter;
 }
 
 .sign-in-error {
-  margin-bottom: 22px;
-  color: $text-light;
+	margin-bottom: 22px;
+	color: $text-light;
 }

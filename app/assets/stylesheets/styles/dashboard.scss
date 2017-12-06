@@ -1,140 +1,140 @@
-@import "colors";
-@import "mixins";
+@import 'colors';
+@import 'mixins';
 
 .dashboard {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  top: 80px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	top: 80px;
 }
 
 #spinner {
-  @include no-user-select();
-  display: inline-block;
-  pointer-events: none;
-  position: absolute;
-  top: 7px;
-  left: 190px;
+	@include no-user-select();
+	display: inline-block;
+	pointer-events: none;
+	position: absolute;
+	top: 7px;
+	left: 190px;
 }
 
 .box {
-  position: relative;
-  background: $tile-light;
-  border-radius: 4px;
-  margin: 10px;
-  height: 375px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
-  color: $text-light;
-  overflow: hidden;
+	position: relative;
+	background: $tile-light;
+	border-radius: 4px;
+	margin: 10px;
+	height: 375px;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+	color: $text-light;
+	overflow: hidden;
 }
 
 #box-icon {
-  @include no-user-select();
-  cursor: default;
-  color: $text-light;
-  position: absolute;
-  left: 20px;
-  top: 20px;
+	@include no-user-select();
+	cursor: default;
+	color: $text-light;
+	position: absolute;
+	left: 20px;
+	top: 20px;
 }
 
 #api-box-icon {
-  @include no-user-select();
-  cursor: default;
-  color: $text-light;
-  position: absolute;
-  left: 20px;
-  top: 20px;
+	@include no-user-select();
+	cursor: default;
+	color: $text-light;
+	position: absolute;
+	left: 20px;
+	top: 20px;
 }
 
 .container-title {
-  @include no-user-select();
-  cursor: default;
-  display: block;
-  letter-spacing: 0.08em;
-  padding-right: 20px;
-  color: $white;
-  font-size: 2.5em;
-  font-weight: 100;
-  position: relative;
-  width: fit-content;
-  height:inherit;
-  left: 66px;
-  top: 7px;
+	@include no-user-select();
+	cursor: default;
+	display: block;
+	letter-spacing: 0.08em;
+	padding-right: 20px;
+	color: $white;
+	font-size: 2.5em;
+	font-weight: 100;
+	position: relative;
+	width: fit-content;
+	height: inherit;
+	left: 66px;
+	top: 7px;
 }
 
 .container-title:after {
-  content:"";
-  background: $text-light;
-  position: absolute;
-  bottom: 20%;
-  right: 0;
-  height: 60%;
-  width: 1px;
+	content: '';
+	background: $text-light;
+	position: absolute;
+	bottom: 20%;
+	right: 0;
+	height: 60%;
+	width: 1px;
 }
 
 .container-search {
-  cursor: pointer;
-  color: $text-light;
-  position: absolute;
-  right: 25px;
-  top: 20px;
+	cursor: pointer;
+	color: $text-light;
+	position: absolute;
+	right: 25px;
+	top: 20px;
 }
 
 .container-dropdown {
-  position: absolute;
-  left: 198px;
-  top: 16px;
-  font-weight: bold;
-  color: $text-light;
+	position: absolute;
+	left: 198px;
+	top: 16px;
+	font-weight: bold;
+	color: $text-light;
 }
 
 #container-dropdown {
-  position: absolute;
-  left: 298px;
-  top: 29px;
-  color: $text-light;
+	position: absolute;
+	left: 298px;
+	top: 29px;
+	color: $text-light;
 }
 
 .container-info {
-  @include no-user-select();
-  align-items: stretch;
-  display: flex;
-  flex-direction: row;
-  flex-shrink: 0;
+	@include no-user-select();
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
 }
 
 .dashboard-title {
-  @include no-user-select();
-  // position: absolute;
-  // top: 77px;
-  pointer-events: none;
-  display: inline-block;
-  color: $text-light;
-  margin-left: 20px;
-  font-size: 2em;
-  font-weight: 300;
+	@include no-user-select();
+	// position: absolute;
+	// top: 77px;
+	pointer-events: none;
+	display: inline-block;
+	color: $text-light;
+	margin-left: 20px;
+	font-size: 2em;
+	font-weight: 300;
 }
 
 #name-and-updated {
-  @include no-user-select();
-  pointer-events: none;
-  position: absolute;
-  top: 12px;
-  left: 190px;
-  color: $text-light;
-  font-size: 1.25em;
-  font-weight: 200;
+	@include no-user-select();
+	pointer-events: none;
+	position: absolute;
+	top: 12px;
+	left: 190px;
+	color: $text-light;
+	font-size: 1.25em;
+	font-weight: 200;
 }
 
 #settings-info {
-  @include no-user-select();
-  pointer-events: none;
-  position: absolute;
-  top: 20px;
-  left: 260px;
-  display: inline-block;
-  color: $text-light;
-  font-size: 1.8em;
-  font-weight: 100;
-  line-height: 1.2;
+	@include no-user-select();
+	pointer-events: none;
+	position: absolute;
+	top: 20px;
+	left: 260px;
+	display: inline-block;
+	color: $text-light;
+	font-size: 1.8em;
+	font-weight: 100;
+	line-height: 1.2;
 }

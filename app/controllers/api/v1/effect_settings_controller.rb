@@ -1,8 +1,6 @@
 class Api::V1::EffectSettingsController < ApplicationController
-
   protect_from_forgery with: :null_session
-
-
+  
   def index
     user = User.find_by(handle: params[:handle])
     @product_effect_settings = user.products.find_by(product_name: params[:product_name]).effect_settings

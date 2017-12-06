@@ -1,106 +1,106 @@
-@import "colors";
-@import "mixins";
+@import 'colors';
+@import 'mixins';
 
 .schedule {
-  @include no-user-select();
-  cursor: auto;
-  font-size: 2em;
-  font-weight: 200;
-  padding: 35px;
-  width: 100%;
-  height: 80%;
-  position: relative;
-  top: 7%;
+	@include no-user-select();
+	cursor: auto;
+	font-size: 2em;
+	font-weight: 200;
+	padding: 35px;
+	width: 100%;
+	height: 80%;
+	position: relative;
+	top: 7%;
 }
 
 .on-off {
-  position: relative;
-  left: 10px;
-  width: 100%;
-  height: 50%;
-  margin-bottom: 10px;
-  float: left;
+	position: relative;
+	left: 10px;
+	width: 100%;
+	height: 50%;
+	margin-bottom: 10px;
+	float: left;
 }
 
 .on {
-  display: inline-block;
-  text-align: center;
-  padding-top: 3px;
-  float: left;
-  height: 100%;
-  width: 107px;
-  background-color: $light-blue-accent;
-  border-top-left-radius:5px;
-  border-bottom-left-radius:5px;
-  font-size: 0.8em;
+	display: inline-block;
+	text-align: center;
+	padding-top: 3px;
+	float: left;
+	height: 100%;
+	width: 107px;
+	background-color: $light-blue-accent;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	font-size: 0.8em;
 }
 
 .off {
-  display: inline-block;
-  text-align: center;
-  padding-top: 3px;
-  float: left;
-  height: 100%;
-  width: 108px;
-  background-color: $light-blue-accent;
-  border-top-right-radius:5px;
-  border-bottom-right-radius:5px;
-  font-size: 0.8em;
+	display: inline-block;
+	text-align: center;
+	padding-top: 3px;
+	float: left;
+	height: 100%;
+	width: 108px;
+	background-color: $light-blue-accent;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	font-size: 0.8em;
 }
 
 .time {
-  text-align: center;
-  float: left;
-  margin-left: 10px;
-  width: 65px;
-  height: 100%;
-  display: inline-block;
-  background-color: $background-color;
-  border-radius: 5px;
+	text-align: center;
+	float: left;
+	margin-left: 10px;
+	width: 65px;
+	height: 100%;
+	display: inline-block;
+	background-color: $background-color;
+	border-radius: 5px;
 }
 
 #time-up {
-  display: block;
-  color: $light-blue-accent;
+	display: block;
+	color: $light-blue-accent;
 }
 
 #time-down {
-  display: block;
-  color: $light-blue-accent;
+	display: block;
+	color: $light-blue-accent;
 }
 
 #time-up:hover {
-  color: lighten($light-blue-accent, 15%);
+	color: lighten($light-blue-accent, 15%);
 }
 
 #time-down:hover {
-  color: lighten($light-blue-accent, 15%);
+	color: lighten($light-blue-accent, 15%);
 }
 
 #time-up:active {
-  color: lighten($light-blue-accent, 40%);
+	color: lighten($light-blue-accent, 40%);
 }
 
 #time-down:active {
-  color: lighten($light-blue-accent, 40%);
+	color: lighten($light-blue-accent, 40%);
 }
 
 #schedule-text {
-  @include no-user-select();
-  float: right;
-  position: absolute;
-  top: 40%;
-  left: 280px;
-  font-size: 0.8em;
-  font-weight: 200;
+	@include no-user-select();
+	float: right;
+	position: absolute;
+	top: 40%;
+	left: 280px;
+	font-size: 0.8em;
+	font-weight: 200;
 }
 
 #master-brightness {
-  @include no-user-select();
-  float: right;
-  position: absolute;
-  top: 65%;
-  left: 280px;
-  font-size: 0.8em;
-  font-weight: 200;
+	@include no-user-select();
+	float: right;
+	position: absolute;
+	top: 65%;
+	left: 280px;
+	font-size: 0.8em;
+	font-weight: 200;
 }

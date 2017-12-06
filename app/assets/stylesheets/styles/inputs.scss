@@ -1,152 +1,152 @@
-@import "colors";
-@import "mixins";
+@import 'colors';
+@import 'mixins';
 
 .select-field select {
-  @include disable-default-appearance();
-  position: absolute;
-  left: 180px;
-  top: 14px;
-  width: 150px;
-  height: 50px;
-  font-size: 1.6em;
-  font-weight: 200;
-  background-color: $tile-light;
-  color: $text-light;
+	@include disable-default-appearance();
+	position: absolute;
+	left: 180px;
+	top: 14px;
+	width: 150px;
+	height: 50px;
+	font-size: 1.6em;
+	font-weight: 200;
+	background-color: $tile-light;
+	color: $text-light;
 }
 
 .select-field input:focus {
-  @include disable-default-appearance();
-  text-align: center;
-  font-size: 1.6em;
-  background-color: $tile-light;
-  color: $text-lighter;
+	@include disable-default-appearance();
+	text-align: center;
+	font-size: 1.6em;
+	background-color: $tile-light;
+	color: $text-lighter;
 }
 
 .select-field select:active {
-  @include disable-default-appearance();
-  text-align: center;
-  font-size: 1.6em;
-  background-color: $tile-light;
-  color: $text-lighter;
+	@include disable-default-appearance();
+	text-align: center;
+	font-size: 1.6em;
+	background-color: $tile-light;
+	color: $text-lighter;
 }
 
 .data-options-field select {
-  @include disable-default-appearance();
-  background-color: red;
-  position: absolute;
-  left: 310px;
-  top: 15px;
-  width: 150px;
-  height: 50px;
-  font-size: 1.6em;
-  font-weight: 200;
-  background-color: $tile-light;
-  color: $text-light;
+	@include disable-default-appearance();
+	background-color: red;
+	position: absolute;
+	left: 310px;
+	top: 15px;
+	width: 150px;
+	height: 50px;
+	font-size: 1.6em;
+	font-weight: 200;
+	background-color: $tile-light;
+	color: $text-light;
 }
 
 .data-options-field input:focus {
-  @include disable-default-appearance();
-  background-color: red;
-  text-align: center;
-  font-size: 1.6em;
-  background-color: $tile-light;
-  color: $text-lighter;
-  opacity: 0;
+	@include disable-default-appearance();
+	background-color: red;
+	text-align: center;
+	font-size: 1.6em;
+	background-color: $tile-light;
+	color: $text-lighter;
+	opacity: 0;
 }
 
 .data-options-field select:active {
-  @include disable-default-appearance();
-  text-align: center;
-  font-size: 1.6em;
-  background-color: $tile-light;
-  color: $text-lighter;
+	@include disable-default-appearance();
+	text-align: center;
+	font-size: 1.6em;
+	background-color: $tile-light;
+	color: $text-lighter;
 }
 
 .effect-select-field select {
-  @include disable-default-appearance();
-  position: absolute;
-  left: 225px;
-  top: 14px;
-  width: 150px;
-  height: 50px;
-  font-size: 1.6em;
-  font-weight: 200;
-  background-color: $tile-light;
-  color: $text-light;
+	@include disable-default-appearance();
+	position: absolute;
+	left: 225px;
+	top: 14px;
+	width: 150px;
+	height: 50px;
+	font-size: 1.6em;
+	font-weight: 200;
+	background-color: $tile-light;
+	color: $text-light;
 }
 
 .effect-select-field input:focus {
-  @include disable-default-appearance();
-  text-align: center;
-  border: none;
-  font-size: 1.6em;
-  background-color: $tile-light;
-  color: $text-lighter;
-  opacity: 0;
+	@include disable-default-appearance();
+	text-align: center;
+	border: none;
+	font-size: 1.6em;
+	background-color: $tile-light;
+	color: $text-lighter;
+	opacity: 0;
 }
 
 .effect-select-field select:active {
-  @include disable-default-appearance();
-  text-align: center;
-  font-size: 1.6em;
-  background-color: $tile-light;
-  color: $text-lighter;
+	@include disable-default-appearance();
+	text-align: center;
+	font-size: 1.6em;
+	background-color: $tile-light;
+	color: $text-lighter;
 }
 
 *:focus {
-  @include disable-default-appearance();
+	@include disable-default-appearance();
 }
 
 .master-brightness-slider {
-  position: absolute;
-  left: 35px;
-  top: 70%;
+	position: absolute;
+	left: 35px;
+	top: 70%;
 }
-.master-brightness-slider[type=range]{
-  width: 214px;
-  -webkit-appearance: none;
-  background: transparent;
-}
-
-.master-brightness-slider[type=range]::-webkit-slider-runnable-track {
-  width: 280px;
-  height: 5px;
-  background: $background-color;
-  border: none;
-  border-radius: 3px;
+.master-brightness-slider[type='range'] {
+	width: 214px;
+	-webkit-appearance: none;
+	background: transparent;
 }
 
-.master-brightness-slider[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: $light-blue-accent;
-  margin-top: -5px;
+.master-brightness-slider[type='range']::-webkit-slider-runnable-track {
+	width: 280px;
+	height: 5px;
+	background: $background-color;
+	border: none;
+	border-radius: 3px;
 }
 
-.master-brightness-slider[type=range]:focus {
-  outline: none;
+.master-brightness-slider[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: $light-blue-accent;
+	margin-top: -5px;
+}
+
+.master-brightness-slider[type='range']:focus {
+	outline: none;
 }
 
 #dropdown-arrow {
-  position: absolute;
-  top: 55px;
-  left: 220px;
-  color: $text-light;
+	position: absolute;
+	top: 55px;
+	left: 220px;
+	color: $text-light;
 }
 
 #dropdown-arrow-options {
-  position: absolute;
-  top: 55px;
-  left: 331px;
-  color: $text-light;
+	position: absolute;
+	top: 55px;
+	left: 331px;
+	color: $text-light;
 }
 
 #effect-dropdown-arrow {
-  position: absolute;
-  top: 32px;
-  left: 333px;
-  color: $text-light;
+	position: absolute;
+	top: 32px;
+	left: 333px;
+	color: $text-light;
 }
