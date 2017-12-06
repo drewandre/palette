@@ -1,8 +1,8 @@
 class AccountConfirmationsController < ApplicationController
 
   def edit
-    user = User.find_by(email: params[:email])
-    if user && user.confirmed_at.nil? && user.authenticated?(:confirmation, params[:id])
+    user = User.find_by(email: account_params[:email])
+    if user && user.confirmed_at.nil? && user.authenticated?(:confirmation, account_params[:id])
       user.confirm!
       flash[:success] = "Your email address is confirmed. Thank you."
     else
@@ -11,4 +11,9 @@ class AccountConfirmationsController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
+  def account_params
+    params.permit(:id, :email)
+  end
 end

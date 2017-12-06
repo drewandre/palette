@@ -6,16 +6,17 @@ class PaletteDisplay extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			key: '',
+			key: 0,
+			id: 0,
 			name: '',
 			hex_1: '',
 			hex_2: '',
 			hex_3: '',
 			hex_4: '',
-			percentage_hex_1: '',
-			percentage_hex_2: '',
-			percentage_hex_3: '',
-			percentage_hex_4: ''
+			percentage_hex_1: 0,
+			percentage_hex_2: 0,
+			percentage_hex_3: 0,
+			percentage_hex_4: 0
 		};
 	}
 
@@ -23,6 +24,7 @@ class PaletteDisplay extends Component {
 		if (nextPalette.data != this.props.data) {
 			this.setState({
 				key: nextPalette.data.key,
+				id: nextPalette.data.id,
 				name: nextPalette.data.name,
 				hex_1: nextPalette.data.hex_1,
 				hex_2: nextPalette.data.hex_2,
@@ -43,9 +45,10 @@ class PaletteDisplay extends Component {
 					Displaying: {this.state.name}
 				</div>
 				<PaletteSwatches
-					swatchesClassName="current-palette"
 					handlePaletteDelete={null}
+					swatchesClassName="current-palette"
 					key={this.state.key}
+					id={this.state.id}
 					hex_1={this.state.hex_1}
 					hex_2={this.state.hex_2}
 					hex_3={this.state.hex_3}
@@ -59,5 +62,9 @@ class PaletteDisplay extends Component {
 		);
 	}
 }
+
+PaletteDisplay.propTypes = {
+	data: PropTypes.object
+};
 
 export default PaletteDisplay;

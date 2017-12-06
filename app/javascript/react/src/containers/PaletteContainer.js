@@ -12,12 +12,12 @@ class PaletteContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			color_palettes: [null, null, null, null, null, null, null, null],
+			color_palettes: Array.apply(null, Array(8)).map(function() {}),
+			current_palette: {},
 			current_palette_number: null,
-			current_palette: [],
 			searched_color_palettes: '',
-			TEMP_PALETTE_FILE: '',
-			waiting_for_palette_name: false
+			waiting_for_palette_name: false,
+			TEMP_PALETTE_FILE: ''
 		};
 		this.loadUserPalettes = this.loadUserPalettes.bind(this);
 		this.handleSearchedPalette = this.handleSearchedPalette.bind(this);
@@ -25,9 +25,9 @@ class PaletteContainer extends Component {
 		this.fetchActiveColorPalette = this.fetchActiveColorPalette.bind(this);
 		this.postUploadedPalette = this.postUploadedPalette.bind(this);
 		this.retrieveProminentColors = this.retrieveProminentColors.bind(this);
-		this.onDrop = this.onDrop.bind(this);
 		this.handlePaletteNameChange = this.handlePaletteNameChange.bind(this);
 		this.handlePaletteDelete = this.handlePaletteDelete.bind(this);
+		this.onDrop = this.onDrop.bind(this);
 	}
 
 	postUploadedPalette(hex_output) {
@@ -119,6 +119,9 @@ class PaletteContainer extends Component {
 					palettes[i] = body.palettes[i];
 				}
 				this.setState({ color_palettes: palettes });
+				if (body.palettes.length == 0) {
+					this.setState({ current_palette: {} });
+				}
 				this.props.handleLoading(false);
 			});
 	}
@@ -139,7 +142,8 @@ class PaletteContainer extends Component {
 			.then(body => {
 				this.setState({ current_palette: body });
 				this.props.handleLoading(false);
-			});
+			})
+			.catch(error => null);
 	}
 
 	onDrop(file) {
@@ -149,7 +153,14 @@ class PaletteContainer extends Component {
 
 	handlePaletteNameChange(event) {
 		event.preventDefault();
-		var palette_name = event.target.children[0].value;
+		var palette_name = event.target.children[0].value
+			.toLowerCase()
+			.replace(/_/, ' ')
+			.split(' ')
+			.map(function(word) {
+				return word.charAt(0).toUpperCase() + word.slice(1);
+			})
+			.join(' ');
 		this.setState({
 			waiting_for_palette_name: false
 		});
@@ -214,20 +225,20 @@ class PaletteContainer extends Component {
 					</div>
 					<div className="palette-search-results">
 						<SearchField
+							handleSearchedPalette={this.handleSearchedPalette}
 							paletteSearchBarClassName="palette-search"
 							swatchesClassName="palette-search-container"
 							searchResultsClassName="palette-dropdown"
 							placeholder="Search"
-							handleSearchedPalette={this.handleSearchedPalette}
 						/>
 					</div>
 					<div className="palette-blur">
 						<PaletteTiles
+							handleSelectedPalette={this.handleSelectedPalette}
 							handlePaletteDelete={this.handlePaletteDelete}
 							swatchesClassName="palette-container"
 							className="palette-list"
 							data={this.state.color_palettes}
-							handleSelectedPalette={this.handleSelectedPalette}
 						/>
 						<PaletteDisplay data={this.state.current_palette} />
 					</div>
@@ -241,5 +252,11 @@ class PaletteContainer extends Component {
 		);
 	}
 }
+
+PaletteContainer.propTypes = {
+	handleLoading: PropTypes.func.isRequired,
+	currentUser: PropTypes.object.isRequired,
+	className: PropTypes.string.isRequired
+};
 
 export default PaletteContainer;

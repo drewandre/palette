@@ -6,7 +6,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentUser: ''
+			currentUser: {}
 		};
 		this.loadUserData = this.loadUserData.bind(this);
 	}

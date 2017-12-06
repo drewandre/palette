@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const EffectSelectField = props => {
 	return (
@@ -22,6 +23,11 @@ const EffectSelectField = props => {
 			/>
 		</div>
 	);
+};
+
+EffectSelectField.propTypes = {
+	handleSelect: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired
 };
 
 export default EffectSelectField;

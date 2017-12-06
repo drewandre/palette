@@ -66,7 +66,6 @@ class NavBar extends Component {
 								id="user-icon"
 								aria-hidden="true"
 							/>
-							{/* <img src={this.props.currentUser.avatar_url} id='user-icon'/> */}
 							<div id="nav-user-name">
 								{this.props.currentUser.first_name}{' '}
 								{this.props.currentUser.last_name}
@@ -75,7 +74,6 @@ class NavBar extends Component {
 						</div>
 						<div id="nav-dropdown">
 							<div>
-								{/* link_to("Sign Out", "http://www.example.com", method: :delete) */}
 								<a href="/sign-out">Sign Out</a>
 							</div>
 						</div>
@@ -85,4 +83,9 @@ class NavBar extends Component {
 		);
 	}
 }
+
+NavBar.propTypes = {
+	currentUser: PropTypes.object.isRequired
+};
+
 export default NavBar;

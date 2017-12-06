@@ -183,29 +183,37 @@ class ApiContainer extends Component {
 					</div>
 				</div>
 				<DataSelectField
+					handleSelect={this.handleSelect}
+					handleOptionsSelect={this.handleOptionsSelect}
 					value={this.state.selectedApiUrl}
 					apiValue={this.state.selectedApi}
 					optionsValue={this.state.selectedApiOptions}
-					handleSelect={this.handleSelect}
-					handleOptionsSelect={this.handleOptionsSelect}
 				/>
 				<div className="last-updated">
 					Last Update: {this.state.lastUpdated}
 				</div>
 				<div className="api-control">
 					<ApiTiles
-						className="api-list"
 						keys={this.state.endpoint_keys}
 						values={this.state.endpoint_values}
+						className="api-list"
 					/>
 					<ConnectionTiles
-						className="connection-tile-list"
 						effectParameterNames={this.props.effectParameterNames}
+						className="connection-tile-list"
 					/>
 				</div>
 			</div>
 		);
 	}
 }
+
+ApiContainer.propTypes = {
+	handleLoading: PropTypes.func.isRequired,
+	currentUser: PropTypes.object.isRequired,
+	activeEffect: PropTypes.string,
+	effectParameterNames: PropTypes.array.isRequired,
+	className: PropTypes.string.isRequired
+};
 
 export default ApiContainer;

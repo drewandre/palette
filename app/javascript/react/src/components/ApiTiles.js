@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ApiTiles = props => {
 	function zipped(keys, values) {
@@ -15,8 +16,13 @@ const ApiTiles = props => {
 			</div>
 		);
 	});
-
 	return <div className={props.className}>{endpoints}</div>;
+};
+
+ApiTiles.propTypes = {
+	keys: PropTypes.array.isRequired,
+	values: PropTypes.array.isRequired,
+	className: PropTypes.string.isRequired
 };
 
 export default ApiTiles;
