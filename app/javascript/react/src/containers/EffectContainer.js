@@ -4,10 +4,6 @@ import EffectSelectField from '../components/EffectSelectField';
 import Slider from './Slider';
 
 class EffectContainer extends Component {
-	showSettings(event) {
-		event.preventDefault();
-	}
-
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -39,10 +35,12 @@ class EffectContainer extends Component {
 			})
 			.then(response => response.json())
 			.then(body => {
+				formPayload.push(body.effect_name);
 				let effectParameterNames = [];
 				for (var key in body) {
 					if (key.startsWith('parameter')) {
 						effectParameterNames.push(body[key]);
+						formPayload.push(body[key]);
 					}
 				}
 				this.setState({
@@ -118,10 +116,7 @@ class EffectContainer extends Component {
 		let active_effect =
 			selectedItem.target.value[0].toUpperCase() +
 			selectedItem.target.value.slice(1);
-		let effectPayload = [
-			selectedItem.target.value,
-			this.state.effectParameterNames
-		];
+		let effectPayload = [active_effect, this.state.effectParameterNames];
 		this.props.handleEffectChange(effectPayload);
 		fetch(
 			`/api/v1/users/${this.props.currentUser.handle}/products/${
