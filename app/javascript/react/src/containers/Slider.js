@@ -13,7 +13,6 @@ const styles = {
 const clamp = (min, max, value) => Math.max(min, Math.min(max, value))
 
 class Slider extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -23,41 +22,12 @@ class Slider extends Component {
       radius: props.radius,
       border: props.border,
       min: props.min,
-      max: props.max,
-      origin: function (props, name) {
-        if (props[name] < 0 || props[name] > 1) {
-          return new Error(`The ${ name } property must be between 0 and 1.`)
-        }
-      },
-      start: function (props, name) {
-        if (props[name] < props.min || props[name] > props.max) {
-          return new Error(`The ${ name } property must be between min (${ props.min }) and max (${ props.max }).`)
-        }
-      },
-      angle: function (props, name) {
-        const halfPI = Math.PI / 2
-        if (props[name] < -halfPI || props[name] > halfPI) {
-          return new Error(`The ${ name } property must be between -π/2 and π/2.`)
-        }
-      },
-      value: function (props, name) {
-        if (props[name] < props.min || props[name] > props.max) {
-          return new Error(`The ${ name } property must be between min (${ props.min }) and max (${ props.max }).`)
-        }
-      }
+      max: props.max
     }
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
   }
-  // static defaultProps = {
-  //   radius: 50,
-  //   border: 50,
-  //   origin: 1,
-  //   start: 0,
-  //   angle: Math.PI / 2,
-  //   value: 0,
-  // };
 
   componentDidMount() {
     document.addEventListener("mousemove", this.handleMouseMove)
@@ -78,10 +48,8 @@ class Slider extends Component {
       top,
       height,
     } = this.potar.getBoundingClientRect()
-
     this.state.y = (top + height / 2) - e.pageY
     this.setState({ isPinching: true })
-
     e.preventDefault()
   };
 
@@ -166,7 +134,7 @@ class Slider extends Component {
           y='57%'
           textAnchor='middle'
         >
-          {this.props.fixedSliderValue}
+          {this.props.fixedSliderValue ? this.props.fixedSliderValue.toFixed(0) : null }
         </text>
         <path
           className={ styles.sliderBar }
@@ -195,10 +163,21 @@ class Slider extends Component {
 
 Slider.propTypes = {
   onChange: PropTypes.func,
-  radius: PropTypes.number.isRequired,
-  border: PropTypes.number.isRequired,
-  min: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
+  value: PropTypes.number,
+  fixedSliderValue: PropTypes.number,
+  label: PropTypes.string
+};
+
+Slider.defaultProps = {
+  radius: 60,
+  border: 5,
+  min: -50,
+  max: 50,
+  angle: Math.PI / 4,
+  origin: 0.5,
+  start: 0,
+  value: 0,
+  fixedSliderValue: 0
 };
 
 export default Slider;

@@ -2,8 +2,10 @@
 @import "mixins";
 
 .dashboard {
+  width: 100%;
+  height: 100%;
   position: relative;
-  top: -5px;
+  top: 80px;
 }
 
 #spinner {
@@ -20,7 +22,7 @@
   background: $tile-light;
   border-radius: 4px;
   margin: 10px;
-  height: 395px;
+  height: 375px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
   color: $text-light;
   overflow: hidden;
@@ -103,6 +105,8 @@
 
 .dashboard-title {
   @include no-user-select();
+  // position: absolute;
+  // top: 77px;
   pointer-events: none;
   display: inline-block;
   color: $text-light;

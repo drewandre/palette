@@ -107,8 +107,8 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {
-  currentUser: PropTypes.array
-};
+// Dashboard.propTypes = {
+//   currentUser: PropTypes.array
+// };
 
 export default Dashboard;

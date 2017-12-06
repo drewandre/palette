@@ -6,11 +6,19 @@ h1, h2, h3, h4, h5 {
   font-family: 'Montserrat', Fallback, sans-serif;
 }
 
-body, html {
+html {
+  height: 100%;
+}
+body {
   background: $background-color;
-  height: calc(100% - 40px);
+  height: 100%;
   width: 100%;
-  top: 80px;
+}
+
+.fullwidth {
+  width: 100%;
+  height: 100%;
+  max-width: initial;
 }
 
 a {
@@ -20,9 +28,4 @@ a {
 a:hover,
 a:focus {
   color: $light-blue-accent;
-}
-
-.fullwidth {
-  width: 100%;
-  max-width: initial;
 }

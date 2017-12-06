@@ -11,24 +11,12 @@ class EffectContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sliderValue_1: 0,
-      sliderValue_2: 0,
-      sliderValue_3: 0,
-      sliderValue_4: 0,
-      sliderValue_5: 0,
-      lastKeyPressedTime: 0,
       active_effect: '',
-      effect_parameter_1_name: '',
-      effect_parameter_2_name: '',
-      effect_parameter_3_name: '',
-      effect_parameter_4_name: '',
-      effect_parameter_5_name: ''
+      effectParameterNames: '',
+      effectParameterValues: 0,
+      lastKeyPressedTime: 0
     }
-    this.handleSlider_1 = this.handleSlider_1.bind(this);
-    this.handleSlider_2 = this.handleSlider_2.bind(this);
-    this.handleSlider_3 = this.handleSlider_3.bind(this);
-    this.handleSlider_4 = this.handleSlider_4.bind(this);
-    this.handleSlider_5 = this.handleSlider_5.bind(this);
+    this.handleSlider = this.handleSlider.bind(this);
     this.getActiveEffect = this.getActiveEffect.bind(this);
     this.postSliderValuesToFetch = this.postSliderValuesToFetch.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
@@ -47,24 +35,27 @@ class EffectContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      let effectParameterNames = []
+      for (var key in body){
+        if(key.startsWith("parameter")) {
+          effectParameterNames.push(body[key]);
+        }
+      }
       this.setState({
-        effect_parameter_1_name: body.parameter_1_name,
-        effect_parameter_2_name: body.parameter_2_name,
-        effect_parameter_3_name: body.parameter_3_name,
-        effect_parameter_4_name: body.parameter_4_name,
-        effect_parameter_5_name: body.parameter_5_name,
+        effectParameterNames: effectParameterNames
       })
-      formPayload = [body.effect_name, body.parameter_1_name, body.parameter_2_name, body.parameter_3_name, body.parameter_4_name, body.parameter_5_name]
       return fetch(`/api/v1/users/${nextUser.handle}/products/${nextUser.current_product_name}/effect_settings/${body.effect_name}`)
     })
     .then(response => response.json())
     .then(body => {
+      let effectParameterValues = []
+      for (var key in body){
+        if(key.startsWith("parameter")) {
+          effectParameterValues.push(body[key]);
+        }
+      }
       this.setState({
-        sliderValue_1: body.parameter_1,
-        sliderValue_2: body.parameter_2,
-        sliderValue_3: body.parameter_3,
-        sliderValue_4: body.parameter_4,
-        sliderValue_5: body.parameter_5
+        effectParameterValues: effectParameterValues
       })
       this.props.handleEffectChange(formPayload);
       this.props.handleLoading(false);
@@ -74,12 +65,13 @@ class EffectContainer extends Component {
   postSliderValuesToFetch() {
     if (Date.now() - this.state.lastKeyPressedTime > 500) {
       this.props.handleLoading(true);
+      let effectParameterValues = this.state.effectParameterValues
       let formPayload = {
-        parameter_1: this.state.sliderValue_1,
-        parameter_2: this.state.sliderValue_2,
-        parameter_3: this.state.sliderValue_3,
-        parameter_4: this.state.sliderValue_4,
-        parameter_5: this.state.sliderValue_5
+        parameter_1: effectParameterValues[0],
+        parameter_2: effectParameterValues[1],
+        parameter_3: effectParameterValues[2],
+        parameter_4: effectParameterValues[3],
+        parameter_5: effectParameterValues[4]
       };
       fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}/effect_settings/${this.state.active_effect}`, {
         credentials: "same-origin",
@@ -91,42 +83,14 @@ class EffectContainer extends Component {
     }
   }
 
-  handleSlider_1(sliderValue_1) {
+  handleSlider(sliderValue) {
+    var parameterName = event.path[1].lastElementChild.firstChild.data
+    var parameterValueIndex = this.state.effectParameterNames.indexOf(parameterName)
+    let effectParameterValues = this.state.effectParameterValues
+    if (~parameterValueIndex) { effectParameterValues[parameterValueIndex] = sliderValue; }
     this.setState({
       lastKeyPressedTime: Date.now(),
-      sliderValue_1: sliderValue_1
-    })
-    setTimeout(() => this.postSliderValuesToFetch(), 500);
-  }
-
-  handleSlider_2(sliderValue_2) {
-    this.setState({
-      lastKeyPressedTime: Date.now(),
-      sliderValue_2: sliderValue_2
-    })
-    setTimeout(() => this.postSliderValuesToFetch(), 500);
-  }
-
-  handleSlider_3(sliderValue_3) {
-    this.setState({
-      lastKeyPressedTime: Date.now(),
-      sliderValue_3: sliderValue_3
-    })
-    setTimeout(() => this.postSliderValuesToFetch(), 500);
-  }
-
-  handleSlider_4(sliderValue_4) {
-    this.setState({
-      lastKeyPressedTime: Date.now(),
-      sliderValue_4: sliderValue_4
-    })
-    setTimeout(() => this.postSliderValuesToFetch(), 500);
-  }
-
-  handleSlider_5(sliderValue_5) {
-    this.setState({
-      lastKeyPressedTime: Date.now(),
-      sliderValue_5: sliderValue_5
+      effectParameterValues: effectParameterValues
     })
     setTimeout(() => this.postSliderValuesToFetch(), 500);
   }
@@ -136,11 +100,7 @@ class EffectContainer extends Component {
     let active_effect = selectedItem.target.value
     let effectPayload = [
       selectedItem.target.value,
-      this.state.effect_parameter_1_name,
-      this.state.effect_parameter_2_name,
-      this.state.effect_parameter_3_name,
-      this.state.effect_parameter_4_name,
-      this.state.effect_parameter_5_name
+      this.state.effectParameterNames
     ]
     this.props.handleEffectChange(effectPayload);
     fetch(`/api/v1/users/${this.props.currentUser.handle}/products/${this.props.currentUser.current_product_name}`, {
@@ -161,7 +121,7 @@ class EffectContainer extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div className={this.props.className}>
         <div>
@@ -177,73 +137,38 @@ class EffectContainer extends Component {
           <div className="Component">
             <div className="Component-slider">
               <Slider
-                onChange={ this.handleSlider_1 }
-                value={this.state.sliderValue_1}
-                radius={ 60 }
-                border={ 5 }
-                min={ -50 }
-                max={ 50 }
-                angle={ Math.PI / 4 }
-                origin={ 0.5 }
-                start={ 0 }
-                fixedSliderValue={+this.state.sliderValue_1.toFixed(2)}
-                label={this.state.effect_parameter_1_name}
+                onChange={ this.handleSlider }
+                value={this.state.effectParameterValues[0]}
+                fixedSliderValue={this.state.effectParameterValues[0]}
+                label={this.state.effectParameterNames[0]}
                 id='top-left-slider'
               />
               <Slider
-                onChange={ this.handleSlider_2 }
-                value={ this.state.sliderValue_2 }
-                radius={ 60 }
-                border={ 5 }
-                min={ -50 }
-                max={ 50 }
-                angle={ Math.PI / 4 }
-                origin={ 0.5 }
-                start={ 0 }
-                fixedSliderValue={+this.state.sliderValue_2.toFixed(2)}
-                label={this.state.effect_parameter_2_name}
+                onChange={ this.handleSlider }
+                value={this.state.effectParameterValues[1] }
+                fixedSliderValue={this.state.effectParameterValues[1]}
+                label={this.state.effectParameterNames[1]}
                 id='top-right-slider'
               />
             </div>
             <div className="Component-slider">
               <Slider
-                onChange={ this.handleSlider_3 }
-                value={ this.state.sliderValue_3 }
-                radius={ 60 }
-                border={ 5 }
-                min={ -50 }
-                max={ 50 }
-                angle={ Math.PI / 4 }
-                origin={ 0.5 }
-                start={ 0 }
-                fixedSliderValue={+this.state.sliderValue_3.toFixed(2)}
-                label={this.state.effect_parameter_3_name}
+                onChange={ this.handleSlider }
+                value={ this.state.effectParameterValues[2] }
+                fixedSliderValue={this.state.effectParameterValues[2]}
+                label={this.state.effectParameterNames[2]}
               />
               <Slider
-                onChange={ this.handleSlider_4 }
-                value={ this.state.sliderValue_4 }
-                radius={ 60 }
-                border={ 5 }
-                min={ -50 }
-                max={ 50 }
-                angle={ Math.PI / 4 }
-                origin={ 0.5 }
-                start={ 0 }
-                fixedSliderValue={+this.state.sliderValue_4.toFixed(2)}
-                label={this.state.effect_parameter_4_name}
+                onChange={ this.handleSlider }
+                value={this.state.effectParameterValues[3] }
+                fixedSliderValue={this.state.effectParameterValues[3]}
+                label={this.state.effectParameterNames[3]}
               />
               <Slider
-                onChange={ this.handleSlider_5 }
-                value={ this.state.sliderValue_5 }
-                radius={ 60 }
-                border={ 5 }
-                min={ -50 }
-                max={ 50 }
-                angle={ Math.PI / 4 }
-                origin={ 0.5 }
-                start={ 0 }
-                fixedSliderValue={+this.state.sliderValue_5.toFixed(2)}
-                label={this.state.effect_parameter_5_name}
+                onChange={ this.handleSlider }
+                value={this.state.effectParameterValues[4] }
+                fixedSliderValue={this.state.effectParameterValues[4]}
+                label={this.state.effectParameterNames[4]}
               />
             </div>
           </div>
