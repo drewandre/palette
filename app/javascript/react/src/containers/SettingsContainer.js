@@ -105,4 +105,10 @@ class SettingsContainer extends Component {
 	}
 }
 
+SettingsContainer.propTypes = {
+	handleLoading: PropTypes.func.isRequired,
+	currentUser: PropTypes.object.isRequired,
+	className: PropTypes.string.isRequired
+};
+
 export default SettingsContainer;

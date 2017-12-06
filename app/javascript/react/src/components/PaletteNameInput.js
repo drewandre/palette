@@ -8,7 +8,7 @@ const PaletteNameInput = props => {
 				type="text"
 				placeholder="enter a name"
 				autoComplete="off"
-				autofocus="on"
+				autoFocus="on"
 			/>
 		</form>
 	);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 let WEATHER_SET = ['Boston', 'Concord', 'Nantucket', 'New London'];
 
@@ -68,6 +69,14 @@ const DataSelectField = props => {
 			</div>
 		</div>
 	);
+};
+
+DataSelectField.propTypes = {
+	handleSelect: PropTypes.func.isRequired,
+	handleOptionsSelect: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired,
+	apiValue: PropTypes.string.isRequired,
+	optionsValue: PropTypes.string.isRequired
 };
 
 export default DataSelectField;

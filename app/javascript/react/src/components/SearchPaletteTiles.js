@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PaletteSwatches from './PaletteSwatches';
 
 const SearchPaletteTiles = props => {
@@ -25,8 +26,14 @@ const SearchPaletteTiles = props => {
 			</div>
 		);
 	});
-
 	return <div className={props.className}>{userPalettes}</div>;
+};
+
+SearchPaletteTiles.propTypes = {
+	handleSearchClick: PropTypes.func.isRequired,
+	swatchesClassName: PropTypes.string.isRequired,
+	className: PropTypes.string.isRequired,
+	data: PropTypes.array.isRequired
 };
 
 export default SearchPaletteTiles;

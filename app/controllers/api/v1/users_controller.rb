@@ -6,8 +6,14 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(handle: params[:handle])
+    @user = User.find_by(handle: user_params[:handle])
     render json: @user
+  end
+
+  private
+
+  def user_params
+    params.permit(:handle)
   end
 
 end

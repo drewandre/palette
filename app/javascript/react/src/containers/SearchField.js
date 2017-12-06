@@ -42,14 +42,22 @@ class SearchField extends Component {
 					id={this.searchResultsEmpty}
 				/>
 				<SearchPaletteTiles
+					handleSearchClick={this.props.handleSearchedPalette}
 					swatchesClassName={this.props.swatchesClassName}
 					className={this.props.searchResultsClassName}
 					data={this.state.searched_color_palettes}
-					handleSearchClick={this.props.handleSearchedPalette}
 				/>
 			</div>
 		);
 	}
 }
+
+SearchField.propTypes = {
+	handleSearchedPalette: PropTypes.func.isRequired,
+	paletteSearchBarClassName: PropTypes.string.isRequired,
+	swatchesClassName: PropTypes.string.isRequired,
+	searchResultsClassName: PropTypes.string.isRequired,
+	placeholder: PropTypes.string.isRequired
+};
 
 export default SearchField;

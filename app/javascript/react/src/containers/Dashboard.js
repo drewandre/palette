@@ -94,9 +94,9 @@ class Dashboard extends Component {
 					</div>
 					<div className="small-12 medium-12 large-6 columns">
 						<EffectContainer
-							currentUser={this.props.currentUser}
 							handleLoading={this.handleLoading}
 							handleEffectChange={this.handleEffectChange}
+							currentUser={this.props.currentUser}
 							className="box"
 						/>
 					</div>
@@ -109,8 +109,8 @@ class Dashboard extends Component {
 					</div>
 					<div className="small-12 medium-12 large-7 columns">
 						<ApiContainer
-							currentUser={this.props.currentUser}
 							handleLoading={this.handleLoading}
+							currentUser={this.props.currentUser}
 							activeEffect={this.state.activeEffect}
 							effectParameterNames={this.state.effectParameterNames}
 							className="box"
@@ -122,8 +122,8 @@ class Dashboard extends Component {
 	}
 }
 
-// Dashboard.propTypes = {
-//   currentUser: PropTypes.array
-// };
+Dashboard.propTypes = {
+	currentUser: PropTypes.object.isRequired
+};
 
 export default Dashboard;

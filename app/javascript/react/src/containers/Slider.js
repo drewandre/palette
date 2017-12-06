@@ -59,6 +59,9 @@ class Slider extends Component {
 			const y = top + height / 2 - e.pageY;
 			const dy = (y - this.state.y) / 100;
 
+			// console.log('top: ', top, 'y: ', y);
+			// console.log(y);
+
 			this.setState({ y: y });
 
 			if (onChange) {
@@ -152,9 +155,9 @@ class Slider extends Component {
 }
 
 Slider.propTypes = {
-	onChange: PropTypes.func,
-	value: PropTypes.number,
-	fixedSliderValue: PropTypes.number,
+	onChange: PropTypes.func.isRequired,
+	value: PropTypes.number.isRequired,
+	fixedSliderValue: PropTypes.number.isRequired,
 	label: PropTypes.string
 };
 

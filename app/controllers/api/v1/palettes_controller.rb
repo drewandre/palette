@@ -55,14 +55,20 @@ class Api::V1::PalettesController < ApplicationController
   end
 
   def current_user_palette
-    @current_user_palette = ColorPalette.find(palette_params[:palette_id])
-    render json: @current_user_palette
+    if palette_params[:palette_id] != "null"
+      @current_user_palette = ColorPalette.find(palette_params[:palette_id])
+      render json: @current_user_palette
+    end
   end
 
   def destroy_user_palette
     user = User.find_by(handle: user_params[:handle])
     user_palette = UserPalette.find_by(color_palette_id: palette_params[:palette_id], user_id: user.id)
     UserPalette.destroy(user_palette.id)
+    if user.user_palettes.empty?
+      current_user_product = Product.find_by(user_id: user.id, product_name: user.current_product_name)
+      current_user_product.update(active_color_palette: nil)
+    end
   end
 
   private

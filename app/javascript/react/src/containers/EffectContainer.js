@@ -12,7 +12,7 @@ class EffectContainer extends Component {
 		super(props);
 		this.state = {
 			active_effect: '',
-			effectParameterNames: '',
+			effectParameterNames: [],
 			effectParameterValues: 0,
 			lastKeyPressedTime: 0
 		};
@@ -115,7 +115,9 @@ class EffectContainer extends Component {
 
 	handleSelect(selectedItem) {
 		this.props.handleLoading(true);
-		let active_effect = selectedItem.target.value;
+		let active_effect =
+			selectedItem.target.value[0].toUpperCase() +
+			selectedItem.target.value.slice(1);
 		let effectPayload = [
 			selectedItem.target.value,
 			this.state.effectParameterNames
@@ -150,11 +152,10 @@ class EffectContainer extends Component {
 					<i className="fa fa-sliders fa-2x" id="box-icon" aria-hidden="true" />
 					<div className="container-title">Effects</div>
 					<EffectSelectField
-						value={this.state.active_effect}
 						handleSelect={this.handleSelect}
+						value={this.state.active_effect}
 					/>
 				</div>
-
 				<div id="Components">
 					<div className="Component">
 						<div className="Component-slider">
@@ -199,5 +200,12 @@ class EffectContainer extends Component {
 		);
 	}
 }
+
+EffectContainer.propTypes = {
+	handleLoading: PropTypes.func.isRequired,
+	handleEffectChange: PropTypes.func.isRequired,
+	currentUser: PropTypes.object.isRequired,
+	className: PropTypes.string.isRequired
+};
 
 export default EffectContainer;

@@ -14,7 +14,7 @@ class PaletteContainer extends Component {
 		this.state = {
 			color_palettes: [null, null, null, null, null, null, null, null],
 			current_palette_number: null,
-			current_palette: [],
+			current_palette: {},
 			searched_color_palettes: '',
 			TEMP_PALETTE_FILE: '',
 			waiting_for_palette_name: false
@@ -114,11 +114,18 @@ class PaletteContainer extends Component {
 		fetch(`/api/v1/users/${nextUser.handle}/palettes`)
 			.then(response => response.json())
 			.then(body => {
+				// if (body.palettes.length == 0) {
+				// 	this.setState({ current_palette: [] });
+				// } else {
+				// else if (body.palettes.length == 1) {
+				// this.setState({ current_palette: body.palettes[0].id });
+				// }
 				const palettes = this.state.color_palettes;
 				for (var i = 0; i < 8; i++) {
 					palettes[i] = body.palettes[i];
 				}
 				this.setState({ color_palettes: palettes });
+				// }
 				this.props.handleLoading(false);
 			});
 	}
@@ -149,7 +156,14 @@ class PaletteContainer extends Component {
 
 	handlePaletteNameChange(event) {
 		event.preventDefault();
-		var palette_name = event.target.children[0].value;
+		var palette_name = event.target.children[0].value
+			.toLowerCase()
+			.replace(/_/, ' ')
+			.split(' ')
+			.map(function(word) {
+				return word.charAt(0).toUpperCase() + word.slice(1);
+			})
+			.join(' ');
 		this.setState({
 			waiting_for_palette_name: false
 		});
@@ -214,20 +228,20 @@ class PaletteContainer extends Component {
 					</div>
 					<div className="palette-search-results">
 						<SearchField
+							handleSearchedPalette={this.handleSearchedPalette}
 							paletteSearchBarClassName="palette-search"
 							swatchesClassName="palette-search-container"
 							searchResultsClassName="palette-dropdown"
 							placeholder="Search"
-							handleSearchedPalette={this.handleSearchedPalette}
 						/>
 					</div>
 					<div className="palette-blur">
 						<PaletteTiles
+							handleSelectedPalette={this.handleSelectedPalette}
 							handlePaletteDelete={this.handlePaletteDelete}
 							swatchesClassName="palette-container"
 							className="palette-list"
 							data={this.state.color_palettes}
-							handleSelectedPalette={this.handleSelectedPalette}
 						/>
 						<PaletteDisplay data={this.state.current_palette} />
 					</div>
@@ -241,5 +255,11 @@ class PaletteContainer extends Component {
 		);
 	}
 }
+
+PaletteContainer.propTypes = {
+	handleLoading: PropTypes.func.isRequired,
+	currentUser: PropTypes.object.isRequired,
+	className: PropTypes.string.isRequired
+};
 
 export default PaletteContainer;

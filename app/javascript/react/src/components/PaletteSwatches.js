@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PaletteSwatches = props => {
 	let numSwatches = 0;
-	// let key = props.id
 	let id = props.id;
 	let hex_1 = props.hex_1;
 	let hex_2 = props.hex_2;
@@ -72,6 +72,23 @@ const PaletteSwatches = props => {
 			/>
 		</div>
 	);
+};
+
+PaletteSwatches.propTypes = {
+	handleSearchClick: PropTypes.func,
+	handlePaletteDelete: PropTypes.func,
+	id: PropTypes.any,
+	swatchesClassName: PropTypes.string,
+	hex_1: PropTypes.string,
+	hex_2: PropTypes.string,
+	hex_3: PropTypes.string,
+	hex_4: PropTypes.string,
+	hex_5: PropTypes.string,
+	percentage_hex_1: PropTypes.number,
+	percentage_hex_2: PropTypes.number,
+	percentage_hex_3: PropTypes.number,
+	percentage_hex_4: PropTypes.number,
+	percentage_hex_5: PropTypes.number
 };
 
 export default PaletteSwatches;

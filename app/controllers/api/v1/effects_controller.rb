@@ -7,8 +7,14 @@ class Api::V1::EffectsController < ApplicationController
   end
 
   def show
-    @effect = Effect.find_by(effect_name: params[:effect_name])
+    @effect = Effect.find_by(effect_name: effect_params[:effect_name])
     render json: @effect
+  end
+
+  private
+
+  def effect_params
+    params.permit(:effect_name)
   end
 
 end
