@@ -12,12 +12,12 @@ class PaletteContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			color_palettes: [null, null, null, null, null, null, null, null],
-			current_palette_number: null,
+			color_palettes: Array.apply(null, Array(8)).map(function() {}),
 			current_palette: {},
+			current_palette_number: null,
 			searched_color_palettes: '',
-			TEMP_PALETTE_FILE: '',
-			waiting_for_palette_name: false
+			waiting_for_palette_name: false,
+			TEMP_PALETTE_FILE: ''
 		};
 		this.loadUserPalettes = this.loadUserPalettes.bind(this);
 		this.handleSearchedPalette = this.handleSearchedPalette.bind(this);
@@ -25,9 +25,9 @@ class PaletteContainer extends Component {
 		this.fetchActiveColorPalette = this.fetchActiveColorPalette.bind(this);
 		this.postUploadedPalette = this.postUploadedPalette.bind(this);
 		this.retrieveProminentColors = this.retrieveProminentColors.bind(this);
-		this.onDrop = this.onDrop.bind(this);
 		this.handlePaletteNameChange = this.handlePaletteNameChange.bind(this);
 		this.handlePaletteDelete = this.handlePaletteDelete.bind(this);
+		this.onDrop = this.onDrop.bind(this);
 	}
 
 	postUploadedPalette(hex_output) {
@@ -114,18 +114,14 @@ class PaletteContainer extends Component {
 		fetch(`/api/v1/users/${nextUser.handle}/palettes`)
 			.then(response => response.json())
 			.then(body => {
-				// if (body.palettes.length == 0) {
-				// 	this.setState({ current_palette: [] });
-				// } else {
-				// else if (body.palettes.length == 1) {
-				// this.setState({ current_palette: body.palettes[0].id });
-				// }
 				const palettes = this.state.color_palettes;
 				for (var i = 0; i < 8; i++) {
 					palettes[i] = body.palettes[i];
 				}
 				this.setState({ color_palettes: palettes });
-				// }
+				if (body.palettes.length == 0) {
+					this.setState({ current_palette: {} });
+				}
 				this.props.handleLoading(false);
 			});
 	}
@@ -146,7 +142,8 @@ class PaletteContainer extends Component {
 			.then(body => {
 				this.setState({ current_palette: body });
 				this.props.handleLoading(false);
-			});
+			})
+			.catch(error => null);
 	}
 
 	onDrop(file) {
