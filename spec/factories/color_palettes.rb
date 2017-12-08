@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :color_palette do
-    id { ColorPalette.first || association(:color_palette) }
-    user_id { User.first || association(:user) }
-    designer { User.first || association(:user) }
+    id {|id| id }
+    user_id { 100 || association(:user) }
+    designer "username"
     name "watermelon"
     hex_1 '#DEDEDE'
     hex_2 '#ffffff'

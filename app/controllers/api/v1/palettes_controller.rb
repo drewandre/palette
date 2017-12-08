@@ -48,12 +48,6 @@ class Api::V1::PalettesController < ApplicationController
     render json: @user_palettes
   end
 
-  def user_add
-    user = User.find_by(handle: user_params[:handle])
-    @user_palettes = UserPalette.create(user_id: user.id, color_palette_id: palette_params[:palette_id])
-    render json: @user_palettes
-  end
-
   def current_user_palette
     if palette_params[:palette_id] != "null"
       @current_user_palette = ColorPalette.find(palette_params[:palette_id])
